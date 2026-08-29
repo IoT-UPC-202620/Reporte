@@ -1,0 +1,27 @@
+# --- Claude Code: estado local / credenciales ---
+# Las skills de Spec Kit (.claude/skills/) SI se versionan: son parte del flujo.
+.claude/settings.local.json
+.claude/.credentials.json
+.claude/history.jsonl
+.claude/todos/
+.claude/shell-snapshots/
+
+# --- Spec Kit ---
+# .specify/.gitignore ya excluye feature.json y overrides locales de extensiones.
+
+# --- Sistema operativo ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Editores ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+
+# --- Entorno / secretos ---
+.env
+.env.*
+!.env.example
