@@ -4,7 +4,66 @@
 
 **Estado:** ⬜ Pendiente
 
-_(Listar en formato APA 7 solo las referencias efectivamente citadas en el informe)_
+> ⚠️ **Reconciliado tras la migración desde Edifika-report.** Se conservan solo las referencias efectivamente citadas (en texto o en pies de figura "Herramienta, s.f.") en el contenido migrado a los Capítulos I–IV y VI. Se excluyen del pool original: entradas de EventStorming (Cap. II 2.4 y Cap. IV 4.1.1.1/.3 siguen Pendientes, no se realizó la sesión), User Flows/SEO/Design Systems/Tone of Voice/Python-Arduino (Cap. V 5.1/5.2/5.4.3/5.6 siguen Pendientes) y duplicados de GitFlow. Se agregan 3 herramientas citadas en el contenido migrado que no estaban en el pool de Edifika: Structurizr, Supabase y Firebase.
+
+- Acceptance Criteria in Scrum: Explanation, Examples, and Template. DZone. <https://dzone.com/articles/acceptance-criteria-in-software-explanation-exampl>
+- Aguilar, K. L. B. (2026). *Vacíos regulatorios en la Ley de Propiedad en Condominio, análisis de conflictos recurrentes en su modalidad vertical ubicados en el Distrito Central* (Tesis doctoral). Centro Universitario Tecnológico CEUTEC. <https://repositorio.unitec.edu/server/api/core/bitstreams/cd97bbd4-204c-49c8-9901-3d0a5a85d7f3/content>
+- Angular. (s.f.). <https://angular.dev/>
+- As-is Scenario Map. IBM. <https://www.ibm.com/design/thinking/page/toolkit/activity/as-is-scenario-map>
+- Cohn, M. (s.f.). User Stories. Mountain Goat Software Blog. <https://www.mountaingoatsoftware.com/blog/tag/user-stories>
+- Condominos. (2024, 4 de noviembre). Manejo de chats de WhatsApp de vecinos en condominios. <https://www.condominos.app/sitio/detalle/OA/manejo-de-chats-de-whatsapp-de-vecinos-en-condominios>
+- Conventional Commits. (s.f.). <https://www.conventionalcommits.org/>
+- Cucumber. (s.f.). <https://cucumber.io/>
+- Deloitte. (2022). *Digital transformation and operational efficiency.* <https://www2.deloitte.com/us/en/insights/topics/digital-transformation.html>
+- Discord. (s.f.). <https://discord.com/>
+- Domain-Driven Architecture Diagrams. Nick Tune's Tech Strategy Blog. <https://medium.com/nick-tune-tech-strategy-blog/domain-driven-architecture-diagrams-139a75acb578>
+- Domain Driven Design: Tackling Complexity in the Heart of Software. Open Practice Library. <https://openpracticelibrary.com/perspective/domain-driven-design/>
+- Domain Storytelling and Requirements. <https://domainstorytelling.org/#dst-requirements>
+- El Comercio. (2026, 3 de abril). Fallas en la gestión de edificios corporativos pueden generar sobrecostos de hasta 30%. <https://elcomercio.pe/economia/fallas-en-la-gestion-de-edificios-corporativos-pueden-generar-sobrecostos-de-hasta-30-noticia/>
+- Empathy Map. IBM. <https://www.ibm.com/design/thinking/page/toolkit/activity/empathy-map>
+- Empathy Mapping: The First Step in Design Thinking. Nielsen Norman Group. <https://www.nngroup.com/articles/empathy-mapping/>
+- Figma. (s.f.). <https://www.figma.com>
+- Figma Learn. <https://help.figma.com/hc/en-us/categories/23557013073047-Courses-tutorials-projects>
+- Firebase. (s.f.). <https://firebase.google.com/>
+- Gestión. (2023, 12 de septiembre). Advierten que deudas por gastos en condominios llevan a inquilinos a Infocorp. <https://gestion.pe/tu-dinero/inmobiliarias/advierten-que-deudas-por-gastos-en-condominios-llevan-a-inquilinos-a-infocorp-condominios-deudas-por-pagos-de-mantenimiento-noticia/>
+- Gherkin Conventions for Readable Specifications. SpecFlow. <https://specflow.org/gherkin/gherkin-conventions-for-readable-specifications/>
+- GitHub. (s.f.). <https://github.com/>
+- GitHub Pages. (s.f.). <https://pages.github.com/>
+- Google HTML/CSS Style Guide. <https://google.github.io/styleguide/htmlcssguide.html>
+- Google Java Style Guide. <https://google.github.io/styleguide/javaguide.html>
+- Google TypeScript Style Guide. <https://google.github.io/styleguide/tsguide.html>
+- How to build a customer empathy map. UXPressia. <https://uxpressia.com/blog/empathy-map-free-template>
+- How to create an impact map in 7 easy steps. UXPressia. <https://uxpressia.com/blog/build-impact-map-4-easy-steps>
+- How to Write a User Story for an API Product. <https://sameera17w.medium.com/how-to-write-a-user-story-for-an-api-product-7af6abd4ad2e>
+- HTML Style Guide and Coding Conventions. W3Schools. <https://www.w3schools.com/html/html5_syntax.asp>
+- Instituto Nacional de Estadística e Informática (INEI). (2023). *Perú: Características de las viviendas particulares y hogares.* <https://www.gob.pe/institucion/inei/informes-publicaciones/4377979-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-ene-feb-mar-2023>
+- IntelliJ IDEA. (s.f.). <https://www.jetbrains.com/idea/>
+- JUnit. (s.f.). <https://junit.org/>
+- Lean UX – Chapter 3. <https://www.scribd.com/document/655516553/Leanux-Sampler>
+- Lucidchart. (s.f.). <https://www.lucidchart.com>
+- Microsoft. (s.f.). Visual Studio Code. <https://code.visualstudio.com/>
+- Miro. (s.f.). <https://miro.com/>
+- Mockito. (s.f.). <https://site.mockito.org/>
+- PlantUML. (s.f.). <https://plantuml.com>
+- Postman. (s.f.). <https://www.postman.com/>
+- ProTool. (2026, 11 de marzo). Administrar un condominio por WhatsApp no es gestión, es un riesgo para la comunidad. <https://www.protool.cl/noticia_detalle.php?slug=administrar-condominios-por-whatsapp-no-es-gestion-es-riesgo>
+- Render. (s.f.). <https://render.com/>
+- Scenario mapping guide. UX for the Masses. <http://www.uxforthemasses.com/scenario-mapping/>
+- Seriously, what's your (startup's) problem? <https://medium.com/@jakemendel/seriously-whats-your-startup-s-problem-b3a884c54ab4>
+- Sociedad Peruana de Bienes Raíces. (2024). *Digitalización de edificios y condominios en Perú.* <https://bienesraicess.com/blogs/digitalizacion-de-edificios-y-condominios-en-peru>
+- Spring. (s.f.). Spring Boot. <https://spring.io/projects/spring-boot>
+- Structurizr. (s.f.). <https://structurizr.com/>
+- Supabase. (s.f.). <https://supabase.com/>
+- Swagger. (s.f.). Swagger UI. <https://swagger.io/tools/swagger-ui/>
+- Técnica de análisis de problemas 5W+2H. Progressa Lean. <https://www.progressalean.com/5w2h-tecnica-de-analisis-de-problemas/>
+- To-be Scenario Map. IBM. <https://www.ibm.com/design/thinking/page/toolkit/activity/to-be-scenario-map>
+- Trello. (s.f.). <https://trello.com/>
+- Using PlantUML for Creating Clear and Concise Diagrams. <https://connect2grp.medium.com/using-plantuml-for-creating-clear-and-concise-diagrams-2fc621529560>
+- Using a Requirements Traceability Matrix to Improve Project Quality. Modern Requirements. <https://www.modernrequirements.com/blogs/using-a-requirements-traceability-matrix-to-improve-project-quality/>
+- UXPressia. (s.f.). <https://uxpressia.com/>
+- User vs. Buyer Persona: Differences and free template. UXPressia. <https://uxpressia.com/blog/user-persona-vs-buyer-persona-difference>
+- Verastegui Leon, P. A., Mendoza Castañeda, J. L. D. C., Zapata Becerra, M. L., Capristan Leon, K. E., & Ravines Garcia, M. A. (2025). *Propuesta de un plan estratégico para mejora de la Gestión en Edificios Multifamiliares en Lima Moderna: Caso De Estudio: MONARCH MANAGERS EIRL.* Universidad Peruana de Ciencias Aplicadas. <https://repositorioacademico.upc.edu.pe/handle/10757/686137>
+- A successful Git branching model. <https://nvie.com/posts/a-successful-git-branching-model/>
 
 ## Referencias del curso (fuente: Final Project Statement — usar solo si fueron citadas)
 
