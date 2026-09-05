@@ -25,3 +25,6 @@ Desktop.ini
 .env
 .env.*
 !.env.example
+
+# --- Compilacion del informe a PDF ---
+pdf/dist/
