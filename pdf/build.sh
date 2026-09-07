@@ -101,6 +101,7 @@ MSYS_NO_PATHCONV=1 docker run --rm \
     -w /data \
     "$IMAGE_NAME" \
     --from=gfm+raw_attribute \
+    --lua-filter=pdf/fix-table-widths.lua \
     --resource-path="$RESOURCE_PATH" \
     --template=/usr/local/share/pandoc/templates/eisvogel.latex \
     --pdf-engine=xelatex \
