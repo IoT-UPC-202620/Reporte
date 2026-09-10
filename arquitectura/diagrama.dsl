@@ -1,4 +1,4 @@
-workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con extension IoT" {
+workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagrams for the EDIFIKA platform with IoT extension" {
 
     model {
         // ==========================================
@@ -6,6 +6,7 @@ workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con exten
         // ==========================================
         admin = person "Administrator" "Manages residents, payments, units, reservations, official announcements, building forum, report generation, and IoT automation rules." "Person"
         resident = person "Owner or Tenant" "Checks debts, makes payments, reserves common areas, accesses spaces via RFID/QR, interacts with lighting, and participates in the building forum." "Person"
+        visitor = person "Visitor" "Anonymous prospect who browses the EDIFIKA static Landing Page to learn about the business model before signing up." "Person"
 
         // ==========================================
         // Sistemas externos
@@ -18,27 +19,30 @@ workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con exten
         // Sistema principal EDIFIKA
         // ==========================================
         edifika = softwareSystem "EDIFIKA" {
+            // Landing Page (producto estatico independiente, parte del alcance)
+            landingPage = container "Landing Page" "Static marketing website presenting the EDIFIKA business model, target segments, and pricing, with call-to-action buttons for each segment." "HTML5 / CSS3 / JavaScript" "Landing Page"
+
             // Contenedores Frontend
-            mobileApp = container "Mobile Application" "Allows administrators, owners, and tenants to make payments, reservations, announcements, dynamic QR access generation, and forum interaction from iOS and Android devices." "Flutter / Mobile App" "Mobile App"
-            webApp = container "Web Application" "Allows administrators, owners, and tenants to access payments, reservations, announcements, IoT telemetry dashboards, and reports from a web browser." "Angular / SPA" "Web App"
+            mobileApp = container "Mobile Application" "Allows administrators, owners, and tenants to make payments, reservations, announcements, dynamic QR access generation, and forum interaction from iOS and Android devices." "Flutter / Dart" "Mobile App"
+            webApp = container "Web Application" "Allows administrators, owners, and tenants to access payments, reservations, announcements, IoT telemetry dashboards, and reports from a web browser." "Angular / TypeScript / SPA" "Web App"
 
             // API Gateway
-            apiGateway = container "API Gateway" "Single entry point for requests from the mobile and web applications. Centralizes routing, security, rate limiting, and JWT token validation." "Spring Cloud Gateway / Node.js" "API Gateway"
+            apiGateway = container "API Gateway" "Single entry point for requests from the mobile and web applications. Centralizes routing, security, rate limiting, and JWT token validation." "Spring Cloud Gateway / Java" "API Gateway"
 
             // Microservicios de Gestion Administrativa (Existentes)
-            iamService = container "IAM / Auth Service" "Manages authentication, authorization, user roles, and issues/validates using JWT." "Spring Boot / Node.js" "Microservice"
-            residentialService = container "Residential Management Service" "Manages buildings, units, residents, and the relationships between users and apartments." "Spring Boot / Node.js" "Microservice"
-            paymentService = container "Payment Service" "Manages debts, fees, payments, receipts, and integration with Culqi." "Spring Boot / Node.js" "Microservice"
-            reservationService = container "Reservation Service" "Manages common areas, availability, reservations, approvals, and cancellations." "Spring Boot / Node.js" "Microservice"
-            communicationService = container "Communication Service" "Publishes official announcements, administrative notices, and fluid communication." "Spring Boot / Node.js" "Microservice"
-            forumService = container "Messaging / Forum Service" "Manages posts, comments, and interactions between residents within each building's private forum." "Spring Boot / Node.js" "Microservice"
-            notificationService = container "Notification Service" "Consumes system events and sends push notifications related to payments, reservations, announcements, and IoT alerts." "Spring Boot / Node.js" "Microservice"
-            reportService = container "Report Service" "Generates comprehensive reports about payments, overdue debts, reservations, and community analytics." "Spring Boot / Node.js" "Microservice"
+            iamService = container "IAM / Auth Service" "Manages authentication, authorization, user roles, and issues/validates using JWT." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            residentialService = container "Residential Management Service" "Manages buildings, units, residents, and the relationships between users and apartments." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            paymentService = container "Payment Service" "Manages debts, fees, payments, receipts, and integration with Culqi." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            reservationService = container "Reservation Service" "Manages common areas, availability, reservations, approvals, and cancellations." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            communicationService = container "Communication Service" "Publishes official announcements, administrative notices, and fluid communication." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            forumService = container "Messaging / Forum Service" "Manages posts, comments, and interactions between residents within each building's private forum." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            notificationService = container "Notification Service" "Consumes system events and sends push notifications related to payments, reservations, announcements, and IoT alerts." "Spring Boot / Spring Data JPA / Java" "Microservice"
+            reportService = container "Report Service" "Generates comprehensive reports about payments, overdue debts, reservations, and community analytics." "Spring Boot / Spring Data JPA / Java" "Microservice"
 
             // Nuevos Microservicios IoT Cloud
-            accessService = container "IoT Access Management Service" "Manages common area access permissions, RFID and dynamic QR credentials, and door locks based on active reservations." "Spring Boot / Node.js" "IoT Microservice"
-            lightingService = container "Smart Lighting & Automation Service" "Controls common area luminaires based on presence detection, ambient lux levels, reservation schedules, and manual override." "Spring Boot / Node.js" "IoT Microservice"
-            telemetryService = container "IoT Telemetry & Analytics Service" "Ingests sensor telemetry, performs quantitative energy calculations (kWh), computes statistics, and flags hardware anomalies." "Spring Boot / Node.js" "IoT Microservice"
+            accessService = container "IoT Access Management Service" "Manages common area access permissions, RFID and dynamic QR credentials, and door locks based on active reservations." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
+            lightingService = container "Smart Lighting & Automation Service" "Controls common area luminaires based on presence detection, ambient lux levels, reservation schedules, and manual override." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
+            telemetryService = container "IoT Telemetry & Analytics Service" "Ingests sensor telemetry, performs quantitative energy calculations (kWh), computes statistics, and flags hardware anomalies." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
 
             // Broker de Mensajería y Bases de Datos
             messageBroker = container "Message & Event Broker" "Receives and distributes asynchronous domain events (AMQP/MQTT) such as payments, reservations, sensor telemetry, and actuator commands." "EMQX / RabbitMQ" "Message Broker"
@@ -46,12 +50,19 @@ workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con exten
             telemetryDatabase = container "Telemetry Database" "Stores high-frequency sensor readings, presence logs, power consumption metrics, and environmental series." "TimescaleDB / PostgreSQL" "Database"
 
             // Nivel Edge Computing (Instalado en Condominio)
-            edgeGateway = container "Edge API & Gateway Controller" "On-premise edge gateway running on-site. Provides offline credential caching, local device coordination, and resilient operation during internet outages." "FastAPI / Python" "Edge Gateway"
+            edgeGateway = container "Edge API & Gateway Controller" "On-premise edge gateway running on-site. Provides offline credential caching, local device coordination, and resilient operation during internet outages." "Flask / Peewee ORM / SQLite / Python" "Edge Gateway"
 
             // Dispositivos Fisicos Embebidos (IoT Devices)
             accessDevice = container "Common Area Access Controller" "Physical IoT embedded device with RFID reader (RC522), QR scanner, magnetic door sensor, buzzer, and electric lock relay." "ESP32 / Embedded C++" "IoT Device"
             lightingDevice = container "Smart Lighting & Sensing Node" "Physical IoT embedded node equipped with PIR presence sensor, LDR lux sensor, ACS712 current sensor, and luminaire relay." "ESP32 / Embedded C++" "IoT Device"
         }
+
+        // ==========================================
+        // Relaciones: Visitante -> Landing Page -> Frontend
+        // ==========================================
+        visitor -> landingPage "Browses business model information, target-segment content, and pricing"
+        landingPage -> webApp "Redirects visitor via call-to-action to the corresponding Web Application sign-up/login view" "HTTP Redirect"
+        landingPage -> mobileApp "Redirects visitor via call-to-action to the mobile app store listing" "HTTP Redirect / Deep Link"
 
         // ==========================================
         // Relaciones: Usuarios -> Frontend
@@ -146,10 +157,86 @@ workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con exten
         // ==========================================
         resident -> accessDevice "Presents RFID card or scans dynamic QR code at common area door" "Physical/RFID"
         resident -> lightingDevice "Generates physical motion detected by PIR presence sensor" "Physical/Infrared"
+
+        // ==========================================
+        // Deployment Environment
+        // ==========================================
+        deploymentEnvironment "Production" {
+            deploymentNode "Client Devices" "Devices owned by visitors, administrators, and residents" "End-user hardware" {
+                deploymentNode "Web Browser" "Chrome, Edge, Safari, or Firefox" "Desktop / Mobile Browser" {
+                    containerInstance landingPage
+                    containerInstance webApp
+                }
+                deploymentNode "Mobile Device" "iOS or Android smartphone" "Mobile OS" {
+                    containerInstance mobileApp
+                }
+            }
+
+            deploymentNode "Render" "Cloud PaaS hosting the stateless backend services" "Render.com" {
+                deploymentNode "API Gateway Node" "Web Service instance" "Render Web Service" {
+                    containerInstance apiGateway
+                }
+                deploymentNode "Core Microservices Cluster" "Web Service instances" "Render Web Services" {
+                    containerInstance iamService
+                    containerInstance residentialService
+                    containerInstance paymentService
+                    containerInstance reservationService
+                    containerInstance communicationService
+                    containerInstance forumService
+                    containerInstance notificationService
+                    containerInstance reportService
+                }
+                deploymentNode "IoT Cloud Microservices Cluster" "Web Service instances" "Render Web Services" {
+                    containerInstance accessService
+                    containerInstance lightingService
+                    containerInstance telemetryService
+                }
+            }
+
+            deploymentNode "Supabase" "Managed PostgreSQL cloud provider" "Supabase" {
+                deploymentNode "PostgreSQL Instance" "Relational data for classic and IoT microservices" "PostgreSQL 15" {
+                    containerInstance database
+                }
+                deploymentNode "TimescaleDB Instance" "Time-series extension for telemetry data" "PostgreSQL 15 + TimescaleDB" {
+                    containerInstance telemetryDatabase
+                }
+            }
+
+            deploymentNode "Message Broker Cloud" "Managed AMQP/MQTT broker" "CloudAMQP / EMQX Cloud" {
+                containerInstance messageBroker
+            }
+
+            deploymentNode "Condominium Site" "On-premise installation at each building" "Physical Location" {
+                deploymentNode "Edge Server" "Local gateway hardware, resilient to WAN outages" "Raspberry Pi 4 / Mini PC" {
+                    containerInstance edgeGateway
+                }
+                deploymentNode "Common Area Door Unit" "Installed at each common area door" "Embedded Hardware" {
+                    containerInstance accessDevice
+                }
+                deploymentNode "Common Area Lighting Unit" "Installed at each luminaire" "Embedded Hardware" {
+                    containerInstance lightingDevice
+                }
+            }
+        }
     }
 
     views {
+        systemLandscape "SystemLandscape" {
+            include *
+            autoLayout lr
+        }
+
+        systemContext edifika "SystemContext" {
+            include *
+            autoLayout lr
+        }
+
         container edifika "Containers" {
+            include *
+            autoLayout lr
+        }
+
+        deployment edifika "Production" "Deployment" {
             include *
             autoLayout lr
         }
@@ -167,6 +254,13 @@ workspace "EDIFIKA" "Diagrama de Contenedores de la plataforma EDIFIKA con exten
             element "External" {
                 shape RoundedBox
                 background #64748b
+                color #ffffff
+            }
+
+            // Landing Page
+            element "Landing Page" {
+                shape WebBrowser
+                background #f59e0b
                 color #ffffff
             }
 
