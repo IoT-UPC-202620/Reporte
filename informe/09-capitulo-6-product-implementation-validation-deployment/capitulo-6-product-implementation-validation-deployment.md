@@ -12,8 +12,6 @@
 
 > 📋 **Guía (Statement):** En esta sección el equipo específica, describe e indica los nombres de productos, el propósito de uso en el proyecto, la ruta de referencia (para software basado en modelos SaaS) o ruta de descarga (para productos que se ejecutan en el computador del miembro del equipo) de cada uno de los productos de software que deben utilizar los miembros del equipo para colaborar en el ciclo de vida de los productos digitales que forman la solución con IoT, considerando todos los tipos de actividades como Project Management, Requirements Management, Product UX/UI Design, Software Development, Software Testing, Software Deployment, Software Documentation, respetando las restricciones indicadas sobre productos de software y herramientas que se pueden utilizar.
 
-> ⚠️ **Migrado desde Edifika-report.**
-
 | Actividad | Producto/Herramienta | Propósito de uso | Ruta de referencia/descarga |
 |---|---|---|---|
 | Project Management | Trello | Gestión de tareas del equipo, seguimiento de actividades y control del avance de las funcionalidades. | Trello (SaaS) |
@@ -39,7 +37,7 @@
 >
 > Aplique Conventional Commits para los textos de mensajes en sus commits.
 
-> ⚠️ **Migrado desde Edifika-report — solo la metodología.** Las URLs de repositorio de Edifika (`github.com/Condomia/...`) no se migran por pertenecer a otro proyecto/organización; se dejan pendientes para los repositorios reales de este proyecto.
+> ⚠️ **Pendiente:** completar con las URLs de los repositorios del proyecto en GitHub.
 
 | Producto | URL del repositorio |
 |---|---|
@@ -62,8 +60,6 @@
 ### 6.1.3. Source Code Style Guide & Conventions
 
 > 📋 **Guía (Statement):** Aquí el equipo explica e indica las referencias que adoptará para nombrar elementos y programar en los lenguajes que se utilizan en la solución (HTML, CSS, JavaScript, TypeScript, Java, C#, Kotlin, Swift, C++, Python u otros según los constraints del proyecto; así como Gherkin para los archivos .feature). Para todos los lenguajes debe aplicar la nomenclatura en inglés. Adicionalmente, adopte convenciones estándares para coding (por ejemplo HTML Style Guide and Coding Conventions, Google HTML/CSS Style Guide, Gherkin Conventions for Readable Specifications, Angular coding style guide, Google Java Style Guide, Google TypeScript Style Guide y Spring Boot Features).
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 | Lenguaje/Tecnología | Style Guide adoptado |
 |---|---|
@@ -92,7 +88,7 @@
 
 > 📋 **Guía (Statement):** En esta sección el equipo especifica la configuración del despliegue de la solución, incluyendo los pasos necesarios para que, a partir de los repositorios de código fuente, se pueda lograr el despliegue o publicación satisfactorio de cada uno de los productos digitales en la solución (Landing Page, Web Services, Web Applications, Mobile Applications, Embedded Applications u otros productos incluidos). Adicionalmente a la explicación, el equipo incluye aquí el Deployment Diagram de C4 Model.
 
-> ⚠️ **Migrado desde Edifika-report — como referencia de proceso.** Los pasos describen cómo Edifika desplegó su Landing Page (GitHub Pages) y sus microservicios (Render); las URLs y nombres de servicio son de Edifika y deben reemplazarse por los de este proyecto.
+> ⚠️ **Pendiente:** los pasos describen el procedimiento de despliegue del Landing Page (GitHub Pages) y de los microservicios (Render). Falta completar con las URLs y los nombres de servicio definitivos.
 
 **Despliegue de un sitio estático en GitHub Pages**
 
@@ -116,9 +112,9 @@ Consideraciones previas: proyecto Spring Boot correctamente estructurado con `po
 
 **Deployment Diagram (C4 Model)**
 
-![Diagrama de arquitectura cloud](../assets/img/cloud_architecture_diagram.png)
+![Deployment Diagram](../assets/img/deployment-diagram.png)
 
-*Figura. Diagrama de despliegue. Render aloja el frontend y los microservicios backend, Supabase aloja una base de datos PostgreSQL independiente por microservicio, el API Gateway centraliza el enrutamiento, Culqi procesa pagos y Firebase Cloud Messaging envía notificaciones push. Elaborado por el equipo utilizando Lucidchart (Lucidchart, s.f.). (Ver también 4.1.3.3.)*
+*Figura. Deployment View de EDIFIKA — entorno Production. **Render** aloja el API Gateway y los dos clusters de microservicios (gestión e IoT), **Supabase** aloja la instancia PostgreSQL de negocio y la instancia TimescaleDB de telemetría, el **Message Broker Cloud** aloja el broker AMQP/MQTT, y el **Condominium Site** aloja on-premise el Edge Server y los dispositivos embebidos ESP32 de acceso e iluminación. Elaborado por el equipo aplicando C4 Model con Structurizr DSL (Structurizr, s.f.). (Ver también 4.1.3.3.)*
 
 ## 6.2. Landing Page, Services & Applications Implementation
 
@@ -128,7 +124,7 @@ Consideraciones previas: proyecto Spring Boot correctamente estructurado con `po
 
 > 📋 **Guía (Statement):** Cada Sprint n incluye 9 secciones internas — **.1 Sprint Planning n** (cuadro Background/Date/Time/Location/Prepared By/Review/Retrospective/Goal/Velocity/Story Points, con el Sprint Goal en formato *Our focus is on / We believe it delivers / This will be confirmed when*), **.2 Aspect Leaders and Collaborators** (matriz LACX: líder/colaborador por aspecto), **.3 Sprint Backlog n** (screenshot + URL del Board, tabla User Story → Task), **.4 Development Evidence** (tabla de commits de implementación), **.5 Testing Suite Evidence** (Unit/Integration/Acceptance Tests, archivos `.feature` en Gherkin, commits), **.6 Execution Evidence** (screenshots de vistas + video), **.7 Services Documentation Evidence** (tabla de endpoints OpenAPI/Swagger), **.8 Software Deployment Evidence** (capturas y explicación del despliegue), **.9 Team Collaboration Insights** (analíticos de colaboración de GitHub).
 
-> ⚠️ **Migrado desde Edifika-report — con huecos señalados por sprint.** Edifika no documentó explícitamente el Sprint Planning Meeting (fecha/hora/lugar/velocity) ni una matriz LACX formal; sí documentó de forma consistente el Sprint Backlog (Trello), evidencia de desarrollo (commits), testing BDD, ejecución (Postman/Swagger), documentación de servicios y despliegue. Los enlaces de invitación a los tableros de Trello de Edifika se omiten (son URLs de acceso al workspace del otro equipo, no genéricas) — queda pendiente el URL público del board de este proyecto.
+> ⚠️ **Pendiente por sprint:** cada sprint documenta Sprint Backlog (Trello), evidencia de desarrollo (commits), testing BDD, ejecución (Postman/Swagger), documentación de servicios y despliegue. Falta completar el Sprint Planning Meeting (fecha, hora, lugar y velocity), la matriz LACX de aspect leaders y collaborators, y el URL público del board.
 
 ### 6.2.1. Sprint 1
 
@@ -140,7 +136,7 @@ _(pendiente: Date, Time, Location, Prepared By, Velocity, Sum of Story Points �
 
 #### 6.2.1.2. Aspect Leaders and Collaborators
 
-> ⚠️ Inferido a partir de la columna "Assigned To" del Sprint Backlog (Edifika no elaboró una matriz LACX formal) — validar con el equipo real.
+> ⚠️ **Pendiente:** matriz inferida a partir de la columna "Assigned To" del Sprint Backlog — falta elaborar y validar la matriz LACX formal con el equipo.
 
 | Aspecto | Leader (inferido) | Collaborators |
 |---|---|---|
@@ -155,7 +151,7 @@ Objetivo: implementar el microservicio IAM, la Landing Page y los mock-ups de lo
 
 *Figura. Sprint Backlog 1. Elaborado utilizando Trello (Trello, s.f.).*
 
-**URL público del Board:** _(pendiente — el enlace de invitación de Edifika no es reutilizable)_
+**URL público del Board:** _(pendiente — publicar el board con acceso público y documentar su URL)_
 
 | Story Id | Story Title | Task Id | Task Title | Horas | Asignado |
 |---|---|---|---|---|---|

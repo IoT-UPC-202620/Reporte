@@ -12,8 +12,6 @@
 
 > 📋 **Guía (Statement):** Esta sección tiene como objetivo que su startup conozca mejor a sus competidores, en contraste con la idea inicial que pudiera tener sobre ellos. Se debe desarrollar el siguiente Landscape. Para cada uno de ellos debe identificarse fortalezas y debilidades, así como las oportunidades y amenazas asociadas.
 
-> ⚠️ **Migrado desde Edifika-report.**
-
 | Competitive Analysis Landscape | | Edifika (nuestra startup) | Condo Control | Buildium | AppFolio |
 |---|---|---|---|---|---|
 | ¿Por qué llevar a cabo este análisis? | Comprender cómo distintas plataformas gestionan la administración de condominios, qué funcionalidades ofrecen y qué valor brindan, para identificar oportunidades de diferenciación y posicionamiento. | | | | |
@@ -34,8 +32,6 @@
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
 > 📋 **Guía (Statement):** Se debe incluir las estrategias y tácticas preliminares que aplicará su startup para afrontar las fortalezas y aprovechar las debilidades, así como el contexto de oportunidades y amenazas en relación a la competencia.
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 **Enfoque en la digitalización total del condominio**
 Estrategia: diferenciarse de soluciones tradicionales (WhatsApp, Excel, papel) ofreciendo una plataforma centralizada y estructurada.
@@ -69,7 +65,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 
 > 📋 **Guía (Statement):** Esta sección incluye la relación de preguntas principales y complementarias para entrevistas, dirigidas a cada uno de los segmentos. Es importante considerar que debe aplicarse buenas prácticas para diseño de entrevistas. También debe considerar qué tipo de información principal y complementaria necesita recolectar para construir los arquetipos (características demográficas como género, edad, distrito de residencia, estado civil, familia, ocupación, al igual que otras características como personalidad, habilidades, marcas e influencias, dispositivos de preferencia, canales digitales de interacción, objetivos, frustraciones, biografía o background).
 
-> ⚠️ **Migrado desde Edifika-report.** Se utilizó el método de entrevistas semiestructuradas: preguntas predefinidas combinadas con la flexibilidad de profundizar según el contexto de la conversación, para recopilar información cualitativa sobre experiencias, frustraciones y expectativas sin limitar las respuestas a opciones cerradas. Se usaron dos guiones diferenciados, uno por segmento.
+> **Nota metodológica:** se utilizó el método de entrevistas semiestructuradas: preguntas predefinidas combinadas con la flexibilidad de profundizar según el contexto de la conversación, para recopilar información cualitativa sobre experiencias, frustraciones y expectativas sin limitar las respuestas a opciones cerradas. Se usaron dos guiones diferenciados, uno por segmento.
 
 **Segmento: Administradores de edificios y condominios**
 - ¿Cuántos edificios administran actualmente y cómo llevan hoy la gestión del día a día?
@@ -99,7 +95,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 
 > 📋 **Guía (Statement):** Para cada segmento se requiere de 3 a 5 entrevistas. Para cada una de las entrevistas se debe indicar la información de nombres, apellidos, edad, distrito, un screenshot de un cuadro de video y el URL del video subido en Microsoft Stream/Clipchamp (es un solo video editado para todas las entrevistas) incluyendo el timing donde inicia la entrevista y su duración. La entrevista debe ser registrada en video, que sirve de evidencia de entrevistas. Para cada entrevista debe redactarse en este informe un resumen, que explique de forma descriptiva las respuestas del entrevistado a las preguntas realizadas. Todas las características objetivas y subjetivas, incluyendo aspectos como personalidad, marcas e influencias, tecnología, canales de interacción, browser, dispositivos, etc. deben estar incluidas como parte de los resúmenes para cada entrevista. Debe ser evidente que cada característica de los arquetipos que se construirán en base a esta información provienen de datos recolectados. Ver [Anexo C. Indicaciones para secciones que incluyen Videos](../12-anexos/anexo-c-indicaciones-videos.md).
 
-> ⚠️ **Migrado desde Edifika-report.** Nota: el statement pide un solo video editado (Stream/Clipchamp) con el timing de cada entrevista; Edifika registró un link de video individual por entrevistado (SharePoint/OneDrive) — falta consolidar en un único video editado con timing, ver [Anexo C](../12-anexos/anexo-c-indicaciones-videos.md).
+> ⚠️ **Pendiente:** el statement pide un solo video editado (Stream/Clipchamp) con el timing de cada entrevista. Falta consolidar las grabaciones individuales en ese único video con timing, ver [Anexo C](../12-anexos/anexo-c-indicaciones-videos.md).
 
 **Segmento objetivo: Administradores de edificios y condominios**
 
@@ -108,7 +104,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Cesar Villalobos |
 | **Edad** | 51 |
 | **Departamento** | Cercado de Lima |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/interviews/admin1.png" alt="Entrevista admin 1" width="500"/> |
 | **Resumen** | César es administrador de edificios en GWM EIRL y actualmente gestiona 15 edificios usando Excel con macros como herramienta principal, apoyándose en WhatsApp para coordinar reservas y comunicaciones, y en las páginas de los bancos para pagos. El proceso más tedioso es la emisión de recibos, que aún se hace de forma física en varios edificios y que desea digitalizar al 100%. Ha evaluado entre 3 y 4 sistemas sin éxito, ya que todos presentaban exceso de información que generaba confusión en los propietarios y una percepción de desorden o falta de transparencia. Como empresa tiene el objetivo claro de migrar a una plataforma digital, y considera que una app o sistema web mejoraría significativamente la comunicación y la gestión, siempre que sea ágil, ordenada, fácil de entender y con información siempre actualizada. En cuanto al precio, conoce el mercado y sabe que el rango habitual oscila entre 2 y 5 dólares por unidad al mes. |
 
@@ -117,7 +113,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Daniel Farro |
 | **Edad** | 52 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/interviews/entrevista_renato.png" alt="Entrevista admin 2" width="500"/> |
 | **Resumen** | El entrevistado, Daniel Farro, administrador de un condominio de cinco unidades, señala que actualmente gestiona los pagos y la información de los condominios utilizando únicamente Excel y WhatsApp. Sin embargo, considera que estas herramientas son limitadas y le gustaría implementar un software especializado que le permita centralizar y organizar mejor la información, facilitando así una gestión más eficiente y ordenada. |
 
@@ -126,7 +122,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Andrés Ventoncilla |
 | **Edad** | 25 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/imagen_2026-04-18_194046671.png" alt="Entrevista admin 3" width="500"/> |
 | **Resumen** | Andrés Ventocilla se encarga de la supervisión de 4 inmuebles residenciales, basando toda su estructura de trabajo en documentos de Excel y la mensajería de WhatsApp para el contacto con los residentes. El mayor cuello de botella que enfrenta es la verificación de depósitos, una tarea manual donde debe contrastar cada movimiento bancario con las capturas de pantalla que envían los vecinos, lo que le resta eficiencia a su labor administrativa. Tras haber probado otras alternativas tecnológicas, las descartó por ser demasiado robustas y difíciles de navegar, lo que terminaba por confundir a los usuarios finales. Su meta es integrar la operación en un ecosistema digital, siempre que la herramienta priorice la simplicidad visual y permita que los propietarios visualicen el uso de los fondos de forma clara. Bajo su perspectiva, una tarifa mensual de entre S/ 150 y S/ 300 por edificio sería un monto justo, siempre que el sistema logre liberar su tiempo de tareas repetitivas. |
 
@@ -137,7 +133,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Mery Ojeda |
 | **Edad** | 38 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/interviews/prop1.png" alt="Entrevista propietario 1" width="500"/> |
 | **Resumen** | Mery es propietaria de un departamento en un condominio, ella indicó que recibe información sobre sus pagos mediante recibos mensuales y que el proceso de pago es sencillo a través de depósitos o aplicativos; sin embargo, señaló que no existe un acceso directo al historial de pagos, lo que obliga a recurrir a la administración. Asimismo, mencionó dificultades en la reserva de áreas comunes por falta de claridad y alta demanda, además de demoras en la comunicación, ya que WhatsApp no siempre ofrece respuestas oportunas y la atención presencial no es constante. Aunque percibe cierto nivel de transparencia en los gastos, considera tedioso el proceso de reclamos y manifestó interés en una aplicación móvil que centralice pagos, reservas y comunicaciones de manera rápida y eficiente. |
 
@@ -146,7 +142,7 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Melina Lopez |
 | **Edad** | 51 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/interviews/prop2.png" alt="Entrevista propietario 2" width="500"/> |
 | **Resumen** | Se entrevistó a Melina López, propietaria de un departamento, ella indica que no suele estar al tanto de las reuniones del edificio debido a la falta de tiempo. En cuanto a los pagos, envía los comprobantes por correo al administrador y mantiene un archivo físico como respaldo, ya que de lo contrario no tendría un historial accesible, asumiendo que la administración podría brindárselo si lo solicita. Señala que el proceso de reserva de espacios es el más tedioso, pues implica consultar disponibilidad, dejar garantía, realizar pagos y luego hacer seguimiento para su devolución, lo que la obliga a estar constantemente detrás de la administración. Además, le incomoda la gran cantidad de mensajes en el grupo de WhatsApp, donde se pierde información relevante. Finalmente, se muestra abierta al uso de una aplicación que centralice la información, considerando que actualmente los eventos y reuniones ya se comunican mediante un tablero. |
 
@@ -155,15 +151,13 @@ Táctica: implementar un calendario interactivo con disponibilidad en tiempo rea
 | **Nombre entrevistado** | Angel Lazo Panduro |
 | **Edad** | 24 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(link individual de Edifika, pendiente de reemplazo por video consolidado)* |
+| **Link del video** | *(pendiente — enlace del video consolidado)* |
 | **Foto entrevista** | <img src="../assets/img/imagen_2026-04-18_194125234.png" alt="Entrevista propietario 3" width="500"/> |
 | **Resumen** | Angel Lazo Panduro reside en un condominio de tamaño medio y manifiesta una clara frustración por la dependencia de métodos tradicionales, como el uso de papeles informativos en áreas comunes y el envío de capturas de pantalla por chats grupales para reportar sus cuotas. Para él, la comunicación actual es desordenada, lo que provoca que muchas veces ignore avisos importantes sobre reparaciones o servicios del edificio. Su prioridad principal es la autogestión; busca una herramienta que le permita confirmar la disponibilidad del área de parrillas y realizar su reserva de forma instantánea sin tener que esperar la aprobación manual de un portero o administrador. Considera que la plataforma será un éxito en su edificio si logra simplificar el proceso de reporte de pagos y centraliza los reglamentos internos en un formato digital de fácil acceso. |
 
 ### 2.2.3. Análisis de entrevistas
 
 > 📋 **Guía (Statement):** En esta sección se debe realizar un análisis por cada segmento objetivo, identificando con sustento estadístico (porcentajes) todas las características objetivas y subjetivas que representan los aspectos más comunes de cada segmento y que son necesarios para la construcción de los arquetipos. La fuente de información para este análisis proviene de las entrevistas registradas. Debe evidenciarse que cada característica tiene relación con las entrevistas registradas y los resúmenes realizados para las mismas.
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 **Segmento objetivo de administradores de edificios y condominios**
 
@@ -179,7 +173,7 @@ El dolor más concreto se concentra en la reserva de áreas comunes, proceso que
 La comunicación representa otro punto crítico. WhatsApp, canal principal en la mayoría de casos, es percibido como ineficiente por el volumen de mensajes y la falta de respuestas oportunas. La información relevante se pierde con facilidad, generando desconexión entre los residentes y la gestión del edificio.
 Un hallazgo importante es que los entrevistados ya reconocen la necesidad de una solución digital y se muestran abiertos a adoptarla sin necesidad de ser convencidos.
 
-> ⚠️ **Nota:** falta el sustento estadístico (porcentajes) que pide el statement — el análisis de Edifika es cualitativo/narrativo, no cuantifica hallazgos comunes por segmento. Completar con porcentajes al validar/ampliar la muestra de entrevistas.
+> ⚠️ **Pendiente:** falta el sustento estadístico (porcentajes) que pide el statement — el análisis es por ahora cualitativo/narrativo y no cuantifica los hallazgos comunes por segmento. Completar con porcentajes al ampliar la muestra de entrevistas.
 
 ## 2.3. Needfinding
 
@@ -188,8 +182,6 @@ Un hallazgo importante es que los entrevistados ya reconocen la necesidad de una
 ### 2.3.1. User Personas
 
 > 📋 **Guía (Statement):** En esta sección se incluye la elaboración de las fichas de User Persona. La sección inicia con una introducción explicando la relación entre los artefactos a presentar y las principales características que se están tomando en cuenta del análisis de entrevistas y de la competencia. Se elabora una ficha de User Persona por cada segmento objetivo. Considere las mejores prácticas y todos los ítems necesarios para especificar un arquetipo. Utilice la herramienta indicada (UXPressia) para este tipo de artefacto.
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 ### Administrador de Condominio – Ricardo Mendoza
 
@@ -206,8 +198,6 @@ Un hallazgo importante es que los entrevistados ya reconocen la necesidad de una
 ### 2.3.2. User Task Matrix
 
 > 📋 **Guía (Statement):** En esta sección se presenta el User Task Matrix, que concentra las tareas que los User Persona (que representan a cada segmento) realizan para cumplir sus objetivos. No confundir tareas (tasks) con opciones o características de software, pues las tareas deben ser realizadas por los segmentos independientemente de la existencia de su solución de software. Esta sección inicia con una introducción donde se establece los segmentos que se están considerando. El cuadro debe incluir como columna cada User Persona y para cada una como sub-columnas, la Frecuencia y la Importancia de cada tarea (task). Como filas se colocan las tareas identificadas. Luego del cuadro se realiza una explicación resaltando las tareas con mayor frecuencia e importancia, principales diferencias y coincidencias entre lo realizado por los User Personas.
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 ### Administrador de Condominio – Ricardo Mendoza
 
@@ -239,7 +229,7 @@ Las tareas de mayor frecuencia y prioridad para el administrador giran en torno 
 
 > 📋 **Guía (Statement):** En esta sección se elabora los User Journey Maps (uno por cada User Persona). La sección inicia con una introducción que resume el end-to-end journey que se pretende ilustrar. Debe incluirse capturas de imagen de los diagramas elaborados en la herramienta indicada. En este caso se elabora las versiones As-Is de los User Journey Maps, es decir los journey de cada segmento representado para la situación actual, sin que exista su solución. Cada User Journey Map debe vincularse con el User Persona correspondiente (cuya ficha de User Persona también debe haberse elaborado en la misma herramienta indicada).
 
-> ⚠️ **Migrado desde Edifika-report.** Edifika no elaboró User Journey Maps literales; en su lugar produjo **Scenario Mapping As-Is** (en Miro) por segmento, que se incluye aquí como evidencia de apoyo por ser el artefacto más cercano disponible. Sigue pendiente construir el User Journey Map formal (vinculado a la ficha de User Persona en la misma herramienta) que pide el statement.
+> ⚠️ **Pendiente:** se documenta por ahora un **Scenario Mapping As-Is** por segmento, elaborado en Miro. Falta construir el User Journey Map formal, vinculado a la ficha de User Persona en la misma herramienta, que pide el statement.
 
 **Segmento 1 — Administrador de Condominio (Ricardo Mendoza)**
 
@@ -257,7 +247,7 @@ Actualmente, los residentes como Andrea enfrentan una experiencia poco eficiente
 
 *Figura. Scenario Mapping (As-Is Segmento 2). Elaborado por el equipo utilizando Miro (Miro, s.f.).*
 
-> ⚠️ **Contenido adicional, no exigido por el statement:** Edifika también elaboró versiones **To-Be** de este Scenario Mapping (el statement de este curso no pide una versión futura en esta sección). Se conservan aquí como insumo de referencia para cuando exista la propuesta IoT.
+> 📌 **Contenido adicional, no exigido por el statement:** se incluyen además las versiones **To-Be** de este Scenario Mapping como insumo de referencia para el diseño de la propuesta IoT.
 >
 > - Segmento 1: ![Scenario Mapping To-Be Segmento 1](../assets/img/ToBeRicardo.PNG) — *el escenario futuro planteaba una transformación hacia una gestión digital centralizada, automatizando pagos, reportes y comunicación.*
 > - Segmento 2: ![Scenario Mapping To-Be Segmento 2](../assets/img/ToBeAndrea.PNG) — *el escenario ideal proponía una experiencia digital simple y centralizada desde el celular, con pagos, notificaciones y reservas intuitivas.*
@@ -265,8 +255,6 @@ Actualmente, los residentes como Andrea enfrentan una experiencia poco eficiente
 ### 2.3.4. Empathy Mapping
 
 > 📋 **Guía (Statement):** En esta sección, el equipo resume el proceso de elaboración y presenta capturas de los Empathy Maps realizados en la herramienta indicada, para cada uno de los User Personas. El proceso de elaboración incluye la preparación, colocar al centro el User Persona. Colocar en la sección correspondiente en la herramienta cada observación de los miembros del equipo sobre el User Persona, buscando responder las preguntas ¿Con quién estamos empatizando? ¿Qué necesita hacer? ¿Qué está diciendo? ¿Qué está viendo? ¿Qué está haciendo? ¿Qué está escuchando? ¿Cómo se siente y qué piensa? Identificar Pains y Gains en base a las preguntas ¿Qué le preocupa? ¿Qué puede ayudar a resolver sus problemas? ¿Qué puede convencerlo de que somos la alternativa correcta? ¿Qué dice?
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 ### Administrador de Condominio – Ricardo Mendoza
 

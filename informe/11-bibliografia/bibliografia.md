@@ -4,7 +4,7 @@
 
 **Estado:** ⬜ Pendiente
 
-> ⚠️ **Reconciliado tras la migración desde Edifika-report.** Se conservan solo las referencias efectivamente citadas (en texto o en pies de figura "Herramienta, s.f.") en el contenido migrado a los Capítulos I–IV y VI. Se excluyen del pool original: entradas de EventStorming (Cap. II 2.4 y Cap. IV 4.1.1.1/.3 siguen Pendientes, no se realizó la sesión), User Flows/SEO/Design Systems/Tone of Voice/Python-Arduino (Cap. V 5.1/5.2/5.4.3/5.6 siguen Pendientes) y duplicados de GitFlow. Se agregan 3 herramientas citadas en el contenido migrado que no estaban en el pool de Edifika: Structurizr, Supabase y Firebase.
+> ⚠️ **Nota:** se listan únicamente las referencias efectivamente citadas en el informe, sea en el texto o en los pies de figura ("Herramienta, s.f."). A medida que se completen las secciones aún pendientes (EventStorming en 2.4 y 4.1.1, y User Flows, SEO, Design Systems y diseño de dispositivos IoT en el Capítulo V) deberán incorporarse aquí las referencias que esas secciones citen.
 
 - Acceptance Criteria in Scrum: Explanation, Examples, and Template. DZone. <https://dzone.com/articles/acceptance-criteria-in-software-explanation-exampl>
 - Aguilar, K. L. B. (2026). *Vacíos regulatorios en la Ley de Propiedad en Condominio, análisis de conflictos recurrentes en su modalidad vertical ubicados en el Distrito Central* (Tesis doctoral). Centro Universitario Tecnológico CEUTEC. <https://repositorio.unitec.edu/server/api/core/bitstreams/cd97bbd4-204c-49c8-9901-3d0a5a85d7f3/content>
