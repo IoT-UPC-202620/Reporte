@@ -1,48 +1,105 @@
 # Capítulo II: Requirements Elicitation & Analysis
 
-> 📋 **Guía (Statement):** Se incluye el proceso de Needfinding junto con análisis de la competencia. Las entrevistas se registrarán en video y se editarán para construir el video de evidencia de entrevistas. El análisis de dichas entrevistas servirá de base para la identificación de necesidades y la construcción de los User Persona para cada segmento objetivo, así como la construcción del User Task Matrix, los User Journey Map para los User Persona identificados, así como los Empathy Maps, Big Picture EventStorming y Ubiquitous Language.
-
-**Estado:** ⬜ Pendiente
-
 ## 2.1. Competidores
 
-> 📋 **Guía (Statement):** En esta sección se realiza la identificación y descripción de los principales competidores directos (3 como mínimo) con modelos de negocio basados en productos digitales similares, o en su defecto competidores indirectos con ofertas parcialmente similares.
 
 ### 2.1.1. Análisis competitivo
 
-> 📋 **Guía (Statement):** Esta sección tiene como objetivo que su startup conozca mejor a sus competidores, en contraste con la idea inicial que pudiera tener sobre ellos. Se debe desarrollar el siguiente Landscape. Para cada uno de ellos debe identificarse fortalezas y debilidades, así como las oportunidades y amenazas asociadas.
 
-| Competitive Analysis Landscape | | Su startup | Competidor 1 | Competidor 2 | Competidor 3 |
+| Competitive Analysis Landscape | | BuildSense (Nuestra Startup) | Schneider EcoStruxure Building | Siemens Building X | Johnson Controls OpenBlue |
 |---|---|---|---|---|---|
-| ¿Por qué llevar a cabo este análisis? | _(objetivo del análisis)_ | | | | |
-| Perfil | Overview | | | | |
-| | Ventaja competitiva | | | | |
-| | ¿Qué valor ofrece a los clientes? | | | | |
-| Perfil de Marketing | Mercado objetivo | | | | |
-| | Estrategias de marketing | | | | |
-| Perfil de Producto | Productos & Servicios | | | | |
-| | Precios & Costos | | | | |
-| | Canales de distribución (Web y/o Móvil) | | | | |
-| Análisis SWOT | Fortalezas | | | | |
-| | Debilidades | | | | |
-| | Oportunidades | | | | |
-| | Amenazas | | | | |
+| ¿Por qué llevar a cabo este análisis? | Objetivo del análisis | Identificar oportunidades de diferenciación en el mercado de Smart Buildings, evaluando soluciones líderes para diseñar una propuesta enfocada en edificios residenciales y condominios con tecnologías IoT accesibles. | | | |
+| Perfil | Overview | Plataforma IoT para automatización, ahorro de recursos y seguridad en edificios y condominios. Integra iluminación inteligente, control de acceso, monitoreo de agua, riego automático y calidad del aire. | Plataforma de automatización y gestión energética para edificios inteligentes enfocada en eficiencia operativa y sostenibilidad. | Plataforma digital para edificios inteligentes basada en IoT, monitoreo en tiempo real y análisis de datos. | Ecosistema digital para optimización operativa, seguridad y mantenimiento inteligente de edificios. |
+| | Ventaja competitiva | Solución especializada para condominios y edificios residenciales con implementación sencilla y bajo costo. | Amplia experiencia global en automatización y gestión energética. | Potentes capacidades analíticas y monitoreo avanzado. | Integración de múltiples sistemas de infraestructura y seguridad. |
+| | ¿Qué valor ofrece a los clientes? | Reduce consumo de recursos, mejora la seguridad y automatiza tareas operativas mediante IoT. | Optimización energética y reducción de costos operativos. | Mayor eficiencia operativa mediante datos en tiempo real. | Mejor control de infraestructura y mantenimiento predictivo. |
+| Perfil de Marketing | Mercado objetivo | Administradores de edificios, juntas de propietarios y condominios residenciales. | Corporaciones, industrias y grandes complejos empresariales. | Empresas, hospitales, campus y edificios corporativos. | Grandes edificios comerciales e infraestructura empresarial. |
+| | Estrategias de marketing | Alianzas con constructoras, administradoras de condominios y campañas enfocadas en ahorro de recursos y seguridad. | Marketing centrado en sostenibilidad, eficiencia energética y transformación digital. | Estrategia basada en innovación tecnológica y digitalización empresarial. | Posicionamiento como solución integral para edificios inteligentes. |
+| Perfil de Producto | Productos & Servicios | Iluminación inteligente, control de acceso, monitoreo de tanque de agua, detección de fugas, riego automático, monitoreo de calidad del aire y alertas en tiempo real. | Gestión energética, automatización de edificios y monitoreo de infraestructura. | Gestión de activos, monitoreo IoT, analítica avanzada y automatización. | Monitoreo inteligente, mantenimiento predictivo y seguridad integrada. |
+| | Precios & Costos | Modelo SaaS con suscripción mensual accesible para condominios. | Costos elevados orientados a grandes organizaciones. | Licenciamiento empresarial y costos de infraestructura especializados. | Costos altos de implementación y mantenimiento. |
+| | Canales de distribución (Web y/o Móvil) | Aplicación Web y Móvil. | Plataforma Web. | Plataforma Web. | Plataforma Web. |
+| Análisis SWOT | Fortalezas | Especialización en condominios, bajo costo, facilidad de uso e integración de múltiples módulos IoT. | Marca consolidada y amplia presencia internacional. | Analítica avanzada y ecosistema tecnológico robusto. | Amplia integración con sistemas empresariales. |
+| | Debilidades | Menor reconocimiento de marca y menor capacidad de expansión inicial. | Complejidad y alto costo para edificios pequeños. | Requiere infraestructura tecnológica avanzada. | Orientado principalmente a clientes corporativos. |
+| | Oportunidades | Crecimiento del mercado Smart Building en Latinoamérica y mayor preocupación por la sostenibilidad. | Incremento de regulaciones sobre eficiencia energética. | Expansión de ciudades inteligentes y digitalización. | Crecimiento de la demanda de automatización y monitoreo. |
+| | Amenazas | Ingreso de competidores tecnológicos con mayor capacidad financiera. | Aparición de soluciones IoT más económicas. | Competidores especializados en nichos específicos. | Innovación acelerada en tecnologías IoT y PropTech. |
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
-> 📋 **Guía (Statement):** Se debe incluir las estrategias y tácticas preliminares que aplicará su startup para afrontar las fortalezas y aprovechar las debilidades, así como el contexto de oportunidades y amenazas en relación a la competencia.
+## Estrategias
 
-_(pendiente)_
+### Estrategia 1: Especialización en condominios residenciales
+Mientras que Schneider, Siemens y Johnson Controls se enfocan principalmente en grandes edificios corporativos e industriales, SmartCondo IoT se enfocará exclusivamente en condominios y edificios residenciales.
+
+### Estrategia 2: Diferenciación mediante integración IoT
+Ofrecer una única plataforma que integre iluminación inteligente, control de acceso, monitoreo de agua, detección de fugas, riego automático y calidad del aire.
+
+### Estrategia 3: Accesibilidad económica
+Reducir la barrera de entrada mediante un modelo SaaS de bajo costo orientado a administradores y juntas de propietarios.
+
+### Estrategia 4: Facilidad de implementación
+Implementar sensores y dispositivos IoT de rápida instalación sin necesidad de infraestructura compleja.
+
+## Tácticas
+
+### Táctica 1
+Ofrecer un plan piloto gratuito para condominios durante los primeros meses de uso.
+
+### Táctica 2
+Generar reportes automáticos de ahorro energético y consumo de agua para demostrar el valor de la plataforma.
+
+### Táctica 3
+Establecer alianzas con constructoras y empresas administradoras de condominios para ampliar la adopción.
+
+### Táctica 4
+Desarrollar aplicaciones móviles para administradores y residentes con notificaciones en tiempo real.
+
+### Táctica 5
+Implementar dashboards intuitivos que permitan monitorear todos los dispositivos IoT desde una única interfaz.
+
+### Táctica 6
+Promover el sistema destacando beneficios tangibles:
+- Reducción del consumo energético.
+- Reducción del desperdicio de agua.
+- Mayor seguridad en áreas comunes.
+- Monitoreo remoto 24/7.
+- Mejor calidad de vida para los residentes.
 
 ## 2.2. Entrevistas
 
-> 📋 **Guía (Statement):** En esta sección se aborda la investigación tomando como base la recolección de información en base a entrevistas a representantes de los segmentos objetivo.
+La sección abarca el proceso de investigación de nuestros segmentos objetivos mediante la recolección de información en base a entrevistas.
 
 ### 2.2.1. Diseño de entrevistas
 
-> 📋 **Guía (Statement):** Esta sección incluye la relación de preguntas principales y complementarias para entrevistas, dirigidas a cada uno de los segmentos. Es importante considerar que debe aplicarse buenas prácticas para diseño de entrevistas. También debe considerar qué tipo de información principal y complementaria necesita recolectar para construir los arquetipos (características demográficas como género, edad, distrito de residencia, estado civil, familia, ocupación, al igual que otras características como personalidad, habilidades, marcas e influencias, dispositivos de preferencia, canales digitales de interacción, objetivos, frustraciones, biografía o background).
+## 1. Segmento: Administradores de Edificios y Condominios
 
-_(Preguntas de entrevista por segmento)_
+1. ¿Cuántos edificios o condominios tiene bajo su administración actualmente?
+2. ¿Cómo organizan y controlan las cuotas de mantenimiento de los residentes?
+3. ¿Qué dificultades encuentran al hacer seguimiento a los pagos pendientes?
+4. ¿Cómo gestionan actualmente las incidencias o solicitudes reportadas por los residentes?
+5. ¿Qué herramientas utilizan para comunicar anuncios, avisos o comunicados importantes?
+6. ¿Qué tan frecuente es que los residentes indiquen que no recibieron información relevante?
+7. ¿Cómo administran las reservas de espacios comunes como salones, parrillas o áreas deportivas?
+8. ¿Cuáles son los procesos administrativos que más tiempo consumen dentro de su jornada laboral?
+9. ¿Qué problemas han tenido con las herramientas o sistemas que utilizan actualmente?
+10. ¿Qué características considera indispensables en una plataforma digital para la gestión de condominios?
+11. ¿Qué beneficios esperaría obtener al centralizar toda la administración en una sola solución?
+12. ¿Qué tan dispuesto estaría a implementar una nueva plataforma tecnológica para optimizar la gestión de sus edificios?
+
+---
+
+## 2. Segmento: Propietarios e Inquilinos de Condominios
+
+1. ¿Cómo suele mantenerse informado sobre los comunicados y novedades de su edificio o condominio?
+2. ¿Qué tan sencillo le resulta conocer el estado de sus pagos de mantenimiento?
+3. ¿Cómo realiza normalmente el pago de sus cuotas y qué aspectos mejoraría de ese proceso?
+4. ¿Ha tenido inconvenientes al intentar reservar áreas comunes del edificio?
+5. ¿Qué tan transparente considera que es la administración respecto al uso de los fondos de mantenimiento?
+6. ¿Qué tipo de información le gustaría consultar fácilmente desde una aplicación o plataforma digital?
+7. ¿Cómo reporta actualmente problemas o incidencias dentro del condominio?
+8. ¿Cuánto tiempo suele tardar la administración en responder a sus consultas o solicitudes?
+9. ¿Qué canal de comunicación utiliza con mayor frecuencia para contactar a la administración?
+10. ¿Qué trámite o proceso relacionado con el condominio considera más incómodo o desactualizado?
+11. ¿Le resultaría útil contar con una aplicación donde pueda gestionar pagos, reservas y comunicaciones en un solo lugar?
+12. Si pudiera mejorar un aspecto de la gestión de su condominio, ¿cuál sería y por qué?
 
 ### 2.2.2. Registro de entrevistas
 
