@@ -6,7 +6,7 @@
 
 ---
 
-![Logo de la Universidad](../../statement/imagenes/upc-pre-202620-1asi0572-final-project-statement-abet-v1/_page_0_Picture_0.jpeg)
+![Logo de la Universidad](../assets/img/upc_logo.png)
 
 **Universidad:** _(Nombre de Universidad)_
 **Carrera:** Ingeniería de Software

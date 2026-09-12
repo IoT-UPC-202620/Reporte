@@ -14,7 +14,7 @@
 >
 > Adicionalmente, debe considerarse Technical Stories para los features de productos digitales que no tienen interacción directa con los usuarios finales, como por ejemplo los RESTful APIs. En ese caso, utilice el rol *Developer* en la redacción de la descripción de la User Story. Considere como Acceptance Criteria los posibles escenarios de interacción de request/response, siguiendo la estructura de Gherkin.
 
-> ⚠️ **Migrado desde Edifika-report.** La tabla de User Stories se mantiene en HTML (no se convirtió a tabla Markdown) porque varias celdas de Criterios de Aceptación contienen múltiples escenarios Gherkin multilínea que perderían formato en una tabla de pipes.
+> 📌 **Nota de formato:** la tabla de User Stories se mantiene en HTML (no se convirtió a tabla Markdown) porque varias celdas de Criterios de Aceptación contienen múltiples escenarios Gherkin multilínea que perderían formato en una tabla de pipes.
 
 **Epics:**
 
@@ -1307,11 +1307,7 @@
   </tbody>
 </table>
 
-
-
 ### Justificación y Trazabilidad de las Historias de Usuario
-
-> Migrado desde Edifika-report.
 
 La siguiente tabla establece la trazabilidad entre las Historias de Usuario y los hallazgos obtenidos durante la fase de investigacion de usuarios.
 
@@ -1331,7 +1327,7 @@ La siguiente tabla establece la trazabilidad entre las Historias de Usuario y lo
 
 > 📋 **Guía (Statement):** En esta sección el equipo explica y presenta capturas del Impact Mapping para el modelo de negocio digital, elaborado en la herramienta indicada (UXPressia). Para esto debe haber elaborado previamente en la herramienta las fichas para cada User Persona. La elaboración incluye la identificación de los *Business Goals* (los business goals deben cumplir con los criterios SMART). Debe considerar varios *Business Goals*. Debe incluir como *Actors/Personas* a los User Personas previamente identificados, según relaciones con los Business Goals. La columna *Impact* debe incluir los enunciados de cómo desea que los User Persona cambien o se comporten. La columna *Deliverables* debe incluir los elementos que respondan qué puede hacer el negocio digital para provocar esos Impacts. La columna User Stories debe incluir la descripción de los User Stories (formato "Como... deseo... para...") que ayudarán a producir los Deliverables identificados.
 
-> ⚠️ Migrado desde Edifika-report. Nota: falta el detalle explícito de Business Goals en formato SMART en la captura original — verificar/completar contra la ficha en UXPressia.
+> ⚠️ **Pendiente:** falta el detalle explícito de los Business Goals en formato SMART — verificar y completar contra la ficha en UXPressia.
 
 El Impact Map muestra la relación entre el objetivo de negocio y los cambios de comportamiento esperados en los usuarios clave: administradores y residentes. A partir de este análisis se definen los impactos principales que la solución busca generar en cada tipo de usuario y los entregables necesarios para lograrlo, vinculados a las historias de usuario planteadas.
 
@@ -1343,9 +1339,7 @@ El Impact Map muestra la relación entre el objetivo de negocio y los cambios de
 
 > 📋 **Guía (Statement):** Los User Stories deben incluir su estimación y priorización en el Product Backlog. Debe utilizar la herramienta indicada para el Product Backlog. Adicionalmente debe elaborar en este documento una tabla con la siguiente estructura, incluir una captura y una referencia de URL del enlace público. Recuerde que en el Product Backlog, el orden lo determina el valor para el negocio. Elaborar un product backlog colocando al inicio User Stories ligados a la seguridad o autenticación se considera incorrecto. Los User Stories relacionados con el sitio web estático (Landing Page) requieren considerarse desde el primer sprint.
 
-> ⚠️ Migrado desde Edifika-report.
-
-**URL público del Product Backlog:** _(pendiente — Edifika no documentó la URL pública de su backlog en el README)_
+**URL público del Product Backlog:** _(pendiente — publicar y documentar la URL pública del backlog)_
 
 | # Orden | User Story Id | Título | Descripción | Epic ID | Story Points (1/2/3/5/8) | MoSCoW |
 |---|---|---|---|---|---|---|

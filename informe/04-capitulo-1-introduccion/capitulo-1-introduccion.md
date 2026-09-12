@@ -8,7 +8,7 @@
 
 ### 1.1.1. Descripción de la Startup
 
-> ⚠️ **Migrado desde Edifika-report, curso Fundamentos de Arquitectura de Software.** Contenido de referencia (startup "Condomia", producto "Edifika") a reescribir cuando exista una propuesta de producto IoT concreta para este curso.
+> ⚠️ **Pendiente:** esta sección debe ampliarse para reflejar la propuesta de producto IoT en toda su extensión.
 
 Condomia es una startup tecnológica enfocada en transformar la gestión de condominios y edificios residenciales mediante soluciones digitales accesibles, intuitivas y diseñadas para el día a día. Creemos firmemente que administrar una comunidad residencial puede y debe ser una experiencia ordenada, clara y eficiente para todos los actores involucrados. Nuestro equipo combina experiencia en tecnología, diseño y gestión para desarrollar herramientas que respondan a las necesidades reales de quienes conviven y administran estos espacios. Nuestro producto principal, Edifika, es una plataforma que centraliza en un único entorno digital la gestión y seguimiento de deudas y pagos, agiliza el proceso de reserva de áreas comunes y mantiene a toda la comunidad informada a través de comunicados oficiales estructurados, eliminando los procesos manuales y la información dispersa que podrían generar conflictos y desorganización. Apostamos por una tecnología que no solo resuelve problemas operativos, sino que también fortalece la comunicación interna y facilita la toma de decisiones colectivas dentro de cada edificio. Nuestro objetivo es convertirnos en el aliado digital de cada comunidad residencial, brindándole las herramientas necesarias para funcionar con transparencia, autonomía y confianza.
 
@@ -20,7 +20,7 @@ Convertirnos en la plataforma de referencia para la gestión de condominios, sie
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-> ⚠️ **Pendiente a propósito:** no se migraron los perfiles del equipo de Edifika-report (pertenecen a otro curso/equipo). Completar con los integrantes reales de este proyecto, siguiendo el mismo criterio que en la carátula.
+> ⚠️ **Pendiente:** completar con los perfiles de los integrantes del equipo, siguiendo el mismo criterio que en la carátula.
 
 | Foto | Nombres y Apellidos | Código | Carrera | Resumen de conocimientos técnicos y habilidades |
 |------|----------------------|--------|---------|--------------------------------------------------|
@@ -36,7 +36,7 @@ Convertirnos en la plataforma de referencia para la gestión de condominios, sie
 
 > 📋 **Guía (Statement):** Aquí se incluye una aproximación preliminar a la descripción de los antecedentes y la descripción de la problemática. Para la elaboración de esta descripción, el equipo debe aplicar previamente la técnica de The 5 'W's y 2 'H's - Who, What, Where, When, Why, How & How Much.
 
-> ⚠️ **Migrado desde Edifika-report.** Antecedentes/problemática del dominio de condominios; a reescribir con enfoque IoT cuando exista una propuesta concreta.
+> ⚠️ **Pendiente:** los antecedentes y la problemática del dominio de condominios deben completarse con el enfoque IoT de la solución.
 
 El nombre elegido para nuestro producto es Edifika. Este nombre surge de la fusión de dos conceptos clave: "edificio", que representa el entorno físico y la comunidad residencial a la que va dirigida la solución, y el sufijo "ka", que le otorga una identidad al producto en sí. Edifika es una aplicación digital que centraliza y simplifica la gestión integral de condominios y edificios residenciales en un solo lugar. Permite registrar y hacer un seguimiento de deudas y pagos de manera transparente, coordinar la reserva de áreas comunes sin complicaciones y mantener a toda la comunidad informada mediante comunicados fáciles de acceder. Su diseño está pensado para ser intuitivo y accesible, eliminando los procesos manuales y la información dispersa que suelen generar conflictos y desorganización dentro de las comunidades. Edifika no es solo una herramienta operativa, sino un canal que fortalece la comunicación y facilita la toma de decisiones dentro de cada edificio, con el objetivo de construir comunidades más ordenadas, transparentes y eficientes.
 
@@ -89,8 +89,6 @@ A nivel de los residentes, la morosidad en el pago de gastos comunes es una prob
 >
 > *We'll know we are successful when we see* **[these measurable behaviors in our target audience]**.
 
-> ⚠️ **Migrado desde Edifika-report.**
-
 En la actualidad, la gestión de condominios y edificios residenciales se realiza, en muchos casos, mediante procesos manuales o herramientas no integradas, como grupos de mensajería, hojas de cálculo o comunicaciones informales. Esta situación genera desorganización, falta de control sobre pagos y deudas, conflictos en la reserva de áreas comunes y una comunicación poco clara entre los miembros de la comunidad, lo que se traduce en ineficiencias operativas, errores en la gestión de la información y dificultades en la coordinación entre los distintos actores involucrados (Deloitte, 2022).
 
 Este problema afecta principalmente a administradores y propietarios e inquilinos, quienes enfrentan dificultades para mantener una gestión eficiente, transparente y ordenada dentro de sus comunidades, lo que impacta negativamente en la convivencia y en la toma de decisiones colectivas.
@@ -120,7 +118,7 @@ Para abordar esta problemática, se ha definido el contexto del problema y los e
 >
 > Por cada tipo de assumption debe enumerar varios assumptions como enunciados de creencias. No debe confundirse con las preguntas que incluyen los autores de Lean UX para propiciar la discusión de assumptions. Debe enumerar por cada tipo de assumption las creencias resultantes de dicha discusión. Es muy importante definir adecuadamente los assumptions, pues es en base a ellos que se definen los hypothesis statements.
 
-> ⚠️ **Migrado desde Edifika-report.** El statement pide 5 tipos de assumptions; Edifika solo desarrolló 3 (Business, User, Feature) — faltan **Business Outcome Assumptions** y **User Outcome and Benefit Assumptions**, quedan pendientes de completar.
+> ⚠️ **Pendiente:** el statement pide 5 tipos de assumptions; por ahora se desarrollan 3 (Business, User, Feature). Faltan **Business Outcome Assumptions** y **User Outcome and Benefit Assumptions**.
 
 **Business Assumptions**
 
@@ -181,8 +179,6 @@ El producto debe lucir moderno, accesible y amigable, con un diseño centrado en
 >
 > *With* **[this feature or solution]**
 
-> ⚠️ **Migrado desde Edifika-report.**
-
 **Hypothesis Statement 01**
 Creemos que los administradores y residentes utilizarán Edifika como su principal herramienta para gestionar pagos, reservas y comunicación dentro del condominio.
 **Sabremos que hemos tenido éxito** cuando al menos un 70% de los usuarios registrados utilicen la plataforma semanalmente durante el primer mes.
@@ -201,8 +197,6 @@ Creemos que una comunicación estructurada dentro de la plataforma aumentará la
 
 #### 1.2.2.4. Lean UX Canvas
 
-> ⚠️ **Migrado desde Edifika-report.**
-
 ![Lean Ux Canvas](../assets/img/lean_ux_canvas.png)
 
 *Figura. Lean UX Canvas. Elaborado por el equipo utilizando Miro (Miro, s.f.).*
@@ -210,8 +204,6 @@ Creemos que una comunicación estructurada dentro de la plataforma aumentará la
 ## 1.3. Segmentos objetivo
 
 > 📋 **Guía (Statement):** Esta sección incluye la descripción de los segmentos asociados al dominio del problema, incluyendo características demográficas e información estadística de sustento.
-
-> ⚠️ **Migrado desde Edifika-report.**
 
 **Administradores de edificios y condominios:**
 

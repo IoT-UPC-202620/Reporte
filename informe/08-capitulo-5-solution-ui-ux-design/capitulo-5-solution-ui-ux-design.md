@@ -68,7 +68,7 @@
 
 > 📋 **Guía (Statement):** Esta sección presenta y explica los Mock-ups de las aplicaciones. En la propuesta y la explicación debe evidenciarse la aplicación de los principios, elementos de diseño, diseño inclusivo y arquitectura de información, así como el Design System establecido para los productos digitales.
 
-> ⚠️ **Migrado desde Edifika-report — parcial.** Edifika elaboró mock-ups de alta fidelidad en Figma para su aplicación web, pero no los Wireframes (5.4.1) ni los Wireflow/User Flow Diagrams (5.4.2/5.4.3) que preceden a un mock-up según el statement — esos quedan pendientes. Se muestran aquí directamente los mock-ups como el artefacto de mayor fidelidad disponible.
+> ⚠️ **Pendiente:** se presentan los mock-ups de alta fidelidad elaborados en Figma para la aplicación web. Faltan los Wireframes (5.4.1) y los Wireflow/User Flow Diagrams (5.4.2/5.4.3) que, según el statement, preceden al mock-up.
 
 | Mock-up | Imagen |
 |---|---|
@@ -94,7 +94,7 @@
 
 > 📋 **Guía (Statement):** Esta sección incluye Prototipos de UI para Desktop y Mobile Web Browser con simulación de interacción y navegación, acorde con la propuesta de paths de User Flow Diagrams. Esta sección inicia con una introducción en la que se explica los principales criterios para las decisiones de interacción. Es importante evidenciar la relación con las decisiones de arquitectura de información, en particular sobre el sistema de navegación y los tipos de interacciones seleccionadas. Para cada caso debe incluirse 1 screenshot de video y un enlace a un video subido a Microsoft Stream/Clipchamp para cada aplicación, en el que se demuestre y explique los principales flujos de interacción que cubren los prototipos.
 
-> ⚠️ **Migrado desde Edifika-report — parcial.** Edifika enlazó un prototipo navegable en Figma (sin video de evidencia en Stream/Clipchamp, que el statement sí exige).
+> ⚠️ **Pendiente:** se enlaza el prototipo navegable en Figma. Falta el video de evidencia en Stream/Clipchamp que exige el statement.
 
 Enlace del prototipo (Figma): `https://www.figma.com/proto/1ksaEJeKckW1WPlgeNyTbH/Untitled?node-id=3015-106&viewport=351%2C196%2C0.16&t=U3A6YtXgGNGnrgnD-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3015%3A106&page-id=3012%3A2`
 

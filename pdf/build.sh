@@ -39,7 +39,12 @@ echo "==> Recolectando secciones de informe/ en orden..."
 # carpeta (00-caratula, 01-registro-de-versiones, ..., 12-anexos), que es el
 # mismo orden documentado en README.md y derivado del enunciado (statement).
 # Un sort lexicografico (LC_ALL=C) alcanza porque los prefijos son de 2 digitos.
-mapfile -t SOURCE_FILES < <(find "$ROOT_DIR/informe" -type f -name "*.md" | LC_ALL=C sort)
+# Se usa un while-read en vez de "mapfile -t" porque mapfile solo existe en
+# bash 4+, y macOS trae bash 3.2 por defecto.
+SOURCE_FILES=()
+while IFS= read -r source_file; do
+    SOURCE_FILES+=("$source_file")
+done < <(find "$ROOT_DIR/informe" -type f -name "*.md" | LC_ALL=C sort)
 
 if [[ "${#SOURCE_FILES[@]}" -eq 0 ]]; then
     echo "error: no se encontraron archivos .md dentro de informe/" >&2
@@ -96,12 +101,16 @@ if command -v cygpath >/dev/null 2>&1; then
     DOCKER_MOUNT_PATH="$(cygpath -m "$ROOT_DIR")"
 fi
 
+# --variable=tables=true: el filtro de tablas entrega LaTeX crudo, asi que
+# pandoc ya no "ve" tablas en el documento y la plantilla no cargaria
+# longtable/booktabs/array/calc. Se fuerza la variable para que si lo haga.
 MSYS_NO_PATHCONV=1 docker run --rm \
     -v "${DOCKER_MOUNT_PATH}:/data" \
     -w /data \
     "$IMAGE_NAME" \
     --from=gfm+raw_attribute \
     --lua-filter=pdf/fix-table-widths.lua \
+    --variable=tables=true \
     --resource-path="$RESOURCE_PATH" \
     --template=/usr/local/share/pandoc/templates/eisvogel.latex \
     --pdf-engine=xelatex \

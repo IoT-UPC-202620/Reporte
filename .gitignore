@@ -28,3 +28,6 @@ Desktop.ini
 
 # --- Compilacion del informe a PDF ---
 pdf/dist/
+
+# --- Renderizado de diagramas Structurizr (salida cruda antes de copiar a informe/assets/img/) ---
+arquitectura/dist/
