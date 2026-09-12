@@ -68,6 +68,24 @@
 
 > 📋 **Guía (Statement):** Esta sección presenta y explica los Mock-ups de las aplicaciones. En la propuesta y la explicación debe evidenciarse la aplicación de los principios, elementos de diseño, diseño inclusivo y arquitectura de información, así como el Design System establecido para los productos digitales.
 
+> ⚠️ **Pendiente:** se presentan los mock-ups de alta fidelidad elaborados en Figma para la aplicación web. Faltan los Wireframes (5.4.1) y los Wireflow/User Flow Diagrams (5.4.2/5.4.3) que, según el statement, preceden al mock-up.
+
+| Mock-up | Imagen |
+|---|---|
+| Inicio de sesión | ![Mockup inicio de sesión](../assets/img/iniciodesesion.png) |
+| Creación de cuenta | ![Mockup creación de cuenta](../assets/img/crearcuenta.png) |
+| Dashboard principal | ![Mockup dashboard](../assets/img/Dashboard.png) |
+| Módulo de unidades | ![Mockup unidades](../assets/img/unidades.png) |
+| Calendario de reservas | ![Mockup calendario](../assets/img/Calendar.png) |
+| Detalle de reserva | ![Mockup detalle de reserva](../assets/img/detailreservation.png) |
+| Detalle de reserva (alternativo) | ![Mockup detalle de reserva alternativo](../assets/img/DetailReservation2.png) |
+| Módulo de reportes | ![Mockup reportes](../assets/img/Report.png) |
+| Módulo de residentes | ![Mockup residentes](../assets/img/residents.png) |
+| Módulo de comunidad | ![Mockup comunidad](../assets/img/community.png) |
+| Módulo de configuración | ![Mockup configuración](../assets/img/config.png) |
+
+*Figuras. Mock-ups de alta fidelidad. Elaborados por el equipo utilizando Figma (Figma, s.f.).*
+
 ### 5.4.3. Applications User Flow Diagrams
 
 > 📋 **Guía (Statement):** Esta sección presenta la propuesta de User Flows. Debe considerarse un User Flow para cada *User goal*, considerando los User Persona para cada aplicación que forma parte del alcance. Estos User Flows deben ser consistentes con los Wireflows de los cuales se derivan. Debe recordarse que en el User Flow se incluyen los Mock-ups de las vistas o pantallas de las aplicaciones, junto con los flujos que constituyen la ruta esperada (happy path) y las rutas alternativas (unhappy paths). Cada User Flow diagram requiere que se redacte el User goal y se complemente con una explicación de los flujos y condiciones especificados.
@@ -75,6 +93,12 @@
 ## 5.5. Applications Prototyping
 
 > 📋 **Guía (Statement):** Esta sección incluye Prototipos de UI para Desktop y Mobile Web Browser con simulación de interacción y navegación, acorde con la propuesta de paths de User Flow Diagrams. Esta sección inicia con una introducción en la que se explica los principales criterios para las decisiones de interacción. Es importante evidenciar la relación con las decisiones de arquitectura de información, en particular sobre el sistema de navegación y los tipos de interacciones seleccionadas. Para cada caso debe incluirse 1 screenshot de video y un enlace a un video subido a Microsoft Stream/Clipchamp para cada aplicación, en el que se demuestre y explique los principales flujos de interacción que cubren los prototipos.
+
+> ⚠️ **Pendiente:** se enlaza el prototipo navegable en Figma. Falta el video de evidencia en Stream/Clipchamp que exige el statement.
+
+Enlace del prototipo (Figma): `https://www.figma.com/proto/1ksaEJeKckW1WPlgeNyTbH/Untitled?node-id=3015-106&viewport=351%2C196%2C0.16&t=U3A6YtXgGNGnrgnD-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=3015%3A106&page-id=3012%3A2`
+
+_(pendiente: screenshot + video de evidencia del prototipo en Stream/Clipchamp)_
 
 ## 5.6. IoT Device Design
 
