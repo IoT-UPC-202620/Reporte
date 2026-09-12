@@ -1,95 +1,105 @@
 # Capítulo II: Requirements Elicitation & Analysis
 
-> 📋 **Guía (Statement):** Se incluye el proceso de Needfinding junto con análisis de la competencia. Las entrevistas se registrarán en video y se editarán para construir el video de evidencia de entrevistas. El análisis de dichas entrevistas servirá de base para la identificación de necesidades y la construcción de los User Persona para cada segmento objetivo, así como la construcción del User Task Matrix, los User Journey Map para los User Persona identificados, así como los Empathy Maps, Big Picture EventStorming y Ubiquitous Language.
-
-**Estado:** ⬜ Pendiente
-
 ## 2.1. Competidores
 
-> 📋 **Guía (Statement):** En esta sección se realiza la identificación y descripción de los principales competidores directos (3 como mínimo) con modelos de negocio basados en productos digitales similares, o en su defecto competidores indirectos con ofertas parcialmente similares.
 
 ### 2.1.1. Análisis competitivo
 
-> 📋 **Guía (Statement):** Esta sección tiene como objetivo que su startup conozca mejor a sus competidores, en contraste con la idea inicial que pudiera tener sobre ellos. Se debe desarrollar el siguiente Landscape. Para cada uno de ellos debe identificarse fortalezas y debilidades, así como las oportunidades y amenazas asociadas.
 
-| Competitive Analysis Landscape | | Edifika (nuestra startup) | Condo Control | Buildium | AppFolio |
+| Competitive Analysis Landscape | | BuildSense (Nuestra Startup) | Schneider EcoStruxure Building | Siemens Building X | Johnson Controls OpenBlue |
 |---|---|---|---|---|---|
-| ¿Por qué llevar a cabo este análisis? | Comprender cómo distintas plataformas gestionan la administración de condominios, qué funcionalidades ofrecen y qué valor brindan, para identificar oportunidades de diferenciación y posicionamiento. | | | | |
-| Perfil | Overview | Aplicación enfocada en la gestión de condominios en el contexto peruano, que centraliza pagos, reservas y comunicación en una sola plataforma accesible e intuitiva. | Software de gestión de condominios que permite la comunicación entre residentes, gestión de documentos y administración de reservas. | Plataforma de gestión inmobiliaria en la nube orientada a administradores profesionales, con herramientas financieras, operativas y de comunicación. | Software integral de gestión de propiedades que permite administrar pagos, mantenimiento y comunicación desde una sola plataforma. |
-| | Ventaja competitiva / ¿Qué valor ofrece? | Centraliza funciones clave en una interfaz simple, enfocada en la adopción real de usuarios que actualmente usan WhatsApp y Excel. | Ofrece una plataforma estructurada para la comunicación y organización dentro del condominio. | Proporciona herramientas avanzadas de gestión financiera y automatización para empresas administradoras. | Integra múltiples funcionalidades con automatización y escalabilidad para grandes volúmenes de propiedades. |
-| Perfil de Marketing | Mercado objetivo | Condominios urbanos en Perú, administradores y residentes que buscan digitalizar su gestión. | Condominios y asociaciones de propietarios, principalmente en mercados internacionales. | Empresas administradoras de propiedades y profesionales inmobiliarios. | Empresas de gestión inmobiliaria y administradores de múltiples propiedades. |
-| | Estrategias de marketing | Enfoque en simplicidad, adopción digital y solución de problemas reales en comunidades locales. | Marketing digital enfocado en comunidades y administradores de condominios. | Marketing B2B dirigido a empresas inmobiliarias con enfoque en eficiencia y automatización. | Estrategias digitales enfocadas en empresas grandes y escalabilidad del servicio. |
-| Perfil de Producto | Productos & Servicios | Gestión de pagos y deudas · Reserva de áreas comunes · Comunicados centralizados | Gestión de documentos · Comunicación con residentes · Reservas de espacios | Gestión financiera · Pagos en línea · Reportes y contabilidad | Gestión de pagos · Mantenimiento · Automatización de procesos |
-| | Precios & Costos | Modelo de suscripción mensual por condominio · Posible versión freemium | Suscripción mensual según tamaño del condominio | Suscripción mensual para empresas administradoras | Modelo SaaS con precios escalables |
-| | Canales de distribución (Web y/o Móvil) | Aplicación móvil (iOS y Android) · Posible versión web | Web y aplicación móvil | Web (plataforma en la nube) | Web y aplicación móvil |
-| Análisis SWOT | Fortalezas | Enfoque local, simplicidad y alta adaptabilidad al contexto peruano. | Experiencia en gestión de condominios y comunicación estructurada. | Plataforma robusta con herramientas financieras avanzadas. | Alta escalabilidad y automatización. |
-| | Debilidades | Aplicación nueva con baja adopción inicial. | Puede ser compleja para usuarios no tecnológicos. | No está enfocada en usuarios pequeños o individuales. | Curva de aprendizaje más alta. |
-| | Oportunidades | Alta demanda de digitalización en condominios en Perú. | Expansión en mercados internacionales. | Expansión en mercados emergentes. | Innovación en automatización y servicios. |
-| | Amenazas | Resistencia al cambio y uso de herramientas informales. | Competencia de nuevas apps más simples. | Competencia de software especializado más accesible. | Competencia creciente en el sector proptech. |
-
-*Fuente: elaboración propia del equipo.*
+| ¿Por qué llevar a cabo este análisis? | Objetivo del análisis | Identificar oportunidades de diferenciación en el mercado de Smart Buildings, evaluando soluciones líderes para diseñar una propuesta enfocada en edificios residenciales y condominios con tecnologías IoT accesibles. | | | |
+| Perfil | Overview | Plataforma IoT para automatización, ahorro de recursos y seguridad en edificios y condominios. Integra iluminación inteligente, control de acceso, monitoreo de agua, riego automático y calidad del aire. | Plataforma de automatización y gestión energética para edificios inteligentes enfocada en eficiencia operativa y sostenibilidad. | Plataforma digital para edificios inteligentes basada en IoT, monitoreo en tiempo real y análisis de datos. | Ecosistema digital para optimización operativa, seguridad y mantenimiento inteligente de edificios. |
+| | Ventaja competitiva | Solución especializada para condominios y edificios residenciales con implementación sencilla y bajo costo. | Amplia experiencia global en automatización y gestión energética. | Potentes capacidades analíticas y monitoreo avanzado. | Integración de múltiples sistemas de infraestructura y seguridad. |
+| | ¿Qué valor ofrece a los clientes? | Reduce consumo de recursos, mejora la seguridad y automatiza tareas operativas mediante IoT. | Optimización energética y reducción de costos operativos. | Mayor eficiencia operativa mediante datos en tiempo real. | Mejor control de infraestructura y mantenimiento predictivo. |
+| Perfil de Marketing | Mercado objetivo | Administradores de edificios, juntas de propietarios y condominios residenciales. | Corporaciones, industrias y grandes complejos empresariales. | Empresas, hospitales, campus y edificios corporativos. | Grandes edificios comerciales e infraestructura empresarial. |
+| | Estrategias de marketing | Alianzas con constructoras, administradoras de condominios y campañas enfocadas en ahorro de recursos y seguridad. | Marketing centrado en sostenibilidad, eficiencia energética y transformación digital. | Estrategia basada en innovación tecnológica y digitalización empresarial. | Posicionamiento como solución integral para edificios inteligentes. |
+| Perfil de Producto | Productos & Servicios | Iluminación inteligente, control de acceso, monitoreo de tanque de agua, detección de fugas, riego automático, monitoreo de calidad del aire y alertas en tiempo real. | Gestión energética, automatización de edificios y monitoreo de infraestructura. | Gestión de activos, monitoreo IoT, analítica avanzada y automatización. | Monitoreo inteligente, mantenimiento predictivo y seguridad integrada. |
+| | Precios & Costos | Modelo SaaS con suscripción mensual accesible para condominios. | Costos elevados orientados a grandes organizaciones. | Licenciamiento empresarial y costos de infraestructura especializados. | Costos altos de implementación y mantenimiento. |
+| | Canales de distribución (Web y/o Móvil) | Aplicación Web y Móvil. | Plataforma Web. | Plataforma Web. | Plataforma Web. |
+| Análisis SWOT | Fortalezas | Especialización en condominios, bajo costo, facilidad de uso e integración de múltiples módulos IoT. | Marca consolidada y amplia presencia internacional. | Analítica avanzada y ecosistema tecnológico robusto. | Amplia integración con sistemas empresariales. |
+| | Debilidades | Menor reconocimiento de marca y menor capacidad de expansión inicial. | Complejidad y alto costo para edificios pequeños. | Requiere infraestructura tecnológica avanzada. | Orientado principalmente a clientes corporativos. |
+| | Oportunidades | Crecimiento del mercado Smart Building en Latinoamérica y mayor preocupación por la sostenibilidad. | Incremento de regulaciones sobre eficiencia energética. | Expansión de ciudades inteligentes y digitalización. | Crecimiento de la demanda de automatización y monitoreo. |
+| | Amenazas | Ingreso de competidores tecnológicos con mayor capacidad financiera. | Aparición de soluciones IoT más económicas. | Competidores especializados en nichos específicos. | Innovación acelerada en tecnologías IoT y PropTech. |
 
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
-> 📋 **Guía (Statement):** Se debe incluir las estrategias y tácticas preliminares que aplicará su startup para afrontar las fortalezas y aprovechar las debilidades, así como el contexto de oportunidades y amenazas en relación a la competencia.
+## Estrategias
 
-**Enfoque en la digitalización total del condominio**
-Estrategia: diferenciarse de soluciones tradicionales (WhatsApp, Excel, papel) ofreciendo una plataforma centralizada y estructurada.
-Táctica: integrar en una sola app funcionalidades como pagos, comunicados, reservas y gestión de usuarios, evitando el uso de múltiples herramientas dispersas.
+### Estrategia 1: Especialización en condominios residenciales
+Mientras que Schneider, Siemens y Johnson Controls se enfocan principalmente en grandes edificios corporativos e industriales, SmartCondo IoT se enfocará exclusivamente en condominios y edificios residenciales.
 
-**Transparencia en la gestión administrativa**
-Estrategia: generar confianza entre residentes y administradores mediante acceso claro a la información.
-Táctica: mostrar historiales de pagos, deudas (morosidad), reportes financieros y registros de decisiones accesibles en tiempo real para todos los usuarios autorizados.
+### Estrategia 2: Diferenciación mediante integración IoT
+Ofrecer una única plataforma que integre iluminación inteligente, control de acceso, monitoreo de agua, detección de fugas, riego automático y calidad del aire.
 
-**Comunicación centralizada y efectiva**
-Estrategia: reemplazar la comunicación desordenada de múltiples canales por un sistema único y eficiente.
-Táctica: crear un sistema de notificaciones dentro de la app con confirmación de lectura, segmentación por tipo de usuario (residente/administrador) y categorización de anuncios.
+### Estrategia 3: Accesibilidad económica
+Reducir la barrera de entrada mediante un modelo SaaS de bajo costo orientado a administradores y juntas de propietarios.
 
-**Experiencia de usuario simple y accesible**
-Estrategia: facilitar la adopción tecnológica incluso para usuarios no familiarizados con apps complejas.
-Táctica: diseñar una interfaz intuitiva, con accesos rápidos (ej. "Pagar", "Reservar", "Ver avisos") y procesos simplificados en pocos pasos.
+### Estrategia 4: Facilidad de implementación
+Implementar sensores y dispositivos IoT de rápida instalación sin necesidad de infraestructura compleja.
 
-**Adaptación al contexto local (Perú / LATAM)**
-Estrategia: diferenciarse de competidores internacionales adaptándose a la realidad local.
-Táctica: incluir métodos de pago locales (Yape, Plin), lenguaje adaptado, y funcionalidades específicas como control de morosos o juntas vecinales.
+## Tácticas
 
-**Gestión inteligente de áreas comunes**
-Estrategia: optimizar el uso de recursos compartidos dentro del condominio.
-Táctica: implementar un calendario interactivo con disponibilidad en tiempo real, reglas automáticas de uso y confirmaciones instantáneas de reservas.
+### Táctica 1
+Ofrecer un plan piloto gratuito para condominios durante los primeros meses de uso.
+
+### Táctica 2
+Generar reportes automáticos de ahorro energético y consumo de agua para demostrar el valor de la plataforma.
+
+### Táctica 3
+Establecer alianzas con constructoras y empresas administradoras de condominios para ampliar la adopción.
+
+### Táctica 4
+Desarrollar aplicaciones móviles para administradores y residentes con notificaciones en tiempo real.
+
+### Táctica 5
+Implementar dashboards intuitivos que permitan monitorear todos los dispositivos IoT desde una única interfaz.
+
+### Táctica 6
+Promover el sistema destacando beneficios tangibles:
+- Reducción del consumo energético.
+- Reducción del desperdicio de agua.
+- Mayor seguridad en áreas comunes.
+- Monitoreo remoto 24/7.
+- Mejor calidad de vida para los residentes.
 
 ## 2.2. Entrevistas
 
-> 📋 **Guía (Statement):** En esta sección se aborda la investigación tomando como base la recolección de información en base a entrevistas a representantes de los segmentos objetivo.
+La sección abarca el proceso de investigación de nuestros segmentos objetivos mediante la recolección de información en base a entrevistas.
 
 ### 2.2.1. Diseño de entrevistas
 
-> 📋 **Guía (Statement):** Esta sección incluye la relación de preguntas principales y complementarias para entrevistas, dirigidas a cada uno de los segmentos. Es importante considerar que debe aplicarse buenas prácticas para diseño de entrevistas. También debe considerar qué tipo de información principal y complementaria necesita recolectar para construir los arquetipos (características demográficas como género, edad, distrito de residencia, estado civil, familia, ocupación, al igual que otras características como personalidad, habilidades, marcas e influencias, dispositivos de preferencia, canales digitales de interacción, objetivos, frustraciones, biografía o background).
+## 1. Segmento: Administradores de Edificios y Condominios
 
-> **Nota metodológica:** se utilizó el método de entrevistas semiestructuradas: preguntas predefinidas combinadas con la flexibilidad de profundizar según el contexto de la conversación, para recopilar información cualitativa sobre experiencias, frustraciones y expectativas sin limitar las respuestas a opciones cerradas. Se usaron dos guiones diferenciados, uno por segmento.
+1. ¿Cuántos edificios o condominios tiene bajo su administración actualmente?
+2. ¿Cómo organizan y controlan las cuotas de mantenimiento de los residentes?
+3. ¿Qué dificultades encuentran al hacer seguimiento a los pagos pendientes?
+4. ¿Cómo gestionan actualmente las incidencias o solicitudes reportadas por los residentes?
+5. ¿Qué herramientas utilizan para comunicar anuncios, avisos o comunicados importantes?
+6. ¿Qué tan frecuente es que los residentes indiquen que no recibieron información relevante?
+7. ¿Cómo administran las reservas de espacios comunes como salones, parrillas o áreas deportivas?
+8. ¿Cuáles son los procesos administrativos que más tiempo consumen dentro de su jornada laboral?
+9. ¿Qué problemas han tenido con las herramientas o sistemas que utilizan actualmente?
+10. ¿Qué características considera indispensables en una plataforma digital para la gestión de condominios?
+11. ¿Qué beneficios esperaría obtener al centralizar toda la administración en una sola solución?
+12. ¿Qué tan dispuesto estaría a implementar una nueva plataforma tecnológica para optimizar la gestión de sus edificios?
 
-**Segmento: Administradores de edificios y condominios**
-- ¿Cuántos edificios administran actualmente y cómo llevan hoy la gestión del día a día?
-- ¿Qué herramientas o sistemas utilizan para gestionar los pagos y deudas de todos sus edificios?
-- ¿Cómo coordinan las reservas de áreas comunes en los distintos edificios que administran?
-- ¿De qué manera envían avisos oficiales a los residentes y cómo verifican que la información llegó a todos?
-- ¿Cuál es el proceso más tedioso que quisieran eliminar de su operación diaria?
-- ¿Qué tan seguido reciben quejas de residentes por falta de información o transparencia?
-- ¿Han evaluado antes algún software de administración? Si es así, ¿qué fue lo que no les convenció?
-- ¿Qué tan probable sería para su empresa migrar toda la gestión a una sola plataforma digital?
-- ¿Qué tendría que tener una plataforma para que su empresa la adopte sin dudarlo?
-- ¿Cuánto estarían dispuestos a pagar mensualmente por una herramienta que centralice toda su gestión?
+---
 
-**Segmento: Propietarios e Inquilinos**
-- ¿Cómo se entera hoy de sus saldos pendientes de mantenimiento y de las noticias de su edificio?
-- ¿Qué tan fácil o difícil le resulta realizar el pago y enviar el comprobante de mantenimiento?
-- ¿Dónde puede consultar su historial de pagos si necesita verificar un cobro antiguo?
-- ¿Ha tenido problemas para reservar áreas comunes por falta de claridad en los horarios?
-- ¿Siente que la administración es transparente con el uso del dinero y los gastos del edificio?
-- ¿Qué tan rápido recibe respuesta cuando tiene una duda o necesita un comunicado importante?
-- ¿Cuál es el canal de comunicación que más le molesta o le satura (ej. grupos de WhatsApp)?
-- ¿Qué trámite del edificio le parece el más anticuado o el que más le quita tiempo?
-- ¿Estaría dispuesto a gestionar sus pagos y cuotas en una sola aplicación móvil?
-- Si pudiera cambiar una sola cosa de la gestión de su condominio, ¿qué sería?
+## 2. Segmento: Propietarios e Inquilinos de Condominios
+
+1. ¿Cómo suele mantenerse informado sobre los comunicados y novedades de su edificio o condominio?
+2. ¿Qué tan sencillo le resulta conocer el estado de sus pagos de mantenimiento?
+3. ¿Cómo realiza normalmente el pago de sus cuotas y qué aspectos mejoraría de ese proceso?
+4. ¿Ha tenido inconvenientes al intentar reservar áreas comunes del edificio?
+5. ¿Qué tan transparente considera que es la administración respecto al uso de los fondos de mantenimiento?
+6. ¿Qué tipo de información le gustaría consultar fácilmente desde una aplicación o plataforma digital?
+7. ¿Cómo reporta actualmente problemas o incidencias dentro del condominio?
+8. ¿Cuánto tiempo suele tardar la administración en responder a sus consultas o solicitudes?
+9. ¿Qué canal de comunicación utiliza con mayor frecuencia para contactar a la administración?
+10. ¿Qué trámite o proceso relacionado con el condominio considera más incómodo o desactualizado?
+11. ¿Le resultaría útil contar con una aplicación donde pueda gestionar pagos, reservas y comunicaciones en un solo lugar?
+12. Si pudiera mejorar un aspecto de la gestión de su condominio, ¿cuál sería y por qué?
 
 ### 2.2.2. Registro de entrevistas
 
