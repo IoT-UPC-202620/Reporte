@@ -40,9 +40,49 @@ workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagram
             reportService = container "Report Service" "Generates comprehensive reports about payments, overdue debts, reservations, and community analytics." "Spring Boot / Spring Data JPA / Java" "Microservice"
 
             // Nuevos Microservicios IoT Cloud
-            accessService = container "IoT Access Management Service" "Manages common area access permissions, RFID and dynamic QR credentials, and door locks based on active reservations." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
-            lightingService = container "Smart Lighting & Automation Service" "Controls common area luminaires based on presence detection, ambient lux levels, reservation schedules, and manual override." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
-            telemetryService = container "IoT Telemetry & Analytics Service" "Ingests sensor telemetry, performs quantitative energy calculations (kWh), computes statistics, and flags hardware anomalies." "Spring Boot / Spring Data JPA / Java" "IoT Microservice"
+            accessService = container "IoT Access Management Service" "Manages common area access permissions, RFID and dynamic QR credentials, and door locks based on active reservations." "Spring Boot / Spring Data JPA / Java" "IoT Microservice" {
+                accessCredentialController = component "AccessCredentialController" "Issues, suspends, and revokes RFID/QR access credentials." "Spring MVC REST Controller" "Component"
+                qrAccessController = component "QrAccessController" "Generates the dynamic, single-use QR token a resident presents at the door." "Spring MVC REST Controller" "Component"
+                doorControlController = component "DoorControlController" "Allows an administrator to remotely open a common area door." "Spring MVC REST Controller" "Component"
+                accessAuditController = component "AccessAuditController" "Exposes the access-attempt audit log for querying." "Spring MVC REST Controller" "Component"
+                reservationEventConsumer = component "ReservationEventConsumer" "Consumes ReservationApproved events to create temporary access permissions." "Spring AMQP Consumer" "Component"
+                paymentEventConsumer = component "PaymentEventConsumer" "Consumes ResidentMarkedDelinquent events to suspend access credentials." "Spring AMQP Consumer" "Component"
+                accessCredentialCommandService = component "AccessCredentialCommandService" "Handles credential issuance, suspension, and revocation." "Application Service" "Component"
+                qrTokenCommandService = component "QrTokenCommandService" "Issues single-use QR tokens with a TTL." "Application Service" "Component"
+                accessQueryService = component "AccessQueryService" "Resolves credential, permission, and audit-log queries." "Application Service" "Component"
+                accessDecisionService = component "AccessDecisionService" "Domain service: grants access only if the credential is active, the resident is not delinquent, and a valid permission exists for that area at that instant." "Domain Service" "Domain Service Component"
+                accessRepository = component "AccessRepository" "Persists the AccessCredential, AccessPermission, and AccessAttempt aggregates." "Spring Data JPA Repository" "Repository Component"
+                edgeGatewaySyncClient = component "EdgeGatewaySyncClient" "Pushes active credentials, active reservations, and the blacklist to the on-premise Edge API." "REST Client" "Integration Component"
+                accessEventPublisher = component "AccessEventPublisher" "Publishes PhysicalAccessGranted and PhysicalAccessDenied events." "AMQP/MQTT Publisher" "Event Publisher Component"
+            }
+            lightingService = container "Smart Lighting & Automation Service" "Controls common area luminaires based on presence detection, ambient lux levels, reservation schedules, and manual override." "Spring Boot / Spring Data JPA / Java" "IoT Microservice" {
+                automationRuleController = component "AutomationRuleController" "CRUD of automation rules by the administrator." "Spring MVC REST Controller" "Component"
+                lightingOverrideController = component "LightingOverrideController" "Manual on/off override from the resident or administrator application." "Spring MVC REST Controller" "Component"
+                luminaireController = component "LuminaireController" "Registers and queries luminaires and their state." "Spring MVC REST Controller" "Component"
+                presenceEventConsumer = component "PresenceEventConsumer" "Consumes AreaPresenceDetected and ReservationStarted events." "Spring AMQP Consumer" "Component"
+                automationRuleCommandService = component "AutomationRuleCommandService" "Creates and updates automation rules." "Application Service" "Component"
+                overrideCommandService = component "OverrideCommandService" "Applies a manual override and schedules its expiration." "Application Service" "Component"
+                lightingQueryService = component "LightingQueryService" "Resolves luminaire and rule state queries." "Application Service" "Component"
+                automationDecisionService = component "AutomationDecisionService" "Domain service: resolves each luminaire's target state combining presence, ambient lux, reservation schedule, and active override, applying rule precedence." "Domain Service" "Domain Service Component"
+                lightingRepository = component "LightingRepository" "Persists the AutomationRule, Luminaire, and OverrideCommand aggregates." "Spring Data JPA Repository" "Repository Component"
+                edgeCommandPublisher = component "EdgeCommandPublisher" "Sends scheduling rules and manual override commands to the on-premise Edge API." "REST/MQTT Client" "Integration Component"
+                lightingEventPublisher = component "LightingEventPublisher" "Publishes LuminaireTurnedOn, LuminaireTurnedOff, and OverrideTriggered events." "AMQP/MQTT Publisher" "Event Publisher Component"
+            }
+            telemetryService = container "IoT Telemetry & Analytics Service" "Ingests sensor telemetry, performs quantitative energy calculations (kWh), computes statistics, and flags hardware anomalies." "Spring Boot / Spring Data JPA / Java" "IoT Microservice" {
+                telemetryQueryController = component "TelemetryQueryController" "Serves the time-series and aggregates that feed the Web Application dashboards." "Spring MVC REST Controller" "Component"
+                energyReportController = component "EnergyReportController" "Serves energy consumption by area and by period." "Spring MVC REST Controller" "Component"
+                anomalyController = component "AnomalyController" "Serves detected anomalies for querying." "Spring MVC REST Controller" "Component"
+                telemetryIngestionConsumer = component "TelemetryIngestionConsumer" "Subscribes via MQTT to the raw readings forwarded by the Edge API." "MQTT Consumer" "Component"
+                telemetryIngestionService = component "TelemetryIngestionService" "Validates, normalizes, and persists each incoming reading." "Application Service" "Component"
+                energyCalculationCommandService = component "EnergyCalculationCommandService" "Recalculates the energy consumption of the affected time bucket." "Application Service" "Component"
+                baselineRecalculationService = component "BaselineRecalculationService" "Updates the moving mean and standard deviation of the consumption baseline." "Application Service" "Component"
+                anomalyDetectionHandler = component "AnomalyDetectionHandler" "Evaluates each new aggregation against the baseline." "Application Service" "Component"
+                telemetryQueryService = component "TelemetryQueryService" "Resolves the dashboard queries." "Application Service" "Component"
+                energyCalculationService = component "EnergyCalculationService" "Domain service: computes energy consumption by temporal integration of instantaneous power (kWh = Σ(V × I × Δt) / 1000)." "Domain Service" "Domain Service Component"
+                anomalyDetectionService = component "AnomalyDetectionService" "Domain service: compares a sample against its baseline and distinguishes abnormal consumption from a luminaire failure." "Domain Service" "Domain Service Component"
+                telemetryRepository = component "TelemetryRepository" "Persists sensor readings, energy consumption, and baselines on TimescaleDB hypertables." "Spring Data JPA Repository" "Repository Component"
+                telemetryEventPublisher = component "TelemetryEventPublisher" "Publishes AbnormalConsumptionDetected and LuminaireFailureDetected events." "AMQP/MQTT Publisher" "Event Publisher Component"
+            }
 
             // Broker de Mensajería y Bases de Datos
             messageBroker = container "Message & Event Broker" "Receives and distributes asynchronous domain events (AMQP/MQTT) such as payments, reservations, sensor telemetry, and actuator commands." "EMQX / RabbitMQ" "Message Broker"
@@ -106,7 +146,7 @@ workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagram
         // Microservicios -> Message Broker (Publicacion)
         // ==========================================
         paymentService -> messageBroker "Publishes PaymentRegistered, PaymentConfirmed, and ResidentMarkedDelinquent events" "AMQP"
-        reservationService -> messageBroker "Publishes ReservationCreated, ReservationCancelled, and ReservationApproved events" "AMQP"
+        reservationService -> messageBroker "Publishes ReservationCreated, ReservationCancelled, ReservationApproved, and ReservationStarted events (the latter raised by an internal scheduler that polls for reservations whose time window just began)" "AMQP"
         communicationService -> messageBroker "Publishes AnnouncementPublished events" "AMQP"
         forumService -> messageBroker "Publishes ForumPostCreated and ForumCommentCreated events" "AMQP"
         accessService -> messageBroker "Publishes PhysicalAccessGranted and PhysicalAccessDenied events" "AMQP/MQTT"
@@ -141,8 +181,81 @@ workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagram
         // Sincronizacion Cloud <-> Edge Gateway
         // ==========================================
         accessService -> edgeGateway "Synchronizes active access credentials, active reservations, and blacklist" "HTTPS/REST Sync"
-        edgeGateway -> messageBroker "Forwards offline access audit logs and buffered sensor telemetry" "MQTT/AMQP WAN"
+        edgeGateway -> messageBroker "Forwards offline access audit logs and buffered sensor telemetry, and relays AreaPresenceDetected events from lighting nodes for low-latency automation" "MQTT/AMQP WAN"
         lightingService -> edgeGateway "Sends automated scheduling rules and manual override commands" "MQTT/REST"
+
+        // ==========================================
+        // Componentes: IoT Access Management Service
+        // ==========================================
+        apiGateway -> accessCredentialController "Redirects credential requests" "HTTPS/REST"
+        apiGateway -> qrAccessController "Redirects QR generation requests" "HTTPS/REST"
+        apiGateway -> doorControlController "Redirects remote door-open requests" "HTTPS/REST"
+        apiGateway -> accessAuditController "Redirects audit-log queries" "HTTPS/REST"
+        accessCredentialController -> accessCredentialCommandService "Delegates credential commands"
+        qrAccessController -> qrTokenCommandService "Delegates QR token issuance"
+        doorControlController -> accessDecisionService "Requests a manual access decision"
+        accessAuditController -> accessQueryService "Delegates audit-log queries"
+        reservationEventConsumer -> accessCredentialCommandService "Triggers permission creation on ReservationApproved"
+        paymentEventConsumer -> accessCredentialCommandService "Triggers credential suspension on ResidentMarkedDelinquent"
+        accessCredentialCommandService -> accessDecisionService "Applies the access-granting business rule"
+        accessCredentialCommandService -> accessRepository "Reads and writes credentials and permissions"
+        accessCredentialCommandService -> edgeGatewaySyncClient "Triggers synchronization after a credential or permission change"
+        qrTokenCommandService -> accessRepository "Persists issued QR tokens"
+        accessQueryService -> accessRepository "Reads credentials, permissions, and the audit log"
+        accessDecisionService -> accessRepository "Reads credential, permission, and delinquency state"
+        accessDecisionService -> accessEventPublisher "Publishes the access decision outcome"
+        accessRepository -> database "Reads and writes access credentials, permissions, and audit logs" "JDBC/SQL"
+        accessEventPublisher -> messageBroker "Publishes PhysicalAccessGranted / PhysicalAccessDenied" "AMQP/MQTT"
+        messageBroker -> reservationEventConsumer "Delivers ReservationApproved" "AMQP"
+        messageBroker -> paymentEventConsumer "Delivers ResidentMarkedDelinquent" "AMQP"
+        edgeGatewaySyncClient -> edgeGateway "Synchronizes credentials, reservations, and blacklist" "HTTPS/REST Sync"
+
+        // ==========================================
+        // Componentes: Smart Lighting & Automation Service
+        // ==========================================
+        apiGateway -> automationRuleController "Redirects automation-rule requests" "HTTPS/REST"
+        apiGateway -> lightingOverrideController "Redirects manual override requests" "HTTPS/REST"
+        apiGateway -> luminaireController "Redirects luminaire registration/query requests" "HTTPS/REST"
+        automationRuleController -> automationRuleCommandService "Delegates rule creation/update"
+        lightingOverrideController -> overrideCommandService "Delegates the manual override"
+        luminaireController -> lightingQueryService "Delegates luminaire queries"
+        presenceEventConsumer -> automationDecisionService "Feeds presence/reservation-start signals into the decision"
+        automationRuleCommandService -> lightingRepository "Reads and writes automation rules"
+        overrideCommandService -> automationDecisionService "Registers the active override for precedence"
+        overrideCommandService -> lightingRepository "Persists the override and its expiration"
+        lightingQueryService -> lightingRepository "Reads luminaires and rule state"
+        automationDecisionService -> lightingRepository "Reads rules, luminaire state, and active overrides"
+        automationDecisionService -> edgeCommandPublisher "Pushes the resolved scheduling rules and override commands"
+        automationDecisionService -> lightingEventPublisher "Publishes the resulting luminaire state change"
+        lightingRepository -> database "Reads and writes lighting policies, schedules, and device configs" "JDBC/SQL"
+        lightingEventPublisher -> messageBroker "Publishes LuminaireTurnedOn / LuminaireTurnedOff / OverrideTriggered" "AMQP/MQTT"
+        messageBroker -> presenceEventConsumer "Delivers AreaPresenceDetected and ReservationStarted" "AMQP/MQTT"
+        edgeCommandPublisher -> edgeGateway "Sends scheduling rules and manual override commands" "MQTT/REST"
+
+        // ==========================================
+        // Componentes: IoT Telemetry & Analytics Service
+        // ==========================================
+        apiGateway -> telemetryQueryController "Redirects telemetry dashboard queries" "HTTPS/REST"
+        apiGateway -> energyReportController "Redirects energy report requests" "HTTPS/REST"
+        apiGateway -> anomalyController "Redirects anomaly queries" "HTTPS/REST"
+        telemetryQueryController -> telemetryQueryService "Delegates dashboard queries"
+        energyReportController -> telemetryQueryService "Delegates energy report queries"
+        anomalyController -> telemetryQueryService "Delegates anomaly queries"
+        telemetryIngestionConsumer -> telemetryIngestionService "Forwards each raw reading for validation and persistence"
+        telemetryIngestionService -> telemetryRepository "Persists the normalized sensor reading"
+        telemetryIngestionService -> energyCalculationCommandService "Triggers recalculation of the affected time bucket"
+        energyCalculationCommandService -> energyCalculationService "Applies the temporal-integration calculation"
+        energyCalculationService -> telemetryRepository "Reads readings and writes the recalculated consumption"
+        energyCalculationCommandService -> baselineRecalculationService "Triggers baseline update after a new aggregation"
+        baselineRecalculationService -> telemetryRepository "Reads and updates the moving mean/standard deviation baseline"
+        baselineRecalculationService -> anomalyDetectionHandler "Requests anomaly evaluation against the updated baseline"
+        anomalyDetectionHandler -> anomalyDetectionService "Applies the anomaly/luminaire-failure detection rule"
+        anomalyDetectionService -> telemetryRepository "Reads the baseline and writes an AnomalyFlag when triggered"
+        anomalyDetectionService -> telemetryEventPublisher "Publishes AbnormalConsumptionDetected / LuminaireFailureDetected"
+        telemetryQueryService -> telemetryRepository "Reads readings, consumption, and anomalies for dashboards and reports"
+        telemetryRepository -> telemetryDatabase "Writes high-frequency telemetry samples and queries statistical aggregations" "JDBC/SQL"
+        telemetryEventPublisher -> messageBroker "Publishes AbnormalConsumptionDetected / LuminaireFailureDetected" "AMQP/MQTT"
+        messageBroker -> telemetryIngestionConsumer "Delivers raw sensor readings and power telemetry" "MQTT"
 
         // ==========================================
         // Edge Gateway <-> Dispositivos Fisicos Embebidos
@@ -237,6 +350,21 @@ workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagram
         }
 
         deployment edifika "Production" "Deployment" {
+            include *
+            autoLayout lr
+        }
+
+        component accessService "ComponentsAccessService" {
+            include *
+            autoLayout lr
+        }
+
+        component lightingService "ComponentsLightingService" {
+            include *
+            autoLayout lr
+        }
+
+        component telemetryService "ComponentsTelemetryService" {
             include *
             autoLayout lr
         }
@@ -337,6 +465,43 @@ workspace "EDIFIKA" "System Landscape, Context, Container and Deployment diagram
                 color #ffffff
                 stroke #7f1d1d
                 strokeWidth 2
+            }
+
+            // Componentes (nivel Component Diagram de los microservicios IoT)
+            element "Component" {
+                shape Component
+                background #f2b705
+                color #1c1500
+                stroke #a37804
+                strokeWidth 1
+            }
+            element "Domain Service Component" {
+                shape Component
+                background #f2b705
+                color #1c1500
+                stroke #7f1d1d
+                strokeWidth 3
+            }
+            element "Repository Component" {
+                shape Cylinder
+                background #f2b705
+                color #1c1500
+                stroke #a37804
+                strokeWidth 1
+            }
+            element "Integration Component" {
+                shape Pipe
+                background #f2b705
+                color #1c1500
+                stroke #a37804
+                strokeWidth 1
+            }
+            element "Event Publisher Component" {
+                shape Pipe
+                background #f2b705
+                color #1c1500
+                stroke #a37804
+                strokeWidth 1
             }
         }
     }

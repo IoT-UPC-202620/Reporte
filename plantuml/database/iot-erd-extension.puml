@@ -1,0 +1,129 @@
+@startuml
+hide circle
+skinparam backgroundColor white
+skinparam linetype ortho
+skinparam entity {
+  BackgroundColor #FEF3C7
+  BorderColor #a37804
+  FontColor #111111
+}
+skinparam packageStyle rectangle
+
+title Diagrama Entidad-Relación — Extensión IoT (complementario al ERD consolidado, ver 4.2.1.6.2)
+
+package "PostgreSQL — datos transaccionales IoT" {
+
+  entity "access_credentials" as access_credentials {
+    * id : UUID <<PK>>
+    --
+    * type : VARCHAR(20)
+    * identifier : VARCHAR(120) <<UNIQUE>>
+    * resident_id : UUID <<FK>>
+    * valid_from : TIMESTAMP
+    valid_until : TIMESTAMP
+    * status : VARCHAR(20)
+  }
+
+  entity "access_permissions" as access_permissions {
+    * id : UUID <<PK>>
+    --
+    * resident_id : UUID <<FK>>
+    * common_area_id : UUID <<FK>>
+    * starts_at : TIMESTAMP
+    * ends_at : TIMESTAMP
+    source_reservation_id : UUID <<FK>>
+  }
+
+  entity "access_attempts" as access_attempts {
+    * id : UUID <<PK>>
+    --
+    * device_id : VARCHAR(60)
+    credential_presented : VARCHAR(120)
+    * result : VARCHAR(30)
+    * occurred_at : TIMESTAMP
+  }
+
+  entity "automation_rules" as automation_rules {
+    * id : UUID <<PK>>
+    --
+    * common_area_id : UUID <<FK>>
+    * presence_required : BOOLEAN
+    * lux_threshold : DECIMAL(6,2)
+    * schedule_start : TIME
+    * schedule_end : TIME
+    * inactivity_timeout_minutes : INT
+    * priority : INT
+  }
+
+  entity "luminaires" as luminaires {
+    * id : UUID <<PK>>
+    --
+    * common_area_id : UUID <<FK>>
+    * location : VARCHAR(120)
+    * nominal_power_watts : DECIMAL(6,2)
+    * state : VARCHAR(10)
+  }
+
+  entity "override_commands" as override_commands {
+    * id : UUID <<PK>>
+    --
+    * luminaire_id : UUID <<FK>>
+    * requested_by : UUID <<FK>>
+    * action : VARCHAR(10)
+    * duration_minutes : INT
+    reason : VARCHAR(200)
+    * expires_at : TIMESTAMP
+  }
+}
+
+package "TimescaleDB — series de tiempo IoT" {
+
+  entity "sensor_readings" as sensor_readings {
+    * device_id : VARCHAR(60)
+    * captured_at : TIMESTAMP <<hypertable partition key>>
+    --
+    * magnitude : VARCHAR(20)
+    * value : DOUBLE PRECISION
+    * unit : VARCHAR(10)
+  }
+
+  entity "energy_consumption" as energy_consumption {
+    * id : UUID <<PK>>
+    --
+    * luminaire_id : UUID <<FK>>
+    * common_area_id : UUID <<FK>>
+    * bucket_start : TIMESTAMP
+    * bucket_end : TIMESTAMP
+    * kwh : DOUBLE PRECISION
+  }
+
+  entity "consumption_baselines" as consumption_baselines {
+    * id : UUID <<PK>>
+    --
+    * common_area_id : UUID <<FK>>
+    * moving_mean : DOUBLE PRECISION
+    * moving_stddev : DOUBLE PRECISION
+    * last_updated_at : TIMESTAMP
+  }
+
+  entity "anomaly_flags" as anomaly_flags {
+    * id : UUID <<PK>>
+    --
+    * common_area_id : UUID <<FK>>
+    * type : VARCHAR(30)
+    * severity : VARCHAR(10)
+    evidence : VARCHAR(300)
+    * detected_at : TIMESTAMP
+  }
+}
+
+access_permissions }o--|| access_credentials : "residente autorizado por"
+access_attempts }o--o| access_credentials : "presenta"
+override_commands }o--|| luminaires : "suspende automatización de"
+automation_rules }o--|| luminaires : "gobierna"
+energy_consumption }o--|| luminaires : "acumula consumo de"
+sensor_readings }o..|| luminaires : "originada en (referencia lógica, no FK física)"
+anomaly_flags }o..|| consumption_baselines : "contrasta contra"
+energy_consumption }o..|| sensor_readings : "calculado por integración de"
+
+@enduml
