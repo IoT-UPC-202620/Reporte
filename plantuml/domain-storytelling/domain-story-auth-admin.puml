@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam ArrowColor #333333
+skinparam ArrowFontColor #111111
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  RoundCorner 18
+}
+skinparam actorStyle awesome
+
+actor "Administrador" as Admin #08427b
+rectangle "API Gateway" as GW #0d9488
+rectangle "IAM / Auth" as IAM #1e40af
+rectangle "Formulario de\nRegistro" as Form #f59e0b
+rectangle "Usuario\n(Rol ADMIN)" as User #f59e0b
+rectangle "Token JWT" as Token #f59e0b
+
+Admin -> Form : "1. completa"
+Form -> GW : "2. envía"
+GW -> IAM : "3. enruta"
+IAM -> User : "4. crea y asigna rol"
+IAM -> Token : "5. emite"
+Token -> Admin : "6. habilita sesión"
+
+legend right
+  |= Color |= Elemento |
+  |<#08427b>| Actor |
+  |<#1e40af>| Bounded Context |
+  |<#0d9488>| Infraestructura (Gateway) |
+  |<#f59e0b>| Work Object |
+endlegend
+
+title Domain Story — Autenticación de administrador
+@enduml

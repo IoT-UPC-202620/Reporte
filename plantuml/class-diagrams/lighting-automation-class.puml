@@ -1,0 +1,103 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam class {
+  BackgroundColor #ECFDF5
+  BorderColor #16a34a
+  ArrowColor #333333
+  HeaderBackgroundColor #16a34a
+  FontColor #111111
+}
+skinparam stereotypeCBackgroundColor #f59e0b
+
+title Domain Layer — Smart Lighting & Automation Service
+
+class AutomationRule <<Aggregate Root>> {
+  - id: UUID
+  - commonAreaId: UUID
+  - presenceRequired: boolean
+  - luxThreshold: LuxThreshold
+  - schedule: LightingSchedule
+  - presenceTimeout: PresenceTimeout
+  - priority: int
+  + resolveTargetState(context: DecisionContext): LuminaireState
+}
+
+class Luminaire <<Entity>> {
+  - id: UUID
+  - commonAreaId: UUID
+  - location: String
+  - nominalPowerWatts: double
+  - state: LuminaireState
+  + turnOn(): void
+  + turnOff(): void
+}
+
+enum LuminaireState {
+  ON
+  OFF
+}
+
+class OverrideCommand <<Entity>> {
+  - id: UUID
+  - luminaireId: UUID
+  - requestedBy: UUID
+  - action: LuminaireState
+  - durationMinutes: int
+  - reason: String
+  - expiresAt: LocalDateTime
+  + isExpired(now: LocalDateTime): boolean
+}
+
+class LuxThreshold <<Value Object>> {
+  - maxLux: double
+}
+
+class PresenceTimeout <<Value Object>> {
+  - inactivityMinutes: int
+}
+
+class LightingSchedule <<Value Object>> {
+  - startTime: LocalTime
+  - endTime: LocalTime
+  - daysOfWeek: List<DayOfWeek>
+}
+
+class BrightnessLevel <<Value Object>> {
+  - percentage: int
+}
+
+class AutomationDecisionService <<Domain Service>> {
+  + resolve(rule: AutomationRule, presenceDetected: boolean, ambientLux: double, reservationActive: boolean, override: OverrideCommand, now: LocalDateTime): LuminaireState
+}
+
+interface AutomationRuleRepository <<Repository>> {
+  + findByCommonArea(commonAreaId: UUID): List<AutomationRule>
+  + save(rule: AutomationRule): void
+}
+
+interface LuminaireRepository <<Repository>> {
+  + findById(id: UUID): Luminaire
+  + save(luminaire: Luminaire): void
+}
+
+interface OverrideCommandRepository <<Repository>> {
+  + findActiveByLuminaire(luminaireId: UUID): OverrideCommand
+  + save(override: OverrideCommand): void
+}
+
+AutomationRule "1" *-- "1" LuxThreshold
+AutomationRule "1" *-- "1" LightingSchedule
+AutomationRule "1" *-- "1" PresenceTimeout
+AutomationRule "1" --> "1..*" Luminaire : governs
+Luminaire "1" --> "1" LuminaireState
+Luminaire "1" o-- "0..1" BrightnessLevel
+OverrideCommand "1" --> "1" Luminaire : suspends automation of
+AutomationDecisionService ..> AutomationRule : evaluates
+AutomationDecisionService ..> OverrideCommand : checks precedence
+AutomationDecisionService --> Luminaire : sets state of
+AutomationRuleRepository ..> AutomationRule
+LuminaireRepository ..> Luminaire
+OverrideCommandRepository ..> OverrideCommand
+@enduml

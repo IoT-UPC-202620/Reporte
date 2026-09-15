@@ -1,0 +1,111 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam class {
+  BackgroundColor #EFF6FF
+  BorderColor #1e40af
+  ArrowColor #333333
+  HeaderBackgroundColor #1e40af
+  FontColor #111111
+}
+skinparam stereotypeCBackgroundColor #f59e0b
+
+title Domain Layer — IoT Access Management Service
+
+class AccessCredential <<Aggregate Root>> {
+  - id: UUID
+  - type: CredentialType
+  - identifier: String
+  - residentId: UUID
+  - validFrom: LocalDateTime
+  - validUntil: LocalDateTime
+  - status: CredentialStatus
+  + suspend(): void
+  + revoke(): void
+  + isActive(): boolean
+}
+
+enum CredentialType {
+  RFID
+  DYNAMIC_QR
+}
+
+enum CredentialStatus {
+  ACTIVE
+  SUSPENDED
+  REVOKED
+}
+
+class AccessPermission <<Entity>> {
+  - id: UUID
+  - residentId: UUID
+  - commonAreaId: UUID
+  - timeWindow: TimeWindow
+  - sourceReservationId: UUID
+  + isValidAt(instant: LocalDateTime): boolean
+}
+
+class AccessAttempt <<Entity>> {
+  - id: UUID
+  - deviceId: String
+  - credentialPresented: String
+  - result: AccessResult
+  - occurredAt: LocalDateTime
+}
+
+enum AccessResult {
+  GRANTED
+  DENIED_NO_PERMISSION
+  DENIED_DELINQUENT
+  DENIED_UNRECOGNIZED
+}
+
+class RfidUid <<Value Object>> {
+  - uid: String
+}
+
+class QrToken <<Value Object>> {
+  - token: String
+  - issuedAt: LocalDateTime
+  - ttlSeconds: int
+  - singleUse: boolean
+  + isExpired(): boolean
+}
+
+class TimeWindow <<Value Object>> {
+  - startsAt: LocalDateTime
+  - endsAt: LocalDateTime
+  + contains(instant: LocalDateTime): boolean
+}
+
+class AccessDecisionService <<Domain Service>> {
+  + decide(credential: AccessCredential, permissions: List<AccessPermission>, isDelinquent: boolean, areaId: UUID, now: LocalDateTime): AccessResult
+}
+
+interface AccessCredentialRepository <<Repository>> {
+  + findById(id: UUID): AccessCredential
+  + save(credential: AccessCredential): void
+}
+
+interface AccessPermissionRepository <<Repository>> {
+  + findActiveByResident(residentId: UUID): List<AccessPermission>
+}
+
+interface AccessAttemptRepository <<Repository>> {
+  + save(attempt: AccessAttempt): void
+}
+
+AccessCredential "1" o-- "0..1" RfidUid : identified by
+AccessCredential "1" o-- "0..1" QrToken : identified by
+AccessCredential "1" --> "1" CredentialType
+AccessCredential "1" --> "1" CredentialStatus
+AccessPermission "1" *-- "1" TimeWindow
+AccessAttempt "1" --> "1" AccessResult
+AccessDecisionService ..> AccessCredential : evaluates
+AccessDecisionService ..> AccessPermission : evaluates
+AccessDecisionService --> AccessAttempt : produces
+AccessCredentialRepository ..> AccessCredential
+AccessPermissionRepository ..> AccessPermission
+AccessAttemptRepository ..> AccessAttempt
+@enduml

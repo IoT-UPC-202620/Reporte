@@ -1,0 +1,118 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam class {
+  BackgroundColor #ECFDF5
+  BorderColor #16a34a
+  ArrowColor #333333
+  HeaderBackgroundColor #16a34a
+  FontColor #111111
+}
+skinparam stereotypeCBackgroundColor #f59e0b
+
+title Domain Layer — IoT Telemetry & Analytics Service
+
+class SensorReading <<Value Object>> {
+  - deviceId: String
+  - magnitude: MagnitudeType
+  - value: double
+  - unit: MeasurementUnit
+  - capturedAt: LocalDateTime
+}
+
+enum MagnitudeType {
+  PRESENCE
+  LUX
+  CURRENT
+}
+
+class MeasurementUnit <<Value Object>> {
+  - symbol: String
+}
+
+class TimeBucket <<Value Object>> {
+  - start: LocalDateTime
+  - end: LocalDateTime
+}
+
+class EnergyConsumption <<Aggregate Root>> {
+  - id: UUID
+  - luminaireId: UUID
+  - commonAreaId: UUID
+  - bucket: TimeBucket
+  - kwh: double
+  + recalculate(readings: List<SensorReading>): void
+}
+
+class ConsumptionBaseline <<Entity>> {
+  - id: UUID
+  - commonAreaId: UUID
+  - movingMean: double
+  - movingStdDev: double
+  - lastUpdatedAt: LocalDateTime
+  + update(sample: double): void
+}
+
+class AnomalyFlag <<Entity>> {
+  - id: UUID
+  - commonAreaId: UUID
+  - type: AnomalyType
+  - severity: Severity
+  - evidence: String
+  - detectedAt: LocalDateTime
+}
+
+enum AnomalyType {
+  ABNORMAL_CONSUMPTION
+  LUMINAIRE_FAILURE
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+class ZScore <<Value Object>> {
+  - value: double
+  + exceedsThreshold(threshold: double): boolean
+}
+
+class EnergyCalculationService <<Domain Service>> {
+  + calculateKwh(readings: List<SensorReading>): double
+}
+
+class AnomalyDetectionService <<Domain Service>> {
+  + evaluate(sample: double, baseline: ConsumptionBaseline, luminaireCommandedOn: boolean): AnomalyFlag
+}
+
+interface TelemetryRepository <<Repository>> {
+  + save(reading: SensorReading): void
+  + findByDeviceAndWindow(deviceId: String, bucket: TimeBucket): List<SensorReading>
+}
+
+interface EnergyConsumptionRepository <<Repository>> {
+  + findByAreaAndBucket(commonAreaId: UUID, bucket: TimeBucket): EnergyConsumption
+  + save(consumption: EnergyConsumption): void
+}
+
+interface BaselineRepository <<Repository>> {
+  + findByCommonArea(commonAreaId: UUID): ConsumptionBaseline
+  + save(baseline: ConsumptionBaseline): void
+}
+
+SensorReading "1" --> "1" MagnitudeType
+SensorReading "1" --> "1" MeasurementUnit
+EnergyConsumption "1" *-- "1" TimeBucket
+EnergyCalculationService ..> SensorReading : integrates
+EnergyCalculationService --> EnergyConsumption : produces
+AnomalyDetectionService ..> ConsumptionBaseline : compares against
+AnomalyDetectionService ..> ZScore : computes
+AnomalyDetectionService --> AnomalyFlag : produces
+AnomalyFlag "1" --> "1" AnomalyType
+AnomalyFlag "1" --> "1" Severity
+TelemetryRepository ..> SensorReading
+EnergyConsumptionRepository ..> EnergyConsumption
+BaselineRepository ..> ConsumptionBaseline
+@enduml

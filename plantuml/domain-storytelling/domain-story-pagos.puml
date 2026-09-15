@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam ArrowColor #333333
+skinparam ArrowFontColor #111111
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  RoundCorner 18
+}
+skinparam actorStyle awesome
+
+actor "Residente" as Res #08427b
+rectangle "Payment" as Pay #1e40af
+rectangle "Culqi" as Culqi #64748b
+rectangle "Notification" as Notif #1e40af
+rectangle "Pago\n(PENDIENTE)" as Pago #f59e0b
+rectangle "Comprobante" as Comp #f59e0b
+rectangle "Notificación" as Notificacion #f59e0b
+
+Res -> Pago : "1. registra"
+Pago -> Pay : "2. persiste"
+Pay -> Culqi : "3. envía transacción"
+Culqi -> Pay : "4. confirma o rechaza"
+Pay -> Comp : "5a. si confirma: aprueba\ny genera"
+Pay -> Pago : "5b. si rechaza: revierte a\nPENDIENTE (compensación)"
+Pay -> Notif : "6. emite evento\nPagoAprobado"
+Notif -> Notificacion : "7. crea"
+Notificacion -> Res : "8. entrega"
+
+legend right
+  |= Color |= Elemento |
+  |<#08427b>| Actor |
+  |<#1e40af>| Bounded Context |
+  |<#64748b>| Sistema externo |
+  |<#f59e0b>| Work Object |
+endlegend
+
+title Domain Story — Registro y aprobación de pagos
+@enduml
