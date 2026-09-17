@@ -69,37 +69,31 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 
 ### 2.2.1. Diseño de entrevistas
 
-## 1. Segmento: Administradores de Edificios y Condominios
+## 1. Segmento: Administradores de edificios y condominios
 
-1. ¿Cuántos edificios o condominios tiene bajo su administración actualmente?
-2. ¿Cómo organizan y controlan las cuotas de mantenimiento de los residentes?
-3. ¿Qué dificultades encuentran al hacer seguimiento a los pagos pendientes?
-4. ¿Cómo gestionan actualmente las incidencias o solicitudes reportadas por los residentes?
-5. ¿Qué herramientas utilizan para comunicar anuncios, avisos o comunicados importantes?
-6. ¿Qué tan frecuente es que los residentes indiquen que no recibieron información relevante?
-7. ¿Cómo administran las reservas de espacios comunes como salones, parrillas o áreas deportivas?
-8. ¿Cuáles son los procesos administrativos que más tiempo consumen dentro de su jornada laboral?
-9. ¿Qué problemas han tenido con las herramientas o sistemas que utilizan actualmente?
-10. ¿Qué características considera indispensables en una plataforma digital para la gestión de condominios?
-11. ¿Qué beneficios esperaría obtener al centralizar toda la administración en una sola solución?
-12. ¿Qué tan dispuesto estaría a implementar una nueva plataforma tecnológica para optimizar la gestión de sus edificios?
+- ¿Cuántos edificios administran actualmente y cómo llevan hoy la gestión del día a día?
+- ¿Qué herramientas o sistemas utilizan para gestionar los pagos y deudas de todos sus edificios?
+- ¿Cómo coordinan las reservas de áreas comunes en los distintos edificios que administran?
+- ¿De qué manera envían avisos oficiales a los residentes y cómo verifican que la información llegó a todos?
+- ¿Cuál es el proceso más tedioso que quisieran eliminar de su operación diaria?
+- ¿Qué tan seguido reciben quejas de residentes por falta de información o transparencia?
+- ¿Han evaluado antes algún software de administración? Si es así, ¿qué fue lo que no les convenció?
+- ¿Qué tan probable sería para su empresa migrar toda la gestión a una sola plataforma digital?
+- ¿Qué tendría que tener una plataforma para que su empresa la adopte sin dudarlo?
+- ¿Cuánto estarían dispuestos a pagar mensualmente por una herramienta que centralice toda su gestión?
 
----
+## 2. Segmento: Propietarios e inquilinos
 
-## 2. Segmento: Propietarios e Inquilinos de Condominios
-
-1. ¿Cómo suele mantenerse informado sobre los comunicados y novedades de su edificio o condominio?
-2. ¿Qué tan sencillo le resulta conocer el estado de sus pagos de mantenimiento?
-3. ¿Cómo realiza normalmente el pago de sus cuotas y qué aspectos mejoraría de ese proceso?
-4. ¿Ha tenido inconvenientes al intentar reservar áreas comunes del edificio?
-5. ¿Qué tan transparente considera que es la administración respecto al uso de los fondos de mantenimiento?
-6. ¿Qué tipo de información le gustaría consultar fácilmente desde una aplicación o plataforma digital?
-7. ¿Cómo reporta actualmente problemas o incidencias dentro del condominio?
-8. ¿Cuánto tiempo suele tardar la administración en responder a sus consultas o solicitudes?
-9. ¿Qué canal de comunicación utiliza con mayor frecuencia para contactar a la administración?
-10. ¿Qué trámite o proceso relacionado con el condominio considera más incómodo o desactualizado?
-11. ¿Le resultaría útil contar con una aplicación donde pueda gestionar pagos, reservas y comunicaciones en un solo lugar?
-12. Si pudiera mejorar un aspecto de la gestión de su condominio, ¿cuál sería y por qué?
+- ¿Cómo se entera hoy de sus saldos pendientes de mantenimiento y de las noticias de su edificio?
+- ¿Qué tan fácil o difícil le resulta realizar el pago y enviar el comprobante de mantenimiento?
+- ¿Dónde puede consultar su historial de pagos si necesita verificar un cobro antiguo?
+- ¿Ha tenido problemas para reservar áreas comunes por falta de claridad en los horarios?
+- ¿Siente que la administración es transparente con el uso del dinero y los gastos del edificio?
+- ¿Qué tan rápido recibe respuesta cuando tiene una duda o necesita un comunicado importante?
+- ¿Cuál es el canal de comunicación que más le molesta o le satura (ej. grupos de WhatsApp)?
+- ¿Qué trámite del edificio le parece más anticuado o el que más le quita tiempo?
+- ¿Estaría dispuesto a gestionar sus pagos y cuotas en una sola aplicación móvil?
+- Si pudiera cambiar una sola cosa de la gestión de su condominio, ¿cuál sería?
 
 ### 2.2.2. Registro de entrevistas
 
