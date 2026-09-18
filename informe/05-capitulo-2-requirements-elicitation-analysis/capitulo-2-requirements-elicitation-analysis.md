@@ -231,7 +231,7 @@ Las tareas de mayor frecuencia y prioridad para el administrador giran en torno 
 
 **Segmento 1 — Administrador de Condominio (Ricardo Mendoza)**
 
-<img src="../assets/img/j1.jpeg" alt="">
+<img src="../assets/img/j1.png" alt="">
 
 **Segmento 2 — Residente (Andrea Villacorta)**
 
