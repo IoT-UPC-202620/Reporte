@@ -20,7 +20,6 @@ Convertirnos en la plataforma de referencia para la gestión de condominios, sie
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
-> ⚠️ **Pendiente:** completar con los perfiles de los integrantes del equipo, siguiendo el mismo criterio que en la carátula.
 
 | Foto | Nombres y Apellidos | Código | Carrera | Resumen de conocimientos técnicos y habilidades |
 |------|----------------------|--------|---------|--------------------------------------------------|
