@@ -118,7 +118,7 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 | **Edad** | 26 |
 | **Departamento** | San Miguel |
 | **Link del video** | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321281_upc_edu_pe/IQAW5DBOyn8xS6ZiZVZwufEIAU9yh_7P6mIIpJ_RzxJp6is?e=kLEW30&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D|
-| **Foto entrevista** |  |
+| **Foto entrevista** | <img src="../assets/img/alejandro.jpeg" alt="" width="500" height="200"> |
 | **Resumen** | El administrador gestiona 4 edificios utilizando principalmente Excel, WhatsApp y registros manuales. Su principal problema es el seguimiento de pagos y la falta de confirmación sobre la recepción de comunicados. Considera viable adoptar una plataforma digital siempre que centralice pagos, comunicaciones y reservas, y tenga un costo accesible. |
 
 | **ENTREVISTA 3** | |
