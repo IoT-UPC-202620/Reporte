@@ -1,29 +1,73 @@
-# Carátula
+<p align="center">
+  <strong>UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS</strong> <br>
+  Carrera de Ingeniería de Software <br>
+</p>
 
-> 📋 **Guía (Statement):** Logo de la Universidad · Nombre de Universidad, carrera, ciclo · Código del curso y Nombre del curso · NRC (Número de referencia de curso) · Nombre del profesor · "Informe de Trabajo Final" · Relación de integrantes (incluyendo para cada caso Código, Apellidos y Nombres) · Mes y año.
-
-**Estado:** ⬜ Pendiente
-
----
 
 ![Logo de la Universidad](../assets/img/upc_logo.png)
 
-**Universidad:** _(Nombre de Universidad)_
-**Carrera:** Ingeniería de Software
-**Ciclo:** 2026-20
+<p align="center">
+  1ASI0572<br>
+  Desarrollo de Soluciones IOT <br> <br>
+  <strong>NRC</strong> <br>
+   <br> <br>  
+  Informe de Trabajo Final <br> <br>
+  <strong>Docente</strong><br>
+  Verla Olivera, David Carlos <br><br>
+  <strong>Proyecto</strong><br>
+  Startup: <br><br>
+  
+  
+</p>
 
-**Curso:** 1ASI0572 Desarrollo de Soluciones IoT
-**NRC:** _(Número de referencia de curso)_
-**Profesor:** León Baca, Marco Antonio
+<br>
 
-## Informe de Trabajo Final
+<p align="center"><strong>Integrantes:</strong></p>
 
-**Startup:** _(Nombre de la startup)_
+<table align="center">
+  <thead>
+    <tr>
+      <th>Integrante</th>
+      <th>Código</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gabriel Perez Tuesta</td>
+      <td>U202321281</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
-### Integrantes
-
-| Código | Apellidos y Nombres |
-|--------|----------------------|
-|        |                      |
-
-**Mes y año:** _(mes, 2026)_
+<br><br>
+<p align="center">
+  <strong>Periodo 202620</strong> <br>
+  <strong>URL del proyecto:</strong>
+  <a href="">
+    https://github.com/G3-Soluciones-IOT
+  </a>
+</p>
