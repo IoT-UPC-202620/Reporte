@@ -109,7 +109,7 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 | **Edad** | 51 |
 | **Departamento** | Cercado de Lima |
 | **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/interviews/admin1.png" alt="Entrevista admin 1" width="500"/> |
+| **Foto entrevista** | <img src="../assets/img/interviews/admin1.png" alt="Entrevista admin 1"/> |
 | **Resumen** | César es administrador de edificios en GWM EIRL y actualmente gestiona 15 edificios usando Excel con macros como herramienta principal, apoyándose en WhatsApp para coordinar reservas y comunicaciones, y en las páginas de los bancos para pagos. El proceso más tedioso es la emisión de recibos, que aún se hace de forma física en varios edificios y que desea digitalizar al 100%. Ha evaluado entre 3 y 4 sistemas sin éxito, ya que todos presentaban exceso de información que generaba confusión en los propietarios y una percepción de desorden o falta de transparencia. Como empresa tiene el objetivo claro de migrar a una plataforma digital, y considera que una app o sistema web mejoraría significativamente la comunicación y la gestión, siempre que sea ágil, ordenada, fácil de entender y con información siempre actualizada. En cuanto al precio, conoce el mercado y sabe que el rango habitual oscila entre 2 y 5 dólares por unidad al mes. |
 
 | **ENTREVISTA 2** | |
@@ -117,9 +117,9 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 | **Nombre entrevistado** | Alejandro Galindo |
 | **Edad** | 26 |
 | **Departamento** | San Miguel |
-| **Link del video** | https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321281_upc_edu_pe/IQAW5DBOyn8xS6ZiZVZwufEIAU9yh_7P6mIIpJ_RzxJp6is?e=kLEW30&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D|
-| **Foto entrevista** | <img src="../assets/img/alejandro.jpeg" alt="" width="500" height="200"> |
-| **Resumen** | El administrador gestiona 4 edificios utilizando principalmente Excel, WhatsApp y registros manuales. Su principal problema es el seguimiento de pagos y la falta de confirmación sobre la recepción de comunicados. Considera viable adoptar una plataforma digital siempre que centralice pagos, comunicaciones y reservas, y tenga un costo accesible. |
+| **Link del video** |[Link del video de la entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321281_upc_edu_pe/IQAW5DBOyn8xS6ZiZVZwufEIAU9yh_7P6mIIpJ_RzxJp6is?e=kLEW30&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)|
+| **Foto entrevista** | <img src="../assets/img/alejandro.jpeg" alt=""> |
+| **Resumen** | El administrador Alejandro Galindo gestiona 4 edificios utilizando principalmente Excel, WhatsApp y registros manuales. Su principal problema es el seguimiento de pagos y la falta de confirmación sobre la recepción de comunicados. Considera viable adoptar una plataforma digital siempre que centralice pagos, comunicaciones y reservas, y tenga un costo accesible. |
 
 | **ENTREVISTA 3** | |
 |---|---|
@@ -229,26 +229,13 @@ Las tareas de mayor frecuencia y prioridad para el administrador giran en torno 
 ### 2.3.3. User Journey Mapping
 
 
-
 **Segmento 1 — Administrador de Condominio (Ricardo Mendoza)**
 
-El escenario actual del administrador de condominios refleja una gestión altamente manual y fragmentada. Ricardo depende de herramientas como Excel y WhatsApp para llevar el control de pagos, comunicarse con los vecinos y organizar la información. Esta dispersión genera errores, retrabajo y una alta carga operativa, dificultando la transparencia y la toma de decisiones dentro del condominio.
-
-![Scenario Mapping As-Is Segmento 1](../assets/img/AsIsRicardo.PNG)
-
-*Figura. Scenario Mapping (As-Is Segmento 1). Elaborado por el equipo utilizando Miro (Miro, s.f.).*
+<img src="../assets/img/j1.jpeg" alt="">
 
 **Segmento 2 — Residente (Andrea Villacorta)**
 
-Actualmente, los residentes como Andrea enfrentan una experiencia poco eficiente y desorganizada en la gestión del condominio. La información relevante se encuentra dispersa en múltiples canales, lo que dificulta el acceso a datos importantes como pagos, comunicados o reservas. Esto genera frustración, pérdida de tiempo y una baja participación en la comunidad.
 
-![Scenario Mapping As-Is Segmento 2](../assets/img/AsIsAndrea.PNG)
-
-*Figura. Scenario Mapping (As-Is Segmento 2). Elaborado por el equipo utilizando Miro (Miro, s.f.).*
-
-
-> - Segmento 1: ![Scenario Mapping To-Be Segmento 1](../assets/img/ToBeRicardo.PNG) — *el escenario futuro planteaba una transformación hacia una gestión digital centralizada, automatizando pagos, reportes y comunicación.*
-> - Segmento 2: ![Scenario Mapping To-Be Segmento 2](../assets/img/ToBeAndrea.PNG) — *el escenario ideal proponía una experiencia digital simple y centralizada desde el celular, con pagos, notificaciones y reservas intuitivas.*
 
 ### 2.3.4. Empathy Mapping
 
