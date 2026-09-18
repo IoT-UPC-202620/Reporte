@@ -24,7 +24,7 @@ Convertirnos en la plataforma de referencia para la gestión de condominios, sie
 
 | Foto | Nombres y Apellidos | Código | Carrera | Resumen de conocimientos técnicos y habilidades |
 |------|----------------------|--------|---------|--------------------------------------------------|
-|      |                      |        |         |                                                    |
+|      | Perez Tuesta, Gabriel   |    U202321281    |     Ingeniería de Software    |         Soy Gabriel Perez Tuesta, tengo 23 años. Soy estudiante de la UPC de la carrera de Ingeniería de Software y me encuentro cursando el séptimo ciclo. Cuento con habilidades de programación en C++ y Python, así como aptitudes para el desarrollo en UX y UI. Asimismo, en cuanto a habilidades extracurriculares, he contribuido en proyectos con edición de video y fomentando una actitud colaborativa en el equipo.                                           |
 
 ## 1.2. Solution Profile
 
