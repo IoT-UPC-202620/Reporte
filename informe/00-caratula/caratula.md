@@ -1,29 +1,28 @@
-# Carátula
-
-> 📋 **Guía (Statement):** Logo de la Universidad · Nombre de Universidad, carrera, ciclo · Código del curso y Nombre del curso · NRC (Número de referencia de curso) · Nombre del profesor · "Informe de Trabajo Final" · Relación de integrantes (incluyendo para cada caso Código, Apellidos y Nombres) · Mes y año.
-
-**Estado:** ⬜ Pendiente
-
----
 
 ![Logo de la Universidad](../assets/img/upc_logo.png)
 
-**Universidad:** _(Nombre de Universidad)_
+**Universidad:** Universidad Peruana de Ciencias Aplicadas
 **Carrera:** Ingeniería de Software
 **Ciclo:** 2026-20
 
 **Curso:** 1ASI0572 Desarrollo de Soluciones IoT
-**NRC:** _(Número de referencia de curso)_
-**Profesor:** León Baca, Marco Antonio
+**NRC:** 8740
+**Profesor:** Vera Olivera, David Carlos
 
 ## Informe de Trabajo Final
 
-**Startup:** _(Nombre de la startup)_
+**Startup:** Edifika
 
 ### Integrantes
 
 | Código | Apellidos y Nombres |
 |--------|----------------------|
-|        |                      |
+| u20211b995 | Acuña Corahua, Jonatan Ariel |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+|  |  |
 
-**Mes y año:** _(mes, 2026)_
+**Mes y año:** Septiembre, 2026
