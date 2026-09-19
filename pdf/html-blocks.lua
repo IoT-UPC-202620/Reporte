@@ -24,8 +24,92 @@ local function has_table(blocks)
   return found
 end
 
+-- Marca opcional en el Markdown, invisible en GitHub, justo antes de una tabla:
+--
+--   <!-- pdf:unroll -->
+--
+--   | tabla | ... |
+--
+-- LaTeX no parte una fila de longtable entre paginas: si una celda es mas alta
+-- que la pagina (p. ej. la tabla de Student Outcome, que el statement pide
+-- ampliar en cada entrega) la fila se sale del margen y deja paginas en blanco.
+-- Con la marca, la tabla se escribe como bloques (etiqueta de columna + contenido
+-- de cada celda), que si paginan.
+local UNROLL_MARK = '^%s*<!%-%-%s*pdf:unroll%s*%-%->%s*$'
+
+local function unroll(tbl)
+  local labels = {}
+  for i, cell in ipairs(tbl.head.rows[1] and tbl.head.rows[1].cells or {}) do
+    labels[i] = pandoc.utils.stringify(cell.contents)
+  end
+
+  local out = pandoc.List()
+  for _, body in ipairs(tbl.bodies) do
+    for r, row in ipairs(body.body) do
+      if r > 1 then
+        out:insert(pandoc.RawBlock('latex', '\\medskip\\hrule\\medskip'))
+      end
+      for i, cell in ipairs(row.cells) do
+        local label = pandoc.Strong({ pandoc.Str((labels[i] or '') .. (i == 1 and ':' or '')) })
+        local contents = cell.contents:map(function(b)
+          if b.t == 'Plain' then return pandoc.Para(b.content) end
+          return b
+        end)
+        if i == 1 and contents[1] and contents[1].t == 'Para' then
+          -- El criterio (1.a celda) va en una linea junto con su etiqueta.
+          local inlines = pandoc.List({ label, pandoc.Space() })
+          inlines:extend(contents[1].content)
+          out:insert(pandoc.Para(inlines))
+          for k = 2, #contents do out:insert(contents[k]) end
+        else
+          out:insert(pandoc.Para({ label }))
+          out:extend(contents)
+        end
+      end
+    end
+  end
+  return out
+end
+
+-- Un "<br>" dentro de una celda de tabla pipe (o de un parrafo Markdown) llega
+-- como HTML en linea, que el writer de LaTeX tambien descarta: las lineas de la
+-- celda quedaban pegadas. Se convierte en un salto de linea nativo.
+function RawInline(el)
+  if el.format == 'html' and el.text:match('^<br%s*/?>$') then
+    return pandoc.LineBreak()
+  end
+  return nil
+end
+
+-- Reemplaza cada "<!-- pdf:unroll -->" y la tabla que le sigue por sus bloques.
+function Blocks(blocks)
+  local out = pandoc.List()
+  local i = 1
+  while i <= #blocks do
+    local b = blocks[i]
+    if b.t == 'RawBlock' and b.format == 'html' and b.text:match(UNROLL_MARK) then
+      local nxt = blocks[i + 1]
+      if nxt and nxt.t == 'Table' then
+        out:extend(unroll(nxt))
+        i = i + 2
+      else
+        i = i + 1 -- marca sin tabla a continuacion: se descarta
+      end
+    else
+      out:insert(b)
+      i = i + 1
+    end
+  end
+  return out
+end
+
 function RawBlock(el)
   if el.format ~= 'html' then
+    return nil
+  end
+
+  -- La marca de arriba se consume en Blocks(), junto con su tabla.
+  if el.text:match(UNROLL_MARK) then
     return nil
   end
 

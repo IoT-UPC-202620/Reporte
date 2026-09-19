@@ -35,7 +35,7 @@
   <tbody>
     <tr>
       <td>Acuña Corahua, Jonatan Ariel</td>
-      <td></td>
+      <td>u20211b995</td>
     </tr>
     <tr>
       <td>Ortiz Cardenas, Johanna Antuanete</td>
