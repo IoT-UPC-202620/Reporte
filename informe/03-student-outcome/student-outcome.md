@@ -1,20 +1,14 @@
 # Student Outcome
 
-> 📋 **Guía (Statement):** Cada participante del equipo debe colaborar a fin de que se redacte como grupo los sustentos y evidencias de las actividades realizadas en el trabajo final han ayudado a desarrollar cómo las dimensiones del student outcome. Por ello en esta sección debe quedar descrito por escrito, la relación entre el outcome, sus dimensiones y el trabajo que han realizado. Esto se complementa con lo reflejado en los testimonios expuestos que forman parte del video *About The Team*.
->
-> La sección inicia en una nueva página. Debe incluir el párrafo introductorio y el cuadro de Student Outcome tal como se indica en la sección de Anexos de este documento (ver [Anexo A](../12-anexos/anexo-a-student-outcome.md)). En las celdas Acciones realizadas, debe especificarse cada participante: Apellidos, Nombres y a continuación, cada entrega (TB1, TB2, etc.) con las acciones específicas realizadas que se relacionen con el criterio del Outcome al que corresponda la celda. Esta celda se irá expandiendo en cada entrega. Las celdas Conclusiones se llenan de forma grupal y son acumulables, es decir se van expandiendo en cada entrega. El párrafo introductorio antes del cuadro que se aprecia en el anexo referido debe colocarse también de forma idéntica en su informe.
 
-**Estado:** ⬜ Pendiente
+
 
 ## ABET – EAC - Student Outcome 5
 
-**Criterio:** *La capacidad de funcionar efectivamente en un equipo cuyos miembros juntos proporcionan liderazgo, crean un entorno de colaboración e inclusivo, establecen objetivos, planifican tareas y cumplen objetivos.*
 
-_(Párrafo introductorio idéntico al indicado en el Anexo A)_
+
 
 | Criterio específico | Acciones realizadas | Conclusiones |
-|---|---|---|
-| Trabaja en equipo para proporcionar liderazgo en forma conjunta | | |
-| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos. | | |
-
-> Ver estructura de referencia completa en [Anexo A. Estructura para la sección Objetivo del Estudiante (Student Outcome)](../12-anexos/anexo-a-student-outcome.md).
+|----------------------|---------------------|--------------|
+| Trabaja en equipo para proporcionar liderazgo en forma conjunta | **AV1**<br><br>**Pérez Tuesta, Gabriel:** Asumí el desarrollo de los principales artefactos de investigación y análisis centrados en el usuario. Diseñé las entrevistas para la validación del segmento objetivo, elaboré el **User Persona**, el **Customer Journey Map**, el **Análisis Competitivo** y la **User Task Matrix**, contribuyendo a comprender las necesidades de los usuarios, identificar oportunidades de mejora y establecer una base sólida para la definición de requerimientos y funcionalidades del producto. | **AV1**<br><br>Durante esta entrega, el equipo desarrolló actividades de investigación y análisis orientadas a comprender el problema, identificar las necesidades de los usuarios y evaluar el contexto competitivo del producto. La elaboración del análisis competitivo, el diseño y ejecución de entrevistas, los User Personas, la User Task Matrix y el User Journey Map permitió obtener información relevante sobre los usuarios objetivo, sus necesidades, comportamientos y desafíos. Como resultado, se estableció una base sólida para la definición de requerimientos y la toma de decisiones en las siguientes etapas del proyecto, asegurando que la propuesta de solución estuviera alineada con las necesidades identificadas. |
+| Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos | **AV1**<br><br>**Pérez Tuesta, Gabriel:** Planifiqué y desarrollé las actividades relacionadas con la investigación de usuarios y el análisis del contexto del producto. Diseñé las entrevistas, elaboré el User Persona, el Journey Map, el Análisis Competitivo y la User Task Matrix, cumpliendo con los objetivos establecidos para la fase de descubrimiento y validación inicial del proyecto. | **AV1**<br><br>Durante esta entrega, el equipo organizó y ejecutó las actividades correspondientes a la fase de investigación y análisis del proyecto. La planificación de entrevistas, el análisis del mercado y la construcción de artefactos centrados en el usuario permitieron recopilar información relevante y estructurar el conocimiento obtenido. Gracias a ello, se cumplieron los objetivos planteados para la etapa de descubrimiento, generando insumos que sirvieron como base para la definición de requerimientos y el diseño de la solución propuesta. |

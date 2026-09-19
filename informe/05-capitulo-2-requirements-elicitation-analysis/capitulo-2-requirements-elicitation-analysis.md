@@ -69,37 +69,31 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 
 ### 2.2.1. Diseño de entrevistas
 
-## 1. Segmento: Administradores de Edificios y Condominios
+## 1. Segmento: Administradores de edificios y condominios
 
-1. ¿Cuántos edificios o condominios tiene bajo su administración actualmente?
-2. ¿Cómo organizan y controlan las cuotas de mantenimiento de los residentes?
-3. ¿Qué dificultades encuentran al hacer seguimiento a los pagos pendientes?
-4. ¿Cómo gestionan actualmente las incidencias o solicitudes reportadas por los residentes?
-5. ¿Qué herramientas utilizan para comunicar anuncios, avisos o comunicados importantes?
-6. ¿Qué tan frecuente es que los residentes indiquen que no recibieron información relevante?
-7. ¿Cómo administran las reservas de espacios comunes como salones, parrillas o áreas deportivas?
-8. ¿Cuáles son los procesos administrativos que más tiempo consumen dentro de su jornada laboral?
-9. ¿Qué problemas han tenido con las herramientas o sistemas que utilizan actualmente?
-10. ¿Qué características considera indispensables en una plataforma digital para la gestión de condominios?
-11. ¿Qué beneficios esperaría obtener al centralizar toda la administración en una sola solución?
-12. ¿Qué tan dispuesto estaría a implementar una nueva plataforma tecnológica para optimizar la gestión de sus edificios?
+- ¿Cuántos edificios administran actualmente y cómo llevan hoy la gestión del día a día?
+- ¿Qué herramientas o sistemas utilizan para gestionar los pagos y deudas de todos sus edificios?
+- ¿Cómo coordinan las reservas de áreas comunes en los distintos edificios que administran?
+- ¿De qué manera envían avisos oficiales a los residentes y cómo verifican que la información llegó a todos?
+- ¿Cuál es el proceso más tedioso que quisieran eliminar de su operación diaria?
+- ¿Qué tan seguido reciben quejas de residentes por falta de información o transparencia?
+- ¿Han evaluado antes algún software de administración? Si es así, ¿qué fue lo que no les convenció?
+- ¿Qué tan probable sería para su empresa migrar toda la gestión a una sola plataforma digital?
+- ¿Qué tendría que tener una plataforma para que su empresa la adopte sin dudarlo?
+- ¿Cuánto estarían dispuestos a pagar mensualmente por una herramienta que centralice toda su gestión?
 
----
+## 2. Segmento: Propietarios e inquilinos
 
-## 2. Segmento: Propietarios e Inquilinos de Condominios
-
-1. ¿Cómo suele mantenerse informado sobre los comunicados y novedades de su edificio o condominio?
-2. ¿Qué tan sencillo le resulta conocer el estado de sus pagos de mantenimiento?
-3. ¿Cómo realiza normalmente el pago de sus cuotas y qué aspectos mejoraría de ese proceso?
-4. ¿Ha tenido inconvenientes al intentar reservar áreas comunes del edificio?
-5. ¿Qué tan transparente considera que es la administración respecto al uso de los fondos de mantenimiento?
-6. ¿Qué tipo de información le gustaría consultar fácilmente desde una aplicación o plataforma digital?
-7. ¿Cómo reporta actualmente problemas o incidencias dentro del condominio?
-8. ¿Cuánto tiempo suele tardar la administración en responder a sus consultas o solicitudes?
-9. ¿Qué canal de comunicación utiliza con mayor frecuencia para contactar a la administración?
-10. ¿Qué trámite o proceso relacionado con el condominio considera más incómodo o desactualizado?
-11. ¿Le resultaría útil contar con una aplicación donde pueda gestionar pagos, reservas y comunicaciones en un solo lugar?
-12. Si pudiera mejorar un aspecto de la gestión de su condominio, ¿cuál sería y por qué?
+- ¿Cómo se entera hoy de sus saldos pendientes de mantenimiento y de las noticias de su edificio?
+- ¿Qué tan fácil o difícil le resulta realizar el pago y enviar el comprobante de mantenimiento?
+- ¿Dónde puede consultar su historial de pagos si necesita verificar un cobro antiguo?
+- ¿Ha tenido problemas para reservar áreas comunes por falta de claridad en los horarios?
+- ¿Siente que la administración es transparente con el uso del dinero y los gastos del edificio?
+- ¿Qué tan rápido recibe respuesta cuando tiene una duda o necesita un comunicado importante?
+- ¿Cuál es el canal de comunicación que más le molesta o le satura (ej. grupos de WhatsApp)?
+- ¿Qué trámite del edificio le parece más anticuado o el que más le quita tiempo?
+- ¿Estaría dispuesto a gestionar sus pagos y cuotas en una sola aplicación móvil?
+- Si pudiera cambiar una sola cosa de la gestión de su condominio, ¿cuál sería?
 
 ### 2.2.2. Registro de entrevistas
 
@@ -115,37 +109,37 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 | **Edad** | 51 |
 | **Departamento** | Cercado de Lima |
 | **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/interviews/admin1.png" alt="Entrevista admin 1" width="500"/> |
+| **Foto entrevista** | <img src="../assets/img/interviews/admin1.png" alt="Entrevista admin 1"/> |
 | **Resumen** | César es administrador de edificios en GWM EIRL y actualmente gestiona 15 edificios usando Excel con macros como herramienta principal, apoyándose en WhatsApp para coordinar reservas y comunicaciones, y en las páginas de los bancos para pagos. El proceso más tedioso es la emisión de recibos, que aún se hace de forma física en varios edificios y que desea digitalizar al 100%. Ha evaluado entre 3 y 4 sistemas sin éxito, ya que todos presentaban exceso de información que generaba confusión en los propietarios y una percepción de desorden o falta de transparencia. Como empresa tiene el objetivo claro de migrar a una plataforma digital, y considera que una app o sistema web mejoraría significativamente la comunicación y la gestión, siempre que sea ágil, ordenada, fácil de entender y con información siempre actualizada. En cuanto al precio, conoce el mercado y sabe que el rango habitual oscila entre 2 y 5 dólares por unidad al mes. |
 
 | **ENTREVISTA 2** | |
 |---|---|
-| **Nombre entrevistado** | Daniel Farro |
-| **Edad** | 52 |
+| **Nombre entrevistado** | Alejandro Galindo |
+| **Edad** | 26 |
 | **Departamento** | San Miguel |
-| **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/interviews/entrevista_renato.png" alt="Entrevista admin 2" width="500"/> |
-| **Resumen** | El entrevistado, Daniel Farro, administrador de un condominio de cinco unidades, señala que actualmente gestiona los pagos y la información de los condominios utilizando únicamente Excel y WhatsApp. Sin embargo, considera que estas herramientas son limitadas y le gustaría implementar un software especializado que le permita centralizar y organizar mejor la información, facilitando así una gestión más eficiente y ordenada. |
+| **Link del video** |[Link del video de la entrevista](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202321281_upc_edu_pe/IQAW5DBOyn8xS6ZiZVZwufEIAU9yh_7P6mIIpJ_RzxJp6is?e=kLEW30&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)|
+| **Foto entrevista** | <img src="../assets/img/alejandro.jpeg" alt=""> |
+| **Resumen** | El administrador Alejandro Galindo gestiona 4 edificios utilizando principalmente Excel, WhatsApp y registros manuales. Su principal problema es el seguimiento de pagos y la falta de confirmación sobre la recepción de comunicados. Considera viable adoptar una plataforma digital siempre que centralice pagos, comunicaciones y reservas, y tenga un costo accesible. |
 
 | **ENTREVISTA 3** | |
 |---|---|
-| **Nombre entrevistado** | Andrés Ventoncilla |
-| **Edad** | 25 |
-| **Departamento** | San Miguel |
-| **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/imagen_2026-04-18_194046671.png" alt="Entrevista admin 3" width="500"/> |
-| **Resumen** | Andrés Ventocilla se encarga de la supervisión de 4 inmuebles residenciales, basando toda su estructura de trabajo en documentos de Excel y la mensajería de WhatsApp para el contacto con los residentes. El mayor cuello de botella que enfrenta es la verificación de depósitos, una tarea manual donde debe contrastar cada movimiento bancario con las capturas de pantalla que envían los vecinos, lo que le resta eficiencia a su labor administrativa. Tras haber probado otras alternativas tecnológicas, las descartó por ser demasiado robustas y difíciles de navegar, lo que terminaba por confundir a los usuarios finales. Su meta es integrar la operación en un ecosistema digital, siempre que la herramienta priorice la simplicidad visual y permita que los propietarios visualicen el uso de los fondos de forma clara. Bajo su perspectiva, una tarifa mensual de entre S/ 150 y S/ 300 por edificio sería un monto justo, siempre que el sistema logre liberar su tiempo de tareas repetitivas. |
+| **Nombre entrevistado** |  |
+| **Edad** |  |
+| **Departamento** |  |
+| **Link del video** |  |
+| **Foto entrevista** |  |
+| **Resumen** | |
 
 **Segmento objetivo: Propietarios e Inquilinos**
 
 | **ENTREVISTA 1** | |
 |---|---|
-| **Nombre entrevistado** | Mery Ojeda |
-| **Edad** | 38 |
+| **Nombre entrevistado** |  |
+| **Edad** |  |
 | **Departamento** | San Miguel |
-| **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/interviews/prop1.png" alt="Entrevista propietario 1" width="500"/> |
-| **Resumen** | Mery es propietaria de un departamento en un condominio, ella indicó que recibe información sobre sus pagos mediante recibos mensuales y que el proceso de pago es sencillo a través de depósitos o aplicativos; sin embargo, señaló que no existe un acceso directo al historial de pagos, lo que obliga a recurrir a la administración. Asimismo, mencionó dificultades en la reserva de áreas comunes por falta de claridad y alta demanda, además de demoras en la comunicación, ya que WhatsApp no siempre ofrece respuestas oportunas y la atención presencial no es constante. Aunque percibe cierto nivel de transparencia en los gastos, considera tedioso el proceso de reclamos y manifestó interés en una aplicación móvil que centralice pagos, reservas y comunicaciones de manera rápida y eficiente. |
+| **Link del video** |  |
+| **Foto entrevista** |  |
+| **Resumen** |  |
 
 | **ENTREVISTA 2** | |
 |---|---|
@@ -158,12 +152,12 @@ La sección abarca el proceso de investigación de nuestros segmentos objetivos 
 
 | **ENTREVISTA 3** | |
 |---|---|
-| **Nombre entrevistado** | Angel Lazo Panduro |
-| **Edad** | 24 |
-| **Departamento** | San Miguel |
-| **Link del video** | *(pendiente — enlace del video consolidado)* |
-| **Foto entrevista** | <img src="../assets/img/imagen_2026-04-18_194125234.png" alt="Entrevista propietario 3" width="500"/> |
-| **Resumen** | Angel Lazo Panduro reside en un condominio de tamaño medio y manifiesta una clara frustración por la dependencia de métodos tradicionales, como el uso de papeles informativos en áreas comunes y el envío de capturas de pantalla por chats grupales para reportar sus cuotas. Para él, la comunicación actual es desordenada, lo que provoca que muchas veces ignore avisos importantes sobre reparaciones o servicios del edificio. Su prioridad principal es la autogestión; busca una herramienta que le permita confirmar la disponibilidad del área de parrillas y realizar su reserva de forma instantánea sin tener que esperar la aprobación manual de un portero o administrador. Considera que la plataforma será un éxito en su edificio si logra simplificar el proceso de reporte de pagos y centraliza los reglamentos internos en un formato digital de fácil acceso. |
+| **Nombre entrevistado** |  |
+| **Edad** |  |
+| **Departamento** | |
+| **Link del video** |  |
+| **Foto entrevista** |  |
+| **Resumen** |  |
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -187,11 +181,9 @@ Un hallazgo importante es que los entrevistados ya reconocen la necesidad de una
 
 ## 2.3. Needfinding
 
-> 📋 **Guía (Statement):** En esta sección el equipo explica y presenta los artefactos resultantes del proceso de análisis de la información recolectada. Aquí se incluye secciones internas para User Personas, User Task Matrix, User Journey Maps y Empathy Mapping.
 
 ### 2.3.1. User Personas
 
-> 📋 **Guía (Statement):** En esta sección se incluye la elaboración de las fichas de User Persona. La sección inicia con una introducción explicando la relación entre los artefactos a presentar y las principales características que se están tomando en cuenta del análisis de entrevistas y de la competencia. Se elabora una ficha de User Persona por cada segmento objetivo. Considere las mejores prácticas y todos los ítems necesarios para especificar un arquetipo. Utilice la herramienta indicada (UXPressia) para este tipo de artefacto.
 
 ### Administrador de Condominio – Ricardo Mendoza
 
@@ -207,7 +199,6 @@ Un hallazgo importante es que los entrevistados ya reconocen la necesidad de una
 
 ### 2.3.2. User Task Matrix
 
-> 📋 **Guía (Statement):** En esta sección se presenta el User Task Matrix, que concentra las tareas que los User Persona (que representan a cada segmento) realizan para cumplir sus objetivos. No confundir tareas (tasks) con opciones o características de software, pues las tareas deben ser realizadas por los segmentos independientemente de la existencia de su solución de software. Esta sección inicia con una introducción donde se establece los segmentos que se están considerando. El cuadro debe incluir como columna cada User Persona y para cada una como sub-columnas, la Frecuencia y la Importancia de cada tarea (task). Como filas se colocan las tareas identificadas. Luego del cuadro se realiza una explicación resaltando las tareas con mayor frecuencia e importancia, principales diferencias y coincidencias entre lo realizado por los User Personas.
 
 ### Administrador de Condominio – Ricardo Mendoza
 
@@ -237,34 +228,17 @@ Las tareas de mayor frecuencia y prioridad para el administrador giran en torno 
 
 ### 2.3.3. User Journey Mapping
 
-> 📋 **Guía (Statement):** En esta sección se elabora los User Journey Maps (uno por cada User Persona). La sección inicia con una introducción que resume el end-to-end journey que se pretende ilustrar. Debe incluirse capturas de imagen de los diagramas elaborados en la herramienta indicada. En este caso se elabora las versiones As-Is de los User Journey Maps, es decir los journey de cada segmento representado para la situación actual, sin que exista su solución. Cada User Journey Map debe vincularse con el User Persona correspondiente (cuya ficha de User Persona también debe haberse elaborado en la misma herramienta indicada).
-
-> ⚠️ **Pendiente:** se documenta por ahora un **Scenario Mapping As-Is** por segmento, elaborado en Miro. Falta construir el User Journey Map formal, vinculado a la ficha de User Persona en la misma herramienta, que pide el statement.
 
 **Segmento 1 — Administrador de Condominio (Ricardo Mendoza)**
 
-El escenario actual del administrador de condominios refleja una gestión altamente manual y fragmentada. Ricardo depende de herramientas como Excel y WhatsApp para llevar el control de pagos, comunicarse con los vecinos y organizar la información. Esta dispersión genera errores, retrabajo y una alta carga operativa, dificultando la transparencia y la toma de decisiones dentro del condominio.
-
-![Scenario Mapping As-Is Segmento 1](../assets/img/AsIsRicardo.PNG)
-
-*Figura. Scenario Mapping (As-Is Segmento 1). Elaborado por el equipo utilizando Miro (Miro, s.f.).*
+<img src="../assets/img/j1.png" alt="">
 
 **Segmento 2 — Residente (Andrea Villacorta)**
 
-Actualmente, los residentes como Andrea enfrentan una experiencia poco eficiente y desorganizada en la gestión del condominio. La información relevante se encuentra dispersa en múltiples canales, lo que dificulta el acceso a datos importantes como pagos, comunicados o reservas. Esto genera frustración, pérdida de tiempo y una baja participación en la comunidad.
 
-![Scenario Mapping As-Is Segmento 2](../assets/img/AsIsAndrea.PNG)
-
-*Figura. Scenario Mapping (As-Is Segmento 2). Elaborado por el equipo utilizando Miro (Miro, s.f.).*
-
-> 📌 **Contenido adicional, no exigido por el statement:** se incluyen además las versiones **To-Be** de este Scenario Mapping como insumo de referencia para el diseño de la propuesta IoT.
->
-> - Segmento 1: ![Scenario Mapping To-Be Segmento 1](../assets/img/ToBeRicardo.PNG) — *el escenario futuro planteaba una transformación hacia una gestión digital centralizada, automatizando pagos, reportes y comunicación.*
-> - Segmento 2: ![Scenario Mapping To-Be Segmento 2](../assets/img/ToBeAndrea.PNG) — *el escenario ideal proponía una experiencia digital simple y centralizada desde el celular, con pagos, notificaciones y reservas intuitivas.*
 
 ### 2.3.4. Empathy Mapping
 
-> 📋 **Guía (Statement):** En esta sección, el equipo resume el proceso de elaboración y presenta capturas de los Empathy Maps realizados en la herramienta indicada, para cada uno de los User Personas. El proceso de elaboración incluye la preparación, colocar al centro el User Persona. Colocar en la sección correspondiente en la herramienta cada observación de los miembros del equipo sobre el User Persona, buscando responder las preguntas ¿Con quién estamos empatizando? ¿Qué necesita hacer? ¿Qué está diciendo? ¿Qué está viendo? ¿Qué está haciendo? ¿Qué está escuchando? ¿Cómo se siente y qué piensa? Identificar Pains y Gains en base a las preguntas ¿Qué le preocupa? ¿Qué puede ayudar a resolver sus problemas? ¿Qué puede convencerlo de que somos la alternativa correcta? ¿Qué dice?
 
 ### Administrador de Condominio – Ricardo Mendoza
 
