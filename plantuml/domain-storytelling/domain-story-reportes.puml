@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam ArrowColor #333333
+skinparam ArrowFontColor #111111
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  RoundCorner 18
+}
+skinparam actorStyle awesome
+
+actor "Administrador" as Admin #08427b
+rectangle "Report" as Rep #1e40af
+rectangle "Payment" as Pay #1e40af
+rectangle "Reporte\nFinanciero" as Reporte #f59e0b
+
+Admin -> Reporte : "1. solicita"
+Reporte -> Rep : "2. dispara consulta"
+Rep -> Pay : "3. consulta vía REST"
+Pay -> Rep : "4. retorna deudas y pagos"
+Rep -> Reporte : "5. consolida y exporta"
+Reporte -> Admin : "6. entrega"
+
+legend right
+  |= Color |= Elemento |
+  |<#08427b>| Actor |
+  |<#1e40af>| Bounded Context |
+  |<#f59e0b>| Work Object |
+endlegend
+
+title Domain Story — Generación de reportes financieros
+@enduml

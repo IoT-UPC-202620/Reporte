@@ -12,13 +12,45 @@
 
 > 📋 **Guía (Statement):** En esta sección el equipo explica y evidencia el proceso de Design-Level EventStorming, con el fin de plantear una primera aproximación revisada y mejorada al modelado de nivel general para el dominio del problema, buscando a partir de ahí identificar el mayor nivel de detalle posible. Es recomendable que el equipo organice la sesión de Design-Level EventStorming con una duración entre 1 – 2 horas, a fin de concentrar esfuerzos y no extender el proceso de forma innecesaria. La sección inicia con una introducción y explicación de las actividades realizadas en la sesión de EventStorming, e incluye capturas de lo elaborado en la herramienta indicada. Guía de referencia: <https://bit.ly/dles-guide>.
 
+El equipo realizó la sesión de Design-Level EventStorming en **Miro**, siguiendo la progresión estándar de la técnica en cuatro pasos, cada uno construido sobre el anterior en el mismo tablero:
+
+1. **Storm your events** — volcado libre de todos los eventos de dominio identificados (notas naranjas), sin orden ni filtro, cubriendo tanto la gestión administrativa del condominio como las ideas de nivel IoT.
+2. **Organize your events** — reordenamiento de esos eventos en timelines/swimlanes por proceso de negocio, agrupando lo que ocurre en secuencia.
+3. **Add commands** — para cada evento, se agregó el *Command* (nota azul) que lo origina y el *Actor* (nota pequeña adjunta: Residente, Administrador o Sistema) que lo dispara.
+4. **Add read models, policies and system commands** — se incorporaron los *Read Models* (vistas que consultan los usuarios), las *Policies* (reglas "cuando ocurre X, entonces Y") que conectan eventos entre procesos distintos, y los *System Commands* que el propio sistema dispara de forma automática al cumplirse una policy.
+
+![Tablero de Design-Level EventStorming](../assets/img/eventstorming-board.jpg)
+
+*Figura. Tablero de Design-Level EventStorming en Miro, en sus cuatro etapas (de izquierda a derecha: Storm, Organize, Commands, Read Models/Policies/System Commands). El export completo de las notas del tablero se conserva en [`assets/data/eventstorming-miro-export.csv`](../assets/data/eventstorming-miro-export.csv) para trazabilidad.*
+
+Un resultado relevante del paso *Storm your events* es que el dominio explorado fue deliberadamente más amplio que el alcance final de la solución: junto con los eventos que terminaron mapeados a los 11 bounded contexts candidatos (ver 4.1.1.1), el equipo volcó también una rama completa de riego automático, monitoreo de tanque de agua y detección de fugas (`Riego fue activado automáticamente`, `Nivel crítico fue detectado`, `Fuga fue detectada`, entre otros), heredada de la exploración de mercado de Smart Buildings del Capítulo II. Esa rama no se promovió más allá del paso 2 del EventStorm — la decisión de descartarla como bounded context se explica en 4.1.1.1 — y por eso no vuelve a aparecer ni en el Capítulo III (requisitos) ni en el resto del Capítulo IV.
+
 #### 4.1.1.1. Candidate Context Discovery
 
 > 📋 **Guía (Statement):** En esta sección el equipo, a partir del dominio modelado como EventStorm, explica y evidencia el proceso realizado para la sesión de Candidate Context Discovery, en la que se busca identificar los bounded contexts. Puede aplicar las técnicas de *start-with-value* (Identificar las partes core del dominio que tienen el mayor valor para el negocio), *start-with-simple* (Crear modelos simples, pero con propósito, descomponiendo el timeline en steps secuenciales), ó *look-for-pivotal-events* (Buscar eventos clave del negocio que indiquen cambios de estado entre diferentes partes del proceso de negocio). La sesión de Candidate Context Discovery no debería durar más de 2 horas. Complemente la explicación con capturas en imagen de los cambios progresivos del EventStorm.
 
-> ⚠️ **Pendiente:** los bounded contexts candidatos que se listan a continuación se derivaron de la descomposición funcional del dominio y de la incorporación del nivel IoT. Falta ejecutar la sesión formal de Candidate Context Discovery (start-with-value / start-with-simple / look-for-pivotal-events) sobre el EventStorm y documentar sus capturas progresivas, tal como pide el statement.
+Tomando como insumo el EventStorm de 4.1.1, el equipo aplicó las tres técnicas de Candidate Context Discovery en conjunto — no de forma excluyente — sobre el tablero ya organizado en commands, policies y read models:
 
-A partir del dominio de gestión de condominios y de la extensión IoT de la solución, se identificaron **11 bounded contexts candidatos**, cada uno implementado como un microservicio independiente (más el API Gateway y el Edge API como componentes de infraestructura transversal, no bounded contexts de dominio). Los ocho primeros cubren la gestión administrativa del condominio; los tres últimos aparecen con la incorporación del nivel IoT:
+- **Look-for-pivotal-events:** se buscaron los eventos que marcan un cambio de estado entre procesos de negocio distintos, es decir, los puntos donde un flujo termina y dispara (vía policy) el inicio de otro. `Reserva aceptada` es pivotal porque dispara la habilitación de acceso físico; `Pago fue registrado` / `Deuda marcada como pagada` es pivotal porque libera al residente de una suspensión de acceso; `Residente moroso fue detectado` es pivotal porque cruza de Payment hacia el control de acceso. Estos pivotes son los que terminaron materializándose como los eventos de integración entre contextos documentados en 4.1.1.2 y 4.1.2.
+- **Start-with-value:** se identificaron las partes del dominio con mayor valor diferencial para el negocio, usando como referencia directa el análisis competitivo del Capítulo II (Estrategia 2: "Diferenciación mediante integración IoT"). De las capacidades IoT exploradas en el storm — iluminación inteligente, control de acceso, monitoreo de tanque de agua, detección de fugas, riego automático — el equipo priorizó **acceso físico** y **iluminación/energía** por ser las de mayor valor demostrable dentro del alcance de un proyecto académico con hardware real (ESP32), y descartó riego y monitoreo de agua por requerir sensores/actuadores adicionales (electroválvulas, sensores de humedad de suelo, sensores de nivel) sin un actor de negocio que los reclamara como prioridad en el Capítulo III.
+- **Start-with-simple:** el timeline ya organizado en el paso 2 de EventStorming se descompuso en sub-timelines secuenciales por proceso (autenticación → gestión residencial → reservas → pagos → comunicación/foro → reportes, y luego los tres sub-timelines IoT), cada uno lo bastante simple como para sostener un propósito de negocio propio — ese es, en esencia, el criterio de corte que produjo los 11 candidatos de la tabla siguiente.
+
+La tabla resume, por cada proceso de negocio que sí se mantuvo en el alcance, el *Command* y *Actor* que lo origina, los *Domain Events* producidos, y las *Policies* / *Read Models* agregados en el paso 4 — es decir, el nivel de detalle sobre el que se hizo el corte de bounded contexts:
+
+| Proceso de negocio | Command (Actor) | Domain Events clave | Policy | Read Model |
+|---|---|---|---|---|
+| Autenticación (IAM/Auth) | Completar formulario de registro (Residente/Administrador) · Iniciar sesión | Usuario registrado, Rol asignado a usuario, Usuario autenticado, Credenciales rechazadas, Sesión cerrada | Un residente desactivado no puede iniciar sesión | — |
+| Gestión residencial | Registrar edificio y unidades (Administrador) | Edificio registrado, Unidad registrada, Residente vinculado a unidad | Rol de usuario debe ser administrador | Directorio de unidades y residentes |
+| Reservas | Registrar área común (Administrador) · Solicitar/Cancelar reserva (Residente) | Área común registrada, Reglas de área común registradas, Reserva solicitada, Reserva aceptada/rechazada, Reserva cancelada | — | Calendario de reservas |
+| Pagos y deudas | Registrar pago (Residente) | Deuda generada, Pago fue registrado, Pago rechazado, Deuda marcada como pagada, Recordatorio de deuda enviado | Si el pago es rechazado, la deuda permanece pendiente | Estado de cuenta del residente |
+| Comunicados y foro | Publicar anuncio (Administrador) · Agregar comentario / Crear encuesta / Votar (Residente) | Anuncio publicado, Comentario agregado, Encuesta creada, Voto registrado, Encuesta finalizada | — | Muro de anuncios, Resultados de la encuesta |
+| Reportes | Generar reporte financiero (Administrador) | Reporte financiero generado, Reporte financiero exportado | — | Dashboard financiero |
+| Notificaciones (transversal) | *(Sistema, automático)* | Notificación enviada, Notificación leída, Notificación de deuda fue enviada, Notificación enviada a usuario/administrador | — | — |
+| Acceso físico (IoT) | Escanear tarjeta (Residente) | Tarjeta RFID/NFC fue escaneada, Residente fue validado, Acceso fue concedido/rechazado/denegado, Puerta fue abierta, Tarjeta no reconocida, Residente moroso fue detectado | Si el residente es moroso, denegar el acceso | — |
+| Iluminación inteligente (IoT) | Activar interruptor manual (Residente/Administrador) | Movimiento detectado/no detectado en área común, Luces encendidas/apagadas automáticamente, Temporizador de inactividad iniciado, Fallo de conexión en sensor detectado, Luces permanecieron en modo seguro | Si no hay movimiento por 3 minutos, apagar luces | — |
+| *Riego y monitoreo de agua (descartado — ver start-with-value)* | *Activar riego manual* | *Riego activado/detenido automáticamente, Humedad del suelo medida, Fuga detectada, Nivel de agua medido, Fallo en válvula detectado* | *Si la humedad es suficiente, omitir el riego · Si el nivel es crítico o hay fuga, enviar alerta inmediata* | *Historial de riego, Panel de nivel de tanque de agua* |
+
+A partir de este corte por proceso de negocio, y de la incorporación del nivel IoT priorizado, se identificaron **11 bounded contexts candidatos**, cada uno implementado como un microservicio independiente (más el API Gateway y el Edge API como componentes de infraestructura transversal, no bounded contexts de dominio). Los ocho primeros cubren la gestión administrativa del condominio; los tres últimos son los que sobrevivieron el filtro start-with-value dentro del nivel IoT:
 
 | Bounded Context candidato | Responsabilidad principal |
 |---|---|
@@ -40,9 +72,13 @@ En cuanto a la persistencia, el modelo de despliegue actual concentra los datos 
 
 > 📋 **Guía (Statement):** En esta sección, el equipo explica y evidencia el proceso seguido para visualizar cómo deben colaborar los bounded contexts para resolver los casos que se presentan en el negocio para los usuarios del sistema. Para ello debe aplicar la técnica de visualización *Domain Storytelling*. Complemente la explicación con capturas en imágenes de los diagramas de Domain Storytelling elaborados.
 
-> ⚠️ **Pendiente:** falta elaborar los diagramas de Domain Storytelling que pide el statement. Los flujos de colaboración entre contextos se documentan por ahora mediante diagramas de secuencia UML, con foco técnico (Saga Pattern, compensaciones), reformulados en términos de Command → Agregado → Event → Policy donde aplica.
+Para cada caso de negocio que involucra a más de un bounded context, el equipo primero elaboró el **Domain Story** correspondiente (técnica de Domain Storytelling: Actor → Activity numerada → Work Object, atravesando los bounded contexts involucrados) y luego lo complementó con un diagrama de secuencia UML de foco técnico (Saga Pattern, compensaciones), reformulado en términos de Command → Agregado → Event → Policy donde aplica. Los Domain Stories se elaboraron como diagrama-as-code con PlantUML — misma filosofía que el modelo C4/Structurizr de 4.1.3 — y su fuente vive en [`plantuml/domain-storytelling/`](../../plantuml/domain-storytelling/).
 
 **Autenticación de administrador (Command: RegistrarAdministrador / IniciarSesión)**
+
+![Domain Story autenticación administrador](../assets/img/domain-story-auth-admin.png)
+
+*Figura. Domain Story — el Administrador completa el formulario, que atraviesa el API Gateway hasta IAM/Auth, quien crea el Usuario con rol ADMIN y emite el Token JWT que habilita la sesión.*
 
 ![Diagrama de secuencia autenticación administrador](../assets/img/secuencia1.png)
 
@@ -50,11 +86,19 @@ En cuanto a la persistencia, el modelo de despliegue actual concentra los datos 
 
 **Autenticación de residente**
 
+![Domain Story autenticación residente](../assets/img/domain-story-auth-resident.png)
+
+*Figura. Domain Story — a diferencia del administrador, el residente no se autorregistra: el Administrador registra el vínculo residente–unidad en Residential Management, que lo provee a IAM/Auth; recién entonces el Residente puede autenticarse.*
+
 ![Diagrama de secuencia autenticación residente](../assets/img/secuencia2.png)
 
 *Figura. A diferencia del administrador, el residente no se autorregistra: es Residential Management quien crea el vínculo residente–unidad; IAM solo valida credenciales y emite el token.*
 
 **Publicación de comunicados (Command: PublicarComunicado → Event: ComunicadoPublicado → Policy: notificar residentes)**
+
+![Domain Story comunicados](../assets/img/domain-story-comunicados.png)
+
+*Figura. Domain Story — el Administrador publica el Comunicado en Communication, que dispara a Notification la creación y entrega de la Notificación Push al Residente; si el envío falla, queda pendiente de reintento.*
 
 ![Diagrama de secuencia comunicados](../assets/img/secuencia_comunicados.png)
 
@@ -62,17 +106,29 @@ En cuanto a la persistencia, el modelo de despliegue actual concentra los datos 
 
 **Registro y aprobación de pagos (Command: RegistrarPago / AprobarPago → Event: PagoAprobado)**
 
+![Domain Story pagos](../assets/img/domain-story-pagos.png)
+
+*Figura. Domain Story — el Residente registra el Pago en Payment, que lo envía a Culqi; según la confirmación, Payment aprueba y genera el Comprobante (o revierte la deuda) y notifica al Residente.*
+
 ![Diagrama de secuencia gestión de pagos](../assets/img/secuencia_pagos.png)
 
 *Figura. Payment registra el pago en estado PENDIENTE; al aprobarlo, emite el evento PagoAprobado que dispara la policy de notificación al residente. Si la pasarela Culqi falla, la compensación revierte la deuda a PENDIENTE.*
 
 **Reserva y aprobación de áreas comunes (Command: CrearReserva / AprobarReserva → Event: ReservaAprobada)**
 
+![Domain Story reservas](../assets/img/domain-story-reservas.png)
+
+*Figura. Domain Story — el Residente solicita la Reserva, el Administrador la aprueba, y Reservation dispara en paralelo la habilitación del Permiso de Acceso (IoT Access Management) y la notificación al Residente.*
+
 ![Diagrama de secuencia reserva de áreas comunes](../assets/img/secuencia_reservas.png)
 
 *Figura. Reservation valida disponibilidad antes de crear la reserva; al aprobarla, emite ReservaAprobada, que dispara la notificación al residente vía Notification.*
 
 **Generación de reportes financieros (Query, sin Command/Event — solo lectura)**
+
+![Domain Story reportes](../assets/img/domain-story-reportes.png)
+
+*Figura. Domain Story — el Administrador solicita el Reporte Financiero, Report consulta a Payment vía REST, consolida y exporta el reporte de vuelta al Administrador; al ser de solo lectura, no hay Policy ni compensación involucradas.*
 
 ![Diagrama de secuencia reportes](../assets/img/secuencia_reportes.png)
 
@@ -84,13 +140,158 @@ En cuanto a la persistencia, el modelo de despliegue actual concentra los datos 
 >
 > Al momento de la organización o refinamiento de bounded contexts es importante tomar en cuenta que en una plataforma SaaS orientada a negocios de servicio, es común encontrar los siguientes sub-dominios: *Subscriptions and Payment Management*, *Identity and Access Management*, *Profiles and Preferences Management*, *Service Design and Planning*, *Resource and Asset Management*, *Service Execution and Monitoring*, *Dashboard and Analytics*, *Loyalty and Engagement*. Estos posibles sub-dominios pueden identificarse bajo otros nombres según la naturaleza o términos en el ubiquitous language del dominio en el que se enmarca la solución a realizar. Es posible que existan otros sub-dominios core o de soporte que se requiere considerar en el negocio objeto de estudio.
 
-_(pendiente — falta elaborar el Bounded Context Canvas de cada contexto candidato, siguiendo el proceso iterativo de Context Overview Definition, Business Rules Distillation, Capability Analysis, Dependencies Capture y Design Critique)_
+Siguiendo a Nick Tune (*Bounded Context Canvas*, DDD Crew), cada contexto candidato de 4.1.1.1 se elaboró con el proceso iterativo de seis pasos indicado por el enunciado: **(1) Context Overview Definition** (nombre y propósito en una frase), **(2) Business Rules Distillation & Ubiquitous Language Capture** (reglas de negocio que el contexto hace cumplir y términos propios del dominio), **(3) Capability Analysis** (clasificación estratégica: rol de dominio Core/Supporting/Generic, modelo de negocio y estadio de evolución de Wardley), **(4) Capability Layering** (cuando el contexto agrupa más de una capability, se anota la jerarquía), **(5) Dependencies Capture** (comunicación entrante y saliente, con el patrón DDD de 4.1.2), y **(6) Design Critique** (alternativas consideradas y por qué se descartaron).
+
+El orden de elaboración siguió el criterio de importancia pedido por el enunciado: primero los contextos de los que depende toda la plataforma (IAM/Auth, Payment, Residential Management, Reservation), luego los tres contextos IoT que sostienen la propuesta de diferenciación del Capítulo II, y por último los contextos de soporte/genéricos (Communication, Notification, Report, Forum).
+
+**1. IAM / Auth**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Autenticar y autorizar a administradores y residentes, siendo la única fuente de identidad, roles y tokens JWT de la plataforma. |
+| Strategic Classification | Domain Role: **Generic** (autenticación JWT es un problema resuelto en la industria) · Business Model: Compliance Enforcer · Evolution: **Product** (patrón bien entendido; se construyó in-house en vez de adoptar un IDaaS externo como Auth0). |
+| Ubiquitous Language | User, Role (ADMIN / RESIDENT), Credential, JWT, Session. |
+| Business Decisions | Un residente desactivado no puede iniciar sesión · las acciones administrativas exigen rol ADMIN · las contraseñas se almacenan hasheadas y el JWT tiene expiración. |
+| Inbound Communication | **Residential Management** (Customer/Supplier, REST síncrono) — provee el vínculo residente–unidad que autoriza la creación de la cuenta de un residente. |
+| Outbound Communication | Ninguna activa: es un contexto puramente *upstream*; el resto de contextos son **Conformist** de su contrato JWT vía API Gateway. |
+| Model (Aggregates) | `User` (Aggregate Root), `Role` (Value Object). |
+| Design Critique | Se evaluó externalizar a un IDaaS (Auth0/Firebase Auth) para reducir el mantenimiento de hashing/tokens, pero se descartó por el costo recurrente en un SaaS de bajo ticket y porque el modelo de roles (ADMIN/RESIDENT) está fuertemente acoplado al dominio propio de Residential Management. |
+
+**2. Payment**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Registrar deudas y pagos de mantenimiento, y llevar a un residente moroso a un estado que otros contextos (acceso IoT) puedan consultar. |
+| Strategic Classification | Domain Role: **Core** (motor de ingresos del negocio) · Business Model: Revenue Generator · Evolution: **Product** (procesamiento de pagos es un dominio bien entendido; lo diferencial es la integración con Culqi y la propagación de morosidad). |
+| Ubiquitous Language | Debt (Deuda), Payment (Pago), Receipt (Comprobante), Delinquent Resident (Residente Moroso). |
+| Business Decisions | Si el pago es rechazado, la deuda permanece pendiente · un pago aprobado genera constancia y notifica al residente · un residente con deuda vencida se marca moroso y esto restringe su acceso físico (ver IoT Access Management). |
+| Inbound Communication | **Report** (Customer/Supplier, REST síncrono) — consulta datos de Payment para consolidar reportes financieros. |
+| Outbound Communication | **Notification** (Customer/Supplier, evento `PagoAprobado`) · **IoT Access Management** (Customer/Supplier, evento `ResidentMarkedDelinquent`) · **Culqi** (Anti-Corruption Layer — pasarela de pagos externa). |
+| Model (Aggregates) | `Debt` (Entity), `Payment` (Aggregate Root). |
+| Design Critique | Se consideró que Payment abriera directamente el acceso/bloqueo físico del residente moroso, pero se descartó: acoplaría un contexto financiero a reglas de hardware. En su lugar, Payment solo publica el evento y es IoT Access Management quien decide la consecuencia sobre el acceso, manteniendo el Single Responsibility de cada contexto. |
+
+**3. Residential Management**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Ser la fuente de verdad de edificios, unidades y del vínculo entre un residente y su unidad. |
+| Strategic Classification | Domain Role: **Supporting** (necesario, pero no diferenciador) · Business Model: Engagement Creator · Evolution: **Product** (gestión de catálogo/CRUD es un patrón conocido). |
+| Ubiquitous Language | Building (Edificio), Unit (Unidad), Resident-Unit Link (Vínculo Residente–Unidad). |
+| Business Decisions | Un residente solo puede vincularse a una unidad activa · el residente no se autorregistra: es el administrador quien crea el vínculo (ver 4.1.1.2, "Autenticación de residente"). |
+| Inbound Communication | Ninguna: no consume eventos ni llamadas de otros contextos de negocio. |
+| Outbound Communication | **IAM** (Customer/Supplier, REST síncrono) — provee el vínculo residente–unidad que IAM usa para autorizar. |
+| Model (Aggregates) | `Building` (Entity), `Unit` (Entity). |
+| Design Critique | Se evaluó fusionar este contexto con IAM (ambos gestionan "quién es quién"), pero se mantuvo separado porque su ciclo de cambio es distinto: Residential Management cambia cuando cambia el padrón de residentes/unidades, mientras IAM cambia cuando cambian las políticas de autenticación — fusionarlos violaría el criterio de *single responsibility* de DDD. |
+
+**4. Reservation**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Gestionar disponibilidad, solicitud, aprobación y cancelación de áreas comunes, siendo el disparador de la habilitación de acceso físico y de iluminación. |
+| Strategic Classification | Domain Role: **Supporting** · Business Model: Engagement Creator · Evolution: **Product** (los sistemas de booking/disponibilidad son un patrón bien conocido). |
+| Ubiquitous Language | Common Area (Área Común), Reservation (Reserva), Availability (Disponibilidad), Time Window (Ventana Horaria). |
+| Business Decisions | No se puede reservar un área común fuera de sus reglas de uso/horario configuradas · no se permiten reservas duplicadas para la misma ventana horaria. |
+| Inbound Communication | Ninguna: es un contexto *upstream* puro dentro del dominio IoT. |
+| Outbound Communication | **Notification** (Customer/Supplier, evento `ReservaAprobada`) · **IoT Access Management** (Customer/Supplier, evento `ReservationApproved`) · **Smart Lighting & Automation** (Customer/Supplier, evento `ReservationStarted` disparado por un scheduler interno que detecta el inicio de la ventana horaria). |
+| Model (Aggregates) | `CommonArea` (Entity), `Reservation` (Aggregate Root). |
+| Design Critique | Se consideró que Reservation controlara directamente el actuador de acceso/luces al aprobar una reserva, pero se descartó: acoplaría un contexto administrativo a protocolos de hardware (MQTT/Edge). Reservation solo emite el evento de dominio; son los contextos IoT quienes lo traducen a una acción física. |
+
+**5. IoT Access Management**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Decidir y auditar quién puede abrir físicamente un área común, combinando credenciales, reservas vigentes y estado de morosidad. |
+| Strategic Classification | Domain Role: **Core** (pilar de la propuesta de diferenciación IoT del Capítulo II) · Business Model: Revenue Protector / Compliance Enforcer · Evolution: **Custom Built** (la combinación RFID + QR dinámico + reservas + morosidad no es un producto de catálogo). |
+| Ubiquitous Language | Access Credential (Credencial de Acceso), Access Permission (Permiso de Acceso), Access Attempt (Intento de Acceso), Delinquent Resident. |
+| Business Decisions | Una credencial concede acceso solo si está activa, el residente no está moroso y existe un permiso vigente para esa área en ese instante (`AccessDecisionService`, ver 4.2.9.1) · un residente moroso se suspende automáticamente. |
+| Inbound Communication | **Reservation** (Customer/Supplier, evento `ReservationApproved`) · **Payment** (Customer/Supplier, evento `ResidentMarkedDelinquent`). |
+| Outbound Communication | **Notification** (Customer/Supplier, eventos `PhysicalAccessGranted` / `PhysicalAccessDenied`) · **Edge API** (**Conformist** — sincroniza credenciales activas, reservas vigentes y blacklist hacia el gateway on-premise). |
+| Model (Aggregates) | `AccessCredential` (Aggregate Root), `AccessPermission` (Entity), `AccessAttempt` (Entity). |
+| Design Critique | Se evaluó que el Edge API tomara la decisión de acceso de forma autónoma consultando el cloud en cada intento, pero se descartó por latencia y por el requisito de resiliencia offline: la decisión final se cachea en el Edge y solo se sincroniza cuando hay conectividad, de ahí la relación Conformist hacia el Edge en vez de Customer/Supplier síncrona en tiempo real. |
+
+**6. Smart Lighting & Automation**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Encender/apagar luminarias de áreas comunes combinando presencia, lux ambiental, horario de reserva y override manual, priorizando el ahorro energético. |
+| Strategic Classification | Domain Role: **Core** (diferenciador IoT) · Business Model: Cost Reducer (ahorro energético) · Evolution: **Custom Built** (la precedencia entre presencia/lux/reserva/override es una regla propia del negocio, no un producto de catálogo). |
+| Ubiquitous Language | Automation Rule (Regla de Automatización), Luminaire (Luminaria), Override Command (Comando de Override), Lux Threshold (Umbral de Lux). |
+| Business Decisions | Si no hay movimiento por 3 minutos, apagar luces (política capturada en el EventStorm, ver 4.1.1.1) · un override manual suspende temporalmente la automatización con precedencia sobre las reglas programadas. |
+| Inbound Communication | **Reservation** (Customer/Supplier, evento `ReservationStarted`) — el inicio de una reserva dispara el encendido programado del área · **Edge API** (Customer/Supplier, evento `AreaPresenceDetected` relayado desde el sensor PIR del nodo de iluminación, ver 4.2.10.3). |
+| Outbound Communication | **Edge API** (**Conformist** — envía reglas de programación y comandos de override para ejecución local). |
+| Model (Aggregates) | `AutomationRule` (Aggregate Root), `Luminaire` (Entity), `OverrideCommand` (Entity). |
+| Design Critique | Se evaluó ejecutar la lógica de decisión (`AutomationDecisionService`) directamente en el Edge para no depender de la conectividad WAN, pero se optó por mantener la autoría de reglas en el cloud (más fácil de versionar y auditar desde la Web Application) y solo *empujar* las reglas ya resueltas al Edge — el mismo patrón Conformist que IoT Access Management. |
+
+**7. IoT Telemetry & Analytics**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Ingerir telemetría de sensores, calcular consumo energético cuantitativo (kWh) y detectar anomalías de hardware, sosteniendo el requisito de analítica cuantitativa IoT del curso. |
+| Strategic Classification | Domain Role: **Core** (el más diferenciador de los tres contextos IoT: es el único que produce analítica cuantitativa) · Business Model: Decision Support / Cost Reducer · Evolution: **Genesis → Custom Built** (el cálculo de integración temporal de potencia y la detección de anomalías por baseline estadística se diseñaron a medida para este dominio). |
+| Ubiquitous Language | Sensor Reading (Lectura de Sensor), Energy Consumption (Consumo Energético), Consumption Baseline (Línea Base de Consumo), Anomaly Flag (Marca de Anomalía). |
+| Business Decisions | El consumo se calcula por integración temporal de la potencia instantánea (`kWh = Σ(V × I × Δt) / 1000`) · una anomalía se distingue de una falla de luminaria por el patrón de corriente nula con la luminaria comandada en ON (`AnomalyDetectionService`, ver 4.2.11.1). |
+| Inbound Communication | **Edge API** (Customer/Supplier, el Edge es *upstream* de datos) — reenvía la telemetría bufferizada y los registros de auditoría generados offline. |
+| Outbound Communication | **Notification** (eventos `AbnormalConsumptionDetected`, `LuminaireFailureDetected`) · **Report** (Customer/Supplier — aporta las métricas de consumo que Report consolida). |
+| Model (Aggregates) | `EnergyConsumption` (Aggregate Root), `ConsumptionBaseline` (Entity), `AnomalyFlag` (Entity), `SensorReading` (Value Object). |
+| Design Critique | Se consideró persistir la telemetría en la misma instancia PostgreSQL que el resto del dominio, pero se descartó por el perfil de escritura (alta frecuencia) y de consulta (series temporales) incompatible con el transaccional — de ahí la instancia TimescaleDB dedicada (ver 4.1.3.3), la única decisión de persistencia que rompe el patrón "un PostgreSQL para todos" del resto de contextos. |
+
+**8. Communication**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Publicar comunicados oficiales y encuestas de la comunidad hacia los residentes. |
+| Strategic Classification | Domain Role: **Supporting** · Business Model: Engagement Creator · Evolution: **Product** (publicación de anuncios/encuestas es un patrón conocido). |
+| Ubiquitous Language | Announcement (Comunicado), Poll (Encuesta), Reach (Alcance). |
+| Business Decisions | Límite de un mensaje diario por residente (HTTP 429 si se excede) · voto único por encuesta (HTTP 409 si se duplica). |
+| Inbound Communication | Ninguna. |
+| Outbound Communication | **Notification** (Customer/Supplier, evento `ComunicadoPublicado`) · **Cloudinary** (Anti-Corruption Layer — imágenes de comunicados). |
+| Model (Aggregates) | `Announcement` (Entity), `Poll` (Entity). |
+| Design Critique | Se evaluó fusionar Communication con Forum (ambos son "muros" de contenido), pero se mantuvieron separados porque su ubiquitous language y su ciclo de vida difieren: un comunicado es unidireccional y oficial (admin → todos), mientras un post de Forum es conversacional entre pares. |
+
+**9. Notification**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Traducir eventos de dominio de todo el sistema en notificaciones push entregadas al residente o administrador correcto. |
+| Strategic Classification | Domain Role: **Generic** (envío de notificaciones es una capability resuelta por FCM) · Business Model: Engagement Creator · Evolution: **Commodity** (delegada casi por completo a Firebase Cloud Messaging). |
+| Ubiquitous Language | Notification (Notificación), Device Token (Token de Dispositivo). |
+| Business Decisions | Si el envío a FCM falla, la notificación se marca pendiente de reintento sin afectar el estado del contexto que originó el evento (compensación, ver 4.1.1.2). |
+| Inbound Communication | **Communication** (`ComunicadoPublicado`) · **Payment** (`PagoAprobado`) · **Reservation** (`ReservaAprobada`) · **IoT Access Management** (`PhysicalAccessGranted`/`Denied`) · **IoT Telemetry & Analytics** (`AbnormalConsumptionDetected`, `LuminaireFailureDetected`) — todos Customer/Supplier, Notification es downstream puro. |
+| Outbound Communication | **Firebase Cloud Messaging** (Anti-Corruption Layer). |
+| Model (Aggregates) | `Notification` (Entity), `DeviceToken` (Entity). |
+| Design Critique | Al ser el único punto de consumo de eventos de los seis contextos restantes, se evaluó el riesgo de que un fallo en Notification bloqueara el broker para todos; se mitigó con el **Factory Pattern** para desacoplar la creación del tipo de notificación (Push/Email/SMS) de su envío, y con colas de reintento independientes por evento. |
+
+**10. Report**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Consolidar y exportar reportes financieros, de morosidad y de analítica de consumo energético de la comunidad. |
+| Strategic Classification | Domain Role: **Supporting** · Business Model: Decision Support · Evolution: **Product** (generación de reportes PDF/Excel es un patrón conocido). |
+| Ubiquitous Language | Financial Report (Reporte Financiero), Delinquency (Morosidad). |
+| Business Decisions | Contexto mayormente de solo lectura (CQRS): no posee agregados transaccionales propios, solo modelos de lectura. |
+| Inbound Communication | Ninguna. |
+| Outbound Communication | **Payment** (Customer/Supplier, REST síncrono) · **IoT Telemetry & Analytics** (Customer/Supplier — métricas de consumo). |
+| Model (Aggregates) | `FinancialReport` (modelo de lectura, sin Aggregate Root transaccional). |
+| Design Critique | Se evaluó que Report consumiera eventos de Payment de forma asíncrona (event sourcing de proyecciones) en vez de consultarlo vía REST síncrono, lo que reduciría el acoplamiento temporal; se descartó por ahora dado el volumen de datos y el timebox del proyecto, dejándolo como una mejora futura explícita. |
+
+**11. Forum**
+
+| Campo | Detalle |
+|---|---|
+| Purpose | Sostener el muro comunitario de mensajes entre residentes de un mismo edificio. |
+| Strategic Classification | Domain Role: **Generic** · Business Model: Engagement Creator · Evolution: **Commodity** (patrón de muro/foro ampliamente disponible). |
+| Ubiquitous Language | Post (Publicación), Wall (Muro). |
+| Business Decisions | Límite de publicaciones diarias por residente (HTTP 429 si se excede). |
+| Inbound Communication | Ninguna. |
+| Outbound Communication | **Cloudinary** (Anti-Corruption Layer — imágenes de publicaciones del foro). |
+| Model (Aggregates) | `Post` (Entity). |
+| Design Critique | Es el contexto de menor prioridad estratégica de los 11 (Domain Role Generic, Evolution Commodity); se evaluó no construirlo como microservicio independiente y anexarlo a Communication, pero se mantuvo separado porque su Ubiquitous Language y su patrón de acceso (conversacional, muchos-a-muchos) son distintos a los de un comunicado oficial (uno-a-muchos), y porque así puede escalar o degradarse independientemente sin afectar la publicación de comunicados oficiales. |
 
 ### 4.1.2. Context Mapping
 
 > 📋 **Guía (Statement):** En esta sección el equipo explica y evidencia el proceso de elaboración de un conjunto de context maps (visualizaciones de las relaciones estructurales entre bounded contexts). Para ello el equipo revisa información recolectada y la utiliza para producir los diseños candidatos. Se recomienda en el proceso incluir preguntas como: "¿qué pasaría si movemos este capability a otro bounded context?", "¿qué pasaría si descomponemos este capability y movemos uno de los sub-capabilities a otro bounded context?", "¿qué pasaría si partimos el bounded context en múltiples bounded contexts?", "¿qué pasaría si tomamos este capability de estos 3 contexts y lo usamos para formar un nuevo context?", "¿qué pasaría si duplicamos una funcionalidad para romper la dependencia?", "¿qué pasaría si creamos un shared service para reducir la duplicación entre múltiples bounded contexts?", "¿qué pasaría si aislamos los core capabilities y movemos los otros a un context aparte?". Debe finalizar este proceso discutiendo cada alternativa de context mapping a fin de llegar a la mejor aproximación. Es importante que el equipo considere los patrones de relaciones entre Bounded Contexts establecidos en Domain-Driven Design, como *Anti-corruption Layer, Conformist, Customer/Supplier ó Shared Kernel*.
 
-> ⚠️ **Pendiente:** el context map documenta las relaciones estructurales entre contextos derivadas de los flujos de colaboración de 4.1.1.2 y del modelo de arquitectura ([`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl)), con una primera clasificación según los patrones de relación de DDD. Falta la discusión de alternativas de context mapping (mover, descomponer, fusionar o duplicar capabilities) que pide el statement.
+El context map documenta las relaciones estructurales entre contextos derivadas de los flujos de colaboración de 4.1.1.2 y del modelo de arquitectura ([`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl)); la clasificación según los patrones de relación de DDD que se lista en la tabla quedó validada por la discusión de alternativas que cierra esta sección y por el campo *Design Critique* de cada Bounded Context Canvas (4.1.1.3).
 
 El nivel IoT introduce un patrón de relación característico de este tipo de soluciones: el **Conformist**. El Edge API y el firmware de los dispositivos no negocian su modelo con los contextos cloud —consumen el contrato de credenciales, reglas y comandos tal como lo define el nivel cloud— porque duplicar o traducir ese modelo en un dispositivo con recursos limitados no se justifica. La relación inversa (telemetría y auditoría que suben del edge al cloud) sí es Customer/Supplier: el edge es el productor del dato y los contextos cloud lo consumen.
 
@@ -111,8 +312,25 @@ El nivel IoT introduce un patrón de relación característico de este tipo de s
 | IoT Access Management | Edge API | Sincroniza credenciales activas, reservas vigentes y blacklist hacia el gateway on-premise. | Conformist (el Edge conforma el modelo definido en el cloud) |
 | Smart Lighting & Automation | Edge API | Envía las reglas de automatización y los comandos de override manual. | Conformist |
 | Edge API | IoT Telemetry & Analytics | Reenvía la telemetría bufferizada y los registros de auditoría generados durante la operación offline. | Customer/Supplier (el Edge es upstream de datos) |
+| Edge API | Smart Lighting & Automation | Relaya el evento `AreaPresenceDetected` apenas recibe la lectura del sensor PIR, priorizando latencia de encendido sobre interpretación de dominio. | Customer/Supplier (el Edge es upstream de datos, ver 4.2.10.3) |
 | Dispositivos embebidos (ESP32) | Edge API | Intercambio local MQTT de lecturas y comandos; el firmware se adapta al contrato del Edge API. | Conformist (infraestructura física, no bounded context de dominio) |
 | API Gateway | Todos los contextos | Enrutamiento y validación de JWT (infraestructura transversal, no bounded context de dominio). | — |
+
+**Discusión de alternativas de context mapping**
+
+Sobre el mapa anterior, el equipo evaluó explícitamente las preguntas de diseño sugeridas por el enunciado. La tabla siguiente resume los casos donde la respuesta no era obvia, la alternativa considerada y la decisión final:
+
+| Pregunta de diseño | Alternativa evaluada | Decisión final y razón |
+|---|---|---|
+| ¿Qué pasaría si **movemos** este capability a otro contexto? | Mover la decisión de acceso (`AccessDecisionService`) del cloud (IoT Access Management) al Edge API, para que abra la puerta sin ida y vuelta al cloud. | **Se descarta mover el contexto completo**, pero sí se replica su *resultado* (credenciales/permisos ya resueltos) en el Edge vía sincronización — el Edge cachea la decisión, no la recalcula. Mantiene a IoT Access Management como única fuente de verdad y evita que la regla de negocio (moroso → sin acceso) viva en dos lugares. |
+| ¿Qué pasaría si **descomponemos** el capability y movemos un sub-capability a otro contexto? | Separar la emisión/gestión de credenciales RFID/QR de la decisión de acceso en tiempo real, creando un contexto "Credential Management" aparte de "Access Decision". | **Se descarta**: ambos sub-capabilities comparten el mismo Aggregate (`AccessCredential`) y el mismo invariante (una credencial suspendida no debe poder decidir un acceso), partirlos forzaría una transacción distribuida para algo que hoy es una operación local. |
+| ¿Qué pasaría si **partimos** el bounded context en varios? | Partir Payment en "Billing" (deudas/cuotas) y "Payment Processing" (cobro/Culqi) como dos contextos independientes. | **Se descarta para el alcance actual**: el volumen de reglas de negocio no justifica el costo de coordinación entre dos contextos: la Saga de aprobación (4.1.1.2) necesita ambas responsabilidades en la misma transacción local. Queda anotado como refactor natural si el dominio de facturación creciera (ej. múltiples pasarelas de pago). |
+| ¿Qué pasaría si **tomamos capabilities de 3 contexts** para formar uno nuevo? | Extraer la lógica de "generar alerta" que hoy vive de forma repetida en IoT Access Management, Smart Lighting y IoT Telemetry, y consolidarla en un contexto nuevo. | **Ya resuelto por diseño**: ese contexto nuevo es exactamente **Notification** — los tres contextos IoT solo publican el evento de dominio (`PhysicalAccessDenied`, `AbnormalConsumptionDetected`, etc.) y es Notification quien concentra el *Factory Pattern* de creación de la alerta (push/email/SMS), evitando triplicar esa lógica. |
+| ¿Qué pasaría si **duplicamos** una funcionalidad para romper una dependencia? | Que Report mantenga su propia copia denormalizada de pagos/deudas (vía eventos) en lugar de consultar a Payment por REST síncrono. | **Se descarta por ahora** (queda como Design Critique de Report en 4.1.1.3): el volumen de datos y el timebox del proyecto no justifican construir un pipeline de proyecciones; se acepta el acoplamiento síncrono Report → Payment sabiendo que es la única lectura cross-context sin desacoplar del informe. |
+| ¿Qué pasaría si creamos un **shared service** para reducir duplicación? | Un servicio compartido de "estado de morosidad" consultado tanto por IoT Access Management como por futuras integraciones (ej. bloqueo de reservas a morosos). | **Se descarta un servicio nuevo**: Payment ya es la fuente de verdad y publica `ResidentMarkedDelinquent`; crear un shared service solo agregaría un salto de red adicional sin nueva capability. Se prefiere que cada contexto interesado se suscriba al evento (Customer/Supplier) en vez de introducir un Shared Kernel. |
+| ¿Qué pasaría si **aislamos los core capabilities** y movemos el resto a un contexto aparte? | Separar `EnergyCalculationService`/`AnomalyDetectionService` (core, diferenciador) de la ingesta cruda de telemetría (`TelemetryIngestionService`, más genérica) en dos contextos. | **Se descarta dividir en dos microservicios** por el timebox del curso, pero sí se aisló en capas dentro del mismo contexto (Domain Service vs. Application Service, ver 4.2.11): si el volumen de sensores creciera, la ingesta cruda es la primera candidata a externalizarse hacia una plataforma IoT genérica (ej. AWS IoT Core), dejando el cálculo de energía y la detección de anomalías —el verdadero valor de negocio— en el contexto propio. |
+
+Ninguna de las siete preguntas llevó a mover una línea del context map de la tabla anterior; el resultado de la discusión fue, en todos los casos, una confirmación explícita del diseño existente (o una nota de refactor futuro), no un cambio de alcance.
 
 ### 4.1.3. Software Architecture
 
@@ -277,7 +495,7 @@ Este mismo diagrama se referencia en 6.1.4 como Deployment Diagram del capítulo
 
 > 📋 **Guía (Statement):** En esta sección, el equipo presenta las clases identificadas y las detalla a manera de diccionario, explicando para cada una su nombre, propósito y la documentación de atributos y métodos considerados, junto con las relaciones entre ellas. **4.2.X.1. Domain Layer:** *Entities*, *Value Objects*, *Aggregates*, *Factories*, *Domain Services*, o interfaces de *Repositories*. **4.2.X.2. Interface Layer:** clases *Controllers* o *Consumers*. **4.2.X.3. Application Layer:** *Command Handlers* e *Event Handlers*. **4.2.X.4. Infrastructure Layer:** implementación de *Repositories*, acceso a *databases*/*messaging systems*/*email services*. **4.2.X.5. Component Level Diagrams:** descomposición C4 de cada container. **4.2.X.6. Code Level Diagrams:** *.6.1 Domain Layer Class Diagrams* (UML con atributos, métodos, scope, multiplicidad) y *.6.2 Database Design Diagram* (tablas, columnas, constraints).
 
-> ⚠️ **Pendiente:** cada bounded context se documenta a continuación separando Domain, Interface, Application e Infrastructure Layer, con las clases listadas por nombre e intención. Falta completar el diccionario de clases con atributos, métodos y multiplicidad exactos que pide el statement.
+Cada bounded context se documenta a continuación separando Domain, Interface, Application e Infrastructure Layer. La subsección 4.2.X.1–4.2.X.4 da el diccionario en prosa (nombre, propósito e intención de cada clase, con sus atributos y relaciones principales); el detalle exacto de atributos tipados, métodos, *scope* y multiplicidad que pide el statement para el nivel de código vive en el Class Diagram UML de 4.2.X.6.1 de cada contexto (los 11 contextos ya cuentan con el suyo, ver 4.2.1–4.2.11) — evitando así transcribir en texto plano el mismo detalle que el diagrama ya expresa formalmente.
 
 ### 4.2.1. Bounded Context: IAM / Auth
 # 4.2.1.1. Domain Layer
@@ -746,17 +964,25 @@ Implementación JPA de los repositorios sobre PostgreSQL; `EdgeGatewaySyncClient
 
 #### 4.2.9.5. Bounded Context Software Architecture Component Level Diagrams
 
-_(pendiente — falta generar la vista de componentes de este microservicio en Structurizr; el modelo actual llega hasta nivel de container)_
+![Componentes IoT Access Management](../assets/img/ComponentView_Access_Service.png)
+
+*Figura. Diagrama de Componentes — IoT Access Management Service. Elaborado utilizando Structurizr (Structurizr, s.f.). Fuente en [`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl).*
 
 #### 4.2.9.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.9.6.1. Bounded Context Domain Layer Class Diagrams
 
-_(pendiente — falta elaborar el class diagram del Domain Layer de este contexto)_
+![Clases IoT Access Management](../assets/img/access-management-class.png)
+
+*Figura. Diagrama de Clases — IoT Access Management. Elaborado con PlantUML; fuente en [`plantuml/class-diagrams/access-management-class.puml`](../../plantuml/class-diagrams/access-management-class.puml).*
 
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
-_(pendiente — falta incorporar al diagrama entidad-relación consolidado las tablas de credenciales, permisos y bitácora de accesos)_
+> ⚠️ **Nota:** las tablas de este contexto persisten en PostgreSQL (igual que el resto de contextos de gestión), pero se documentan en un ERD complementario en vez de en el ERD consolidado de 4.2.1.6.2 — ver nota en 4.2.11.6.2.
+
+![ERD extensión IoT](../assets/img/iot-erd-extension.png)
+
+*Figura. Diagrama Entidad-Relación — extensión IoT (`access_credentials`, `access_permissions`, `access_attempts`). Elaborado con PlantUML; fuente en [`plantuml/database/iot-erd-extension.puml`](../../plantuml/database/iot-erd-extension.puml).*
 
 ### 4.2.10. Bounded Context: Smart Lighting & Automation
 
@@ -772,7 +998,10 @@ _(pendiente — falta incorporar al diagrama entidad-relación consolidado las t
 
 `AutomationRuleCommandService`, `OverrideCommandService` (aplica el override y programa su expiración), `LightingQueryService`. Event Handlers: `AreaPresenceDetectedEventHandler` —enciende según la regla vigente cuando se detecta presencia y el lux ambiental está por debajo del umbral— y `ReservationStartedEventHandler` —enciende de forma programada el área al iniciar la reserva—. Publica `LuminaireTurnedOn`, `LuminaireTurnedOff` y `OverrideTriggered`.
 
-> ⚠️ **Pendiente de cierre en el modelo:** los eventos `AreaPresenceDetected` y `ReservationStarted` que consume este contexto todavía no tienen un publicador declarado en [`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl) (Reservation publica `ReservationCreated`, `ReservationCancelled` y `ReservationApproved`). Debe definirse si la presencia la publica el Edge API al reenviar la lectura del PIR o el contexto de Telemetry tras procesarla, y agregar el evento de inicio de reserva en Reservation.
+Los dos eventos consumidos por este contexto se cerraron de la siguiente forma en [`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl):
+
+- **`AreaPresenceDetected`** lo publica el **Edge API**, no Telemetry: el Edge reenvía la lectura cruda del sensor PIR del nodo de iluminación como evento tan pronto la recibe por MQTT local, priorizando la latencia de encendido sobre la interpretación de dominio (que sí aplica Telemetry para sus propios fines analíticos, ver 4.2.11, pero por una ruta de datos separada).
+- **`ReservationStarted`** lo publica **Reservation**, mediante un scheduler interno que revisa periódicamente las reservas cuya ventana horaria acaba de comenzar — se mantiene toda la lógica de reservas en un único contexto en vez de que Smart Lighting consulte el calendario de Reservation por su cuenta.
 
 #### 4.2.10.4. Infrastructure Layer
 
@@ -780,17 +1009,21 @@ Implementación JPA de los repositorios sobre PostgreSQL; `EdgeCommandPublisher`
 
 #### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
 
-_(pendiente — falta generar la vista de componentes de este microservicio en Structurizr)_
+![Componentes Smart Lighting & Automation](../assets/img/ComponentView_Lighting_Service.png)
+
+*Figura. Diagrama de Componentes — Smart Lighting & Automation Service. Elaborado utilizando Structurizr (Structurizr, s.f.). Fuente en [`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl).*
 
 #### 4.2.10.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.10.6.1. Bounded Context Domain Layer Class Diagrams
 
-_(pendiente — falta elaborar el class diagram del Domain Layer de este contexto)_
+![Clases Smart Lighting & Automation](../assets/img/lighting-automation-class.png)
+
+*Figura. Diagrama de Clases — Smart Lighting & Automation. Elaborado con PlantUML; fuente en [`plantuml/class-diagrams/lighting-automation-class.puml`](../../plantuml/class-diagrams/lighting-automation-class.puml).*
 
 ##### 4.2.10.6.2. Bounded Context Database Design Diagram
 
-_(pendiente — faltan en el ERD consolidado las tablas de reglas de automatización, luminarias y overrides)_
+> ⚠️ **Nota:** ver la misma figura y nota de ERD complementario de 4.2.9.6.2 — `automation_rules`, `luminaires` y `override_commands` son las tablas de este contexto dentro de ese mismo diagrama (persisten en PostgreSQL).
 
 ### 4.2.11. Bounded Context: IoT Telemetry & Analytics
 
@@ -814,14 +1047,22 @@ Implementación del repositorio de series sobre **TimescaleDB** —hypertables p
 
 #### 4.2.11.5. Bounded Context Software Architecture Component Level Diagrams
 
-_(pendiente — falta generar la vista de componentes de este microservicio en Structurizr)_
+![Componentes IoT Telemetry & Analytics](../assets/img/ComponentView_Telemetry_Service.png)
+
+*Figura. Diagrama de Componentes — IoT Telemetry & Analytics Service. Elaborado utilizando Structurizr (Structurizr, s.f.). Fuente en [`arquitectura/diagrama.dsl`](../../arquitectura/diagrama.dsl).*
 
 #### 4.2.11.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.11.6.1. Bounded Context Domain Layer Class Diagrams
 
-_(pendiente — falta elaborar el class diagram del Domain Layer de este contexto)_
+![Clases IoT Telemetry & Analytics](../assets/img/telemetry-analytics-class.png)
+
+*Figura. Diagrama de Clases — IoT Telemetry & Analytics. Elaborado con PlantUML; fuente en [`plantuml/class-diagrams/telemetry-analytics-class.puml`](../../plantuml/class-diagrams/telemetry-analytics-class.puml).*
 
 ##### 4.2.11.6.2. Bounded Context Database Design Diagram
 
-_(pendiente — falta el diseño de las hypertables de telemetría y de las tablas de baselines y anomalías; por su naturaleza de series temporales no forman parte del ERD relacional consolidado)_
+Por su naturaleza de series temporales, las tablas de este contexto (`sensor_readings` como hypertable, más `energy_consumption`, `consumption_baselines` y `anomaly_flags`) no forman parte del ERD relacional consolidado de 4.2.1.6.2 (LucidChart, solo PostgreSQL). Se documentan en el mismo ERD complementario de 4.2.9.6.2, separadas en su propio paquete TimescaleDB:
+
+![ERD extensión IoT](../assets/img/iot-erd-extension.png)
+
+*Figura. Diagrama Entidad-Relación — extensión IoT, paquete TimescaleDB (`sensor_readings`, `energy_consumption`, `consumption_baselines`, `anomaly_flags`). Elaborado con PlantUML; fuente en [`plantuml/database/iot-erd-extension.puml`](../../plantuml/database/iot-erd-extension.puml).*

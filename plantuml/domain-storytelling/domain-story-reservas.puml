@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+skinparam backgroundColor white
+skinparam ArrowColor #333333
+skinparam ArrowFontColor #111111
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  RoundCorner 18
+}
+skinparam actorStyle awesome
+
+actor "Residente" as Res #08427b
+actor "Administrador" as Admin #08427b
+rectangle "Reservation" as Resv #1e40af
+rectangle "IoT Access\nManagement" as Access #16a34a
+rectangle "Notification" as Notif #1e40af
+rectangle "Reserva" as Reserva #f59e0b
+rectangle "Permiso de Acceso" as Permiso #f59e0b
+rectangle "Notificación" as Notificacion #f59e0b
+
+Res -> Reserva : "1. solicita"
+Reserva -> Resv : "2. valida disponibilidad\ny persiste"
+Admin -> Reserva : "3. aprueba"
+Resv -> Access : "4. emite evento\nReservationApproved"
+Access -> Permiso : "5. habilita"
+Resv -> Notif : "6. emite evento\nReservaAprobada"
+Notif -> Notificacion : "7. crea"
+Notificacion -> Res : "8. entrega"
+
+legend right
+  |= Color |= Elemento |
+  |<#08427b>| Actor |
+  |<#1e40af>| Bounded Context |
+  |<#16a34a>| Bounded Context IoT |
+  |<#f59e0b>| Work Object |
+endlegend
+
+title Domain Story — Reserva y aprobación de áreas comunes
+@enduml
