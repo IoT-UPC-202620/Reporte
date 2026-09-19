@@ -280,22 +280,135 @@ Este mismo diagrama se referencia en 6.1.4 como Deployment Diagram del capítulo
 > ⚠️ **Pendiente:** cada bounded context se documenta a continuación separando Domain, Interface, Application e Infrastructure Layer, con las clases listadas por nombre e intención. Falta completar el diccionario de clases con atributos, métodos y multiplicidad exactos que pide el statement.
 
 ### 4.2.1. Bounded Context: IAM / Auth
+# 4.2.1.1. Domain Layer
 
-#### 4.2.1.1. Domain Layer
+El Domain Layer del bounded context IAM/Auth concentra la lógica de negocio relacionada con la identidad, autenticación y autorización de los usuarios dentro de EDIFIKA. Este contexto se encarga de que cada usuario pueda registrarse, autenticarse y mantener una sesión activa mediante tokens, resguardando en todo momento la unicidad de las credenciales y la correcta asignación de roles.
 
-`User` (Entity: email, password, fullName, phone, documentType, documentNumber, status), `Role` (Entity/Value Object: ADMIN, RESIDENT), interfaz `UserRepository` / `RoleRepository`.
+El agregado principal identificado es:
+
+**User**: concentra los datos y el comportamiento asociado a un usuario del sistema —credenciales, correo, estado de cuenta y rol— y es responsable de aplicar reglas como la validez de la contraseña o la coherencia entre el usuario y su rol.
+
+La validación de reglas de negocio del contexto se apoya en un Domain Service, el **UserDomainService**, que centraliza comprobaciones como la unicidad del correo electrónico antes de registrar o autenticar una cuenta.
+
+## Aggregate: UserAggregate
+Representa a un usuario dado de alta en la plataforma, junto con su rol, estado y credenciales de acceso. Es responsable de sus propias transiciones de estado (activar, desactivar, cambiar contraseña).
+
+### Entity: User
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| idUser | Long | Identificador único del usuario. |
+| idRol | RolId | Referencia al rol asignado al usuario. |
+| user | String | Nombre de usuario utilizado para el acceso. |
+| passwordHash | String | Hash de la contraseña, nunca almacenado en texto plano. |
+| email | String | Correo electrónico del usuario. |
+| status | UserStatus | Estado actual de la cuenta. |
+| telefono | String | Número de contacto del usuario. |
+
+### Entity: UserRol
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| idRole | Long | Identificador único del rol. |
+| role | String | Nombre del rol (Administrador, Residente, Junta Directiva, etc.). |
+
+## ValueObject: Email
+Encapsula y valida la estructura del correo electrónico antes de asociarlo a una cuenta de usuario.
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| value | String | Dirección de correo electrónico. |
+
+## ValueObject: PasswordHash
+Protege la contraseña del usuario asegurando que solo su forma hasheada circule dentro del dominio.
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| hash | String | Valor resultante del hashing de la contraseña. |
+
+## ValueObject: JwtToken
+Representa la sesión activa de un usuario autenticado, junto con su vigencia.
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| token | String | Cadena del token JWT emitido. |
+| expiresAt | DateTime | Momento en que el token deja de ser válido. |
+
+## Enumeration
+
+| Enumeración | Valores |
+|---|---|
+| UserStatus | ACTIVO, INACTIVO, BLOQUEADO |
+
+## Domain Services
+
+| Nombre | Responsabilidad | Reglas aplicadas y métodos |
+|---|---|---|
+| UserDomainService | Validar las reglas de negocio de usuarios y roles antes de persistir o autenticar una cuenta. | - El correo electrónico debe ser único en todo el sistema.<br>- Las credenciales deben cumplir el formato mínimo de seguridad.<br>- Todo usuario debe tener un rol válido asignado.<br>- Método: `validateUserRules(user)`. |
+
 
 #### 4.2.1.2. Interface Layer
 
-`AuthenticationController` (sign-up, sign-in), `UserController` (CRUD de usuarios), `RolesController` (consulta de roles).
+Esta capa expone el bounded context al exterior, recibiendo las solicitudes HTTP provenientes del API Gateway y traduciéndolas en comandos hacia la Application Layer.
+
+**AuthController** *(REST Controller)*
+
+Punto de entrada del microservicio de autenticación. Recibe las peticiones de login, registro y validación de sesión desde el API Gateway, valida el formato de entrada (DTOs) y delega la lógica al `AuthApplicationService`.
+
+| Método | Firma | Descripción |
+|---|---|---|
+| `login` | `login(request: LoginRequest): ResponseEntity<TokenResponse>` | Recibe credenciales y devuelve un JWT si son válidas. |
+| `register` | `register(request: RegisterRequest): ResponseEntity<UserResponse>` | Registra un nuevo usuario en el sistema. |
+| `validateSession` | `validateSession(token: String): ResponseEntity<Boolean>` | Verifica si un token de sesión sigue siendo válido. |
+
+El `AuthController` no contiene lógica de negocio: su responsabilidad es exclusivamente recibir, validar el formato de la solicitud y delegar.
+
 
 #### 4.2.1.3. Application Layer
 
-`UserCommandServiceImpl` / `UserQueryServiceImpl`, `RoleCommandServiceImpl` — generación y validación del token JWT tras autenticar.
+Esta capa coordina los flujos de negocio del bounded context IAM/Auth, sin definir reglas propias, apoyándose en las entidades y servicios del Domain Layer.
+
+Se emplea un Command Handler para procesar las acciones explícitas que un usuario solicita —iniciar sesión o registrarse— y un servicio de soporte encargado de la emisión y verificación de tokens.
+
+Clases principales:
+
+- **AuthApplicationService**: orquesta los comandos de login y registro de usuarios.
+- **TokenService**: gestiona la generación y validación de tokens JWT una vez completada la autenticación.
+
+## Auth Command Handler
+
+| Capability | Command Handler | Descripción |
+|---|---|---|
+| Iniciar sesión | AuthApplicationService.handle(LoginCommand) | Verifica las credenciales del usuario y emite un token JWT. |
+| Registrar usuario | AuthApplicationService.handle(RegisterCommand) | Aplica las reglas de negocio y crea la cuenta del nuevo usuario. |
+
+## Token Service
+
+| Capability | Método | Descripción |
+|---|---|---|
+| Generar token | generateToken(user) | Construye y firma un JWT a partir de los datos del usuario autenticado. |
+| Validar token | validateToken(token) | Comprueba la firma y el tiempo de vigencia de un token recibido. |
+
 
 #### 4.2.1.4. Infrastructure Layer
 
-Implementación JPA de `UserRepository` sobre PostgreSQL; proveedor de tokens JWT.
+Esta capa implementa el acceso a los recursos externos que el bounded context necesita para operar, garantizando la persistencia de los datos conforme a los contratos definidos en el Domain Layer.
+
+La clase principal de esta capa es:
+
+**UserRepositoryImpl**: implementación concreta de la interfaz `UserRepository`. Gestiona el ciclo de vida de los usuarios en la base de datos —guardar, buscar y verificar credenciales— e incorpora validaciones adicionales para evitar registros duplicados de correo antes de crear una cuenta nueva.
+
+## Repositories
+
+### UserRepository
+
+| Método | Descripción |
+|---|---|
+| save(User user) | Guarda un nuevo usuario o actualiza uno ya existente. |
+| findById(Long id) | Recupera un usuario a partir de su identificador único. |
+| findByEmail(String email) | Recupera un usuario a partir de su correo electrónico. |
+| existsByEmail(String email) | Verifica si ya existe una cuenta registrada con ese correo. |
+
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -305,9 +418,9 @@ Implementación JPA de `UserRepository` sobre PostgreSQL; proveedor de tokens JW
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
-##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+En esta sección se presenta el nivel de mayor detalle de implementación del bounded context IAM/Auth, correspondiente al cuarto nivel del C4 Model: el Code diagram. A diferencia de los niveles de Context, Container y Component, este nivel se representa mediante un diagrama de clases UML, ya que detalla la estructura interna de las clases del Domain Layer: sus atributos, métodos, visibilidad y las relaciones con su respectiva multiplicidad. A continuación se desglosa en dos apartados: el diagrama de clases del dominio y el diagrama de diseño de base de datos.
 
-Este contexto cuenta con el class diagram desagregado por capa:
+##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
 ![Clases IAM — vista general](../assets/img/iam-auth.png)
 
@@ -323,7 +436,11 @@ Este contexto cuenta con el class diagram desagregado por capa:
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
-> ⚠️ **Nota:** el diseño de base de datos se documenta en un único diagrama entidad-relación consolidado, que se referencia en su totalidad desde cada bounded context.
+El modelo entidad-relación del bounded context IAM/Auth está compuesto por las tablas **UserRol** y **User**. UserRol almacena los distintos roles disponibles en la plataforma (Administrador, Residente, Junta Directiva, entre otros), mientras que User contiene los datos de cada cuenta registrada —credenciales, correo, estado y teléfono— junto con la referencia al rol que le corresponde.
+
+La relación entre ambas tablas es `UserRol (1) —— (N) User`: un rol puede asignarse a múltiples usuarios, pero cada usuario posee un único rol activo, reforzado por una llave foránea obligatoria (`id_rol`).
+
+El resto de tablas del modelo de EDIFIKA (Payments, Reservations, Forum, Notifications, etc.) hacen referencia a `User.id_user`, pero corresponden a otros bounded contexts del sistema y no forman parte de este diagrama.
 
 ![ERD consolidado](../assets/img/Edifika_ERD_2.png)
 
