@@ -56,9 +56,6 @@ echo "==> Armando documento combinado ($COMBINED_MD)..."
     printf -- '---\n'
     printf 'title: "Informe de Trabajo Final — 1ASI0572 Desarrollo de Soluciones IoT"\n'
     printf 'lang: es-ES\n'
-    printf 'toc: true\n'
-    printf 'toc-own-page: true\n'
-    printf 'toc-depth: 3\n'
     printf 'colorlinks: true\n'
     printf 'linkcolor: blue\n'
     printf -- '---\n'
@@ -71,10 +68,24 @@ echo "==> Armando documento combinado ($COMBINED_MD)..."
 # sin tener que reescribir ningun enlace al concatenar los .md.
 RESOURCE_PATH="."
 FIRST=true
+
+# Segun el statement, el Contenido (tabla de contenidos) va despues de
+# Collaboration Insights y antes de Student Outcome. No se usa "toc: true" de
+# Eisvogel porque siempre lo pone al inicio del documento, antes de la
+# caratula; en su lugar se inserta \tableofcontents justo antes de la primera
+# seccion de 03-student-outcome (profundidad 3, como antes).
+TOC_BEFORE="/03-student-outcome/"
+TOC_DONE=false
+
 for f in "${SOURCE_FILES[@]}"; do
     dir="$(dirname "${f#$ROOT_DIR/}")"
     if [[ ":$RESOURCE_PATH:" != *":$dir:"* ]]; then
         RESOURCE_PATH="$RESOURCE_PATH:$dir"
+    fi
+
+    if [[ "$TOC_DONE" == false && "$f" == *"$TOC_BEFORE"* ]]; then
+        printf '\n```{=latex}\n\\newpage\n\\renewcommand*\\contentsname{Contenido}\n\\setcounter{tocdepth}{3}\n\\tableofcontents\n```\n\n' >> "$COMBINED_MD"
+        TOC_DONE=true
     fi
 
     if [[ "$FIRST" == false ]]; then
@@ -87,6 +98,11 @@ for f in "${SOURCE_FILES[@]}"; do
     cat "$f" >> "$COMBINED_MD"
     printf '\n' >> "$COMBINED_MD"
 done
+
+if [[ "$TOC_DONE" == false ]]; then
+    echo "error: no se encontro ninguna seccion en $TOC_BEFORE; el Contenido no se insertaria." >&2
+    exit 1
+fi
 
 echo "==> Secciones incluidas (${#SOURCE_FILES[@]}):"
 printf '    %s\n' "${SOURCE_FILES[@]#$ROOT_DIR/}"
@@ -109,6 +125,7 @@ MSYS_NO_PATHCONV=1 docker run --rm \
     -w /data \
     "$IMAGE_NAME" \
     --from=gfm+raw_attribute \
+    --lua-filter=pdf/html-blocks.lua \
     --lua-filter=pdf/fix-table-widths.lua \
     --variable=tables=true \
     --resource-path="$RESOURCE_PATH" \

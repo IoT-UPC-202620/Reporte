@@ -44,8 +44,13 @@ local function add_cell_borders(latex, ncols)
   -- cierre pasa a ser la linea vertical derecha.
   latex = latex:gsub('\\begin{longtable}%[%]{@{}', '\\begin{longtable}[]{')
   latex = latex:gsub('@{}}\n', '|}\n')
-  -- Un \hline despues de cada fila (encabezado incluido).
+  -- Un \hline despues de cada fila (encabezado incluido). Un "<br><br>" dentro
+  -- de una celda tambien deja un "\strut \\" a fin de linea, que no es fin de
+  -- fila: se protege antes de insertar los \hline y se restituye despues, o
+  -- LaTeX falla con "Misplaced \noalign".
+  latex = latex:gsub('\\strut \\\\\n', '\\strut @CELL_BREAK@\n')
   latex = latex:gsub(' \\\\\n', ' \\\\ \\hline\n')
+  latex = latex:gsub('@CELL_BREAK@', '\\\\')
   -- La linea superior de booktabs pasa a ser el borde superior; las otras dos
   -- sobran porque cada fila ya cierra con su propio \hline.
   latex = latex:gsub('\\toprule\\noalign{}', '\\hline')

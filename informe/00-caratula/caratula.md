@@ -4,20 +4,21 @@
 </p>
 
 
-![Logo de la Universidad](../assets/img/upc_logo.png)
+<p align="center">
+  <img src="../assets/img/upc_logo.png" alt="Logo de la Universidad" width="130">
+</p>
 
 <p align="center">
   1ASI0572<br>
   Desarrollo de Soluciones IOT <br> <br>
   <strong>NRC</strong> <br>
-   <br> <br>  
+  8740 <br> <br>
   Informe de Trabajo Final <br> <br>
   <strong>Docente</strong><br>
   Verla Olivera, David Carlos <br><br>
   <strong>Proyecto</strong><br>
-  Startup: <br><br>
-  
-  
+  Startup: Condomia <br>
+  Producto: Edifika
 </p>
 
 <br>
@@ -27,38 +28,26 @@
 <table align="center">
   <thead>
     <tr>
-      <th>Integrante</th>
+      <th>Apellidos y Nombres</th>
       <th>Código</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Gabriel Perez Tuesta</td>
+      <td>Acuña Corahua, Jonatan Ariel</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Ortiz Cardenas, Johanna Antuanete</td>
+      <td>U202310358</td>
+    </tr>
+    <tr>
+      <td>Perez Tuesta, Gabriel</td>
       <td>U202321281</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
+      <td>Sarmiento Medina, Loreley</td>
+      <td>U202310005</td>
     </tr>
   </tbody>
 </table>
@@ -66,8 +55,9 @@
 <br><br>
 <p align="center">
   <strong>Periodo 202620</strong> <br>
+  <strong>Septiembre 2026</strong> <br>
   <strong>URL del proyecto:</strong>
-  <a href="">
-    https://github.com/G3-Soluciones-IOT
+  <a href="https://github.com/IoT-UPC-202620">
+    https://github.com/IoT-UPC-202620
   </a>
 </p>
